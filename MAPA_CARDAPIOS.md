@@ -283,10 +283,60 @@ Observacoes:
 - Composicao:
   - Refrigerante lata 350ml (1) - R$ 3,47
 
+#### Água mineral 510ml
+- Custo direto atual: `R$ 1,25`
+- Composicao:
+  - Água mineral 510ml (1) - R$ 1,25
+
+#### Água com gás 510ml
+- Custo direto atual: `R$ 1,65`
+- Composicao:
+  - Água com gás 510ml (1) - R$ 1,65
+
 #### Garrafa 450ml (pêssego ou limão)
 - Custo direto atual: `R$ 4,30`
 - Composicao:
   - Garrafa 450ml (1) - R$ 4,30
+
+#### Coca-Cola 2L
+- Custo direto atual: `R$ 10,95`
+- Composicao:
+  - Coca-Cola 2L (1) - R$ 10,95
+
+#### H2O limão 500ml
+- Custo direto atual: `R$ 4,67`
+- Composicao:
+  - H2O limão 500ml (1) - R$ 4,67
+
+#### Limoneto sem açúcar 500ml
+- Custo direto atual: `R$ 4,67`
+- Composicao:
+  - Limoneto sem açúcar 500ml (1) - R$ 4,67
+
+#### Schweppes Citrus 350ml
+- Custo direto atual: `R$ 3,87`
+- Composicao:
+  - Schweppes Citrus 350ml (1) - R$ 3,87
+
+#### Sprite 350ml
+- Custo direto atual: `R$ 3,66`
+- Composicao:
+  - Sprite 350ml (1) - R$ 3,66
+
+#### Del Valle Uva 290ml
+- Custo direto atual: `R$ 3,67`
+- Composicao:
+  - Del Valle Uva 290ml (1) - R$ 3,67
+
+#### Budweiser long neck 330ml
+- Custo direto atual: `R$ 5,96`
+- Composicao:
+  - Budweiser long neck 330ml (1) - R$ 5,96
+
+#### Heineken long neck 330ml
+- Custo direto atual: `R$ 6,92`
+- Composicao:
+  - Heineken long neck 330ml (1) - R$ 6,92
 
 #### Suco natural (garrafinha)
 - Custo direto atual: `R$ 4,20`
@@ -295,21 +345,19 @@ Observacoes:
 
 ### Combos Família
 
-#### Combo Família Gyros
-- Custo direto atual: `R$ 53,62`
+#### Combo Família (lanche)
+- Custo direto atual: `R$ 38,48`
 - Composicao:
-  - Base interna — Lanche assinatura médio (4) - R$ 33,74
-  - Batata frita base grande (2) - R$ 3,61
-  - Refrigerante lata 350ml (4) - R$ 13,90
-  - Saco de papel mono 1/2 kg plastificado (2) - R$ 0,15
+  - Base interna — Lanche assinatura médio (3) - R$ 25,31
+  - Coca-Cola 2L (1) - R$ 10,95
   - Caixa combo familia (1) - R$ 1,38
   - Saco liso branco medio (1) - R$ 0,84
 
-#### Almoço Família (horário almoço)
-- Custo direto atual: `R$ 62,02`
+#### Almoço Família
+- Custo direto atual: `R$ 47,60`
 - Composicao:
-  - Base interna — Prato médio (4) - R$ 45,90
-  - Refrigerante lata 350ml (4) - R$ 13,90
+  - Base interna — Prato médio (3) - R$ 34,43
+  - Coca-Cola 2L (1) - R$ 10,95
   - Caixa combo familia (1) - R$ 1,38
   - Saco liso branco medio (1) - R$ 0,84
 

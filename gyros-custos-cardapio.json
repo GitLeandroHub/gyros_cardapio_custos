@@ -518,6 +518,149 @@
       "wastePct": 0,
       "supplier": "Mercearia",
       "notes": "Referencia de mercado: ketchup 1kg; revisar depois."
+    },
+    {
+      "id": "ing_agua_510",
+      "scope": "gyros",
+      "name": "Água mineral 510ml",
+      "baseUnit": "un",
+      "purchaseQty": 12,
+      "purchaseCost": 15.05,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 12 unidades sem gás"
+    },
+    {
+      "id": "ing_agua_gas_510",
+      "scope": "gyros",
+      "name": "Água com gás 510ml",
+      "baseUnit": "un",
+      "purchaseQty": 12,
+      "purchaseCost": 19.75,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 12 unidades com gás"
+    },
+    {
+      "id": "ing_cerveja_bud_330",
+      "scope": "gyros",
+      "name": "Budweiser long neck 330ml",
+      "baseUnit": "un",
+      "purchaseQty": 24,
+      "purchaseCost": 143.0,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 24 unidades"
+    },
+    {
+      "id": "ing_cerveja_heineken_330",
+      "scope": "gyros",
+      "name": "Heineken long neck 330ml",
+      "baseUnit": "un",
+      "purchaseQty": 24,
+      "purchaseCost": 166.0,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 24 unidades"
+    },
+    {
+      "id": "ing_coca_2l",
+      "scope": "gyros",
+      "name": "Coca-Cola 2L",
+      "baseUnit": "un",
+      "purchaseQty": 6,
+      "purchaseCost": 65.72,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 6 unidades"
+    },
+    {
+      "id": "ing_h2o_500",
+      "scope": "gyros",
+      "name": "H2O limão 500ml",
+      "baseUnit": "un",
+      "purchaseQty": 12,
+      "purchaseCost": 56.1,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 12 unidades"
+    },
+    {
+      "id": "ing_limoneto_500",
+      "scope": "gyros",
+      "name": "Limoneto sem açúcar 500ml",
+      "baseUnit": "un",
+      "purchaseQty": 12,
+      "purchaseCost": 56.1,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 12 unidades"
+    },
+    {
+      "id": "ing_schweppes_350",
+      "scope": "gyros",
+      "name": "Schweppes Citrus 350ml",
+      "baseUnit": "un",
+      "purchaseQty": 6,
+      "purchaseCost": 23.19,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 6 unidades"
+    },
+    {
+      "id": "ing_sprite_350",
+      "scope": "gyros",
+      "name": "Sprite 350ml",
+      "baseUnit": "un",
+      "purchaseQty": 6,
+      "purchaseCost": 21.96,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 6 unidades"
+    },
+    {
+      "id": "ing_delvalle_uva_290",
+      "scope": "gyros",
+      "name": "Del Valle Uva 290ml",
+      "baseUnit": "un",
+      "purchaseQty": 6,
+      "purchaseCost": 22.01,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Pacote com 6 unidades"
+    },
+    {
+      "id": "ing_bacon_cubos",
+      "scope": "gyros",
+      "name": "Bacon em cubos",
+      "baseUnit": "g",
+      "purchaseQty": 2000,
+      "purchaseCost": 50.94,
+      "wastePct": 0,
+      "supplier": "Açougue",
+      "notes": "2 pacotes de 1kg"
+    },
+    {
+      "id": "ing_oleo_algodao",
+      "scope": "gyros",
+      "name": "Óleo de algodão",
+      "baseUnit": "ml",
+      "purchaseQty": 3600,
+      "purchaseCost": 36.16,
+      "wastePct": 0,
+      "supplier": "Mercearia",
+      "notes": "4 frascos de 900ml"
+    },
+    {
+      "id": "ing_sal_sache",
+      "scope": "gyros",
+      "name": "Sal sachê refinado 0,8g",
+      "baseUnit": "un",
+      "purchaseQty": 1000,
+      "purchaseCost": 13.3,
+      "wastePct": 0,
+      "supplier": "Descartáveis",
+      "notes": "Caixa com 1000 sachês"
     }
   ],
   "packaging": [
@@ -2304,33 +2447,23 @@
     },
     {
       "id": "prd_combo_familia",
-      "name": "Combo Família Gyros",
+      "name": "Combo Família (lanche)",
       "categoryId": "cat_familia",
       "type": "combo",
       "salePrice": 169,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Modelo de família usando base média de lanche",
+      "notes": "3 lanches + 1 Coca-Cola 2L.",
       "components": [
         {
           "refType": "product",
           "refId": "prd_base_lanche_medio",
-          "qty": 4
+          "qty": 3
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_g",
-          "qty": 2
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_refri_350",
-          "qty": 4
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_g",
-          "qty": 2
+          "refType": "product",
+          "refId": "prd_coca_2l",
+          "qty": 1
         },
         {
           "refType": "packaging",
@@ -2348,23 +2481,23 @@
     },
     {
       "id": "prd_almoco_familia",
-      "name": "Almoço Família (horário almoço)",
+      "name": "Almoço Família",
       "categoryId": "cat_familia",
       "type": "combo",
       "salePrice": 129,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Modelo com pratos médios + bebida",
+      "notes": "3 pratos + 1 Coca-Cola 2L.",
       "components": [
         {
           "refType": "product",
           "refId": "prd_base_prato_medio",
-          "qty": 4
+          "qty": 3
         },
         {
-          "refType": "ingredient",
-          "refId": "ing_refri_350",
-          "qty": 4
+          "refType": "product",
+          "refId": "prd_coca_2l",
+          "qty": 1
         },
         {
           "refType": "packaging",
@@ -3147,6 +3280,206 @@
       ],
       "pricingMode": "auto",
       "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_agua_510",
+      "scope": "gyros",
+      "name": "Água mineral 510ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Água sem gás 510ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_agua_510",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_agua_gas_510",
+      "scope": "gyros",
+      "name": "Água com gás 510ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Água mineral com gás 510ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_agua_gas_510",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_bud_330",
+      "scope": "gyros",
+      "name": "Budweiser long neck 330ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Long neck 330ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_cerveja_bud_330",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_heineken_330",
+      "scope": "gyros",
+      "name": "Heineken long neck 330ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Long neck 330ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_cerveja_heineken_330",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_coca_2l",
+      "scope": "gyros",
+      "name": "Coca-Cola 2L",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Garrafa PET 2 litros",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_coca_2l",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_h2o_500",
+      "scope": "gyros",
+      "name": "H2O limão 500ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Garrafa PET 500ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_h2o_500",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_limoneto_500",
+      "scope": "gyros",
+      "name": "Limoneto sem açúcar 500ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Garrafa PET 500ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_limoneto_500",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_schweppes_350",
+      "scope": "gyros",
+      "name": "Schweppes Citrus 350ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Lata 350ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_schweppes_350",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_sprite_350",
+      "scope": "gyros",
+      "name": "Sprite 350ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Lata 350ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_sprite_350",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_delvalle_uva_290",
+      "scope": "gyros",
+      "name": "Del Valle Uva 290ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Lata 290ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_delvalle_uva_290",
+          "qty": 1
+        }
+      ],
       "addons": []
     }
   ],
