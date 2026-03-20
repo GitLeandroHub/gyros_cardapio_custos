@@ -212,6 +212,11 @@ function normalizeDb(target) {
   return applyMultiOperationRules(applyPricingRules(applyPurchaseUpdates(target)));
 }
 
+function isLocalDevHost() {
+  const host = window.location.hostname;
+  return host === 'localhost' || host === '127.0.0.1' || host === '0.0.0.0';
+}
+
 function hashString(str='') {
   let hash = 0;
   for (let i = 0; i < str.length; i += 1) {
@@ -257,6 +262,14 @@ async function syncOfficialDb() {
   const currentHash = localStorage.getItem(OFFICIAL_DB_HASH_KEY);
   const hasLocalDb = !!localStorage.getItem(STORAGE_KEY);
 
+  if (isLocalDevHost()) {
+    db = deepClone(officialDb);
+    localStorage.setItem(STORAGE_KEY, officialJson);
+    localStorage.setItem(OFFICIAL_DB_HASH_KEY, officialHash);
+    state.lastSavedAt = new Date();
+    return 'dev-sync';
+  }
+
   if (!hasLocalDb || currentHash !== officialHash) {
     db = deepClone(officialDb);
     localStorage.setItem(STORAGE_KEY, officialJson);
@@ -266,6 +279,24 @@ async function syncOfficialDb() {
   }
 
   return 'current';
+}
+
+async function disableServiceWorkerForLocalDev() {
+  if (!isLocalDevHost() || !('serviceWorker' in navigator)) return;
+  try {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(registrations.map(reg => reg.unregister()));
+  } catch (err) {
+    console.warn('Nao consegui remover service workers antigos no localhost.', err);
+  }
+  try {
+    if ('caches' in window) {
+      const keys = await caches.keys();
+      await Promise.all(keys.map(key => caches.delete(key)));
+    }
+  } catch (err) {
+    console.warn('Nao consegui limpar caches antigos no localhost.', err);
+  }
 }
 
 function saveDb() {
@@ -703,7 +734,7 @@ function renderDashboard() {
       </div>
       <div class="grid-2">
         <section class="panel"><div class="panel-head"><div><h3>Resumo por categoria</h3><p>Quantidade de itens e custo médio total.</p></div></div><div class="panel-body cat-grid">${cats.map(({cat,count,avgCost}) => `<div class="cat-card"><h4>${escapeHtml(cat.name)}</h4><p>${count} item(ns) ativos</p><div class="pill-line"><span class="tag">custo médio ${brl(avgCost)}</span></div></div>`).join('')}</div></section>
-        <section class="panel"><div class="panel-head"><div><h3>Lógica do custo</h3><p>Como o PWA calcula o custo final.</p></div></div><div class="panel-body"><div class="note">1. Ingredientes, preparos, embalagens e produtos podem ser exclusivos de uma operação ou compartilhados.<br>2. O custo fixo mensal e o rateio fixo continuam visíveis como referência gerencial.<br>3. Nesta fase, o preço de venda automático e a margem principal usam o custo direto do item, sem rateio fixo.<br>4. A regra de preço segue ${defaultMarkupPct()}% sobre o custo direto, ou seja, custo x ${markupMultiplier().toFixed(2)}. Se precisar, você pode trocar um item para preço manual.</div><div class="pill-line"><span class="tag">Lucro bruto medio pela regra: ${brl(avgAutoGap)}</span><span class="tag">Preparos visíveis: ${visibleRecords('recipes').length}</span><span class="tag">Ingredientes visíveis: ${visibleRecords('ingredients').length}</span><span class="tag">Embalagens visíveis: ${visibleRecords('packaging').length}</span></div></div></section>
+        <section class="panel"><div class="panel-head"><div><h3>Lógica do custo</h3><p>Como o PWA calcula o custo final.</p></div></div><div class="panel-body"><div class="note">1. Ingredientes, preparos, embalagens e produtos podem ser exclusivos de uma operação ou compartilhados.<br>2. O custo fixo mensal e o rateio fixo continuam visíveis como referência gerencial.<br>3. Nesta fase, o preço de venda automático e a margem principal usam o custo direto do item, sem rateio fixo.<br>4. O campo <strong>preço com rateio fixo</strong> aparece só para consulta gerencial e não é o preço principal em uso.<br>5. A regra de preço segue ${defaultMarkupPct()}% sobre o custo direto, ou seja, custo x ${markupMultiplier().toFixed(2)}. Se precisar, você pode trocar um item para preço manual.</div><div class="pill-line"><span class="tag">Lucro bruto medio pela regra: ${brl(avgAutoGap)}</span><span class="tag">Preparos visíveis: ${visibleRecords('recipes').length}</span><span class="tag">Ingredientes visíveis: ${visibleRecords('ingredients').length}</span><span class="tag">Embalagens visíveis: ${visibleRecords('packaging').length}</span></div></div></section>
       </div>
     </div>`;
 
@@ -771,13 +802,13 @@ function renderProductDetailHtml(c) {
       <div class="info-cell"><div class="k">Preço de venda</div><div class="v">${brl(c.salePrice)}</div></div>
       <div class="info-cell"><div class="k">Margem atual (sem rateio)</div><div class="v status ${statusClass(c.marginPct)}">${pct(c.marginPct)}</div></div>
       <div class="info-cell"><div class="k">Regra de preço</div><div class="v" style="font-size:15px">${escapeHtml(pricingRuleLabel(p))}</div></div>
-      <div class="info-cell"><div class="k">Preço pela regra</div><div class="v">${brl(c.autoSalePrice)}</div></div>
-      <div class="info-cell"><div class="k">Preço com rateio fixo</div><div class="v">${brl(c.autoSalePriceWithFixed)}</div></div>
+      <div class="info-cell"><div class="k">Preço pela regra atual</div><div class="v">${brl(c.autoSalePrice)}</div></div>
+      <div class="info-cell"><div class="k">Preço com rateio fixo (só referência)</div><div class="v">${brl(c.autoSalePriceWithFixed)}</div></div>
       <div class="info-cell"><div class="k">Custo direto</div><div class="v">${brl(c.directCost)}</div></div>
       <div class="info-cell"><div class="k">Rateio fixo</div><div class="v">${brl(c.fixedCost)}</div></div>
       <div class="info-cell"><div class="k">Custo total</div><div class="v">${brl(c.totalCost)}</div></div>
     </div>
-    <div class="legend"><span class="tag">markup atual ${safe(c.markup).toFixed(2)}x</span><span class="tag">regra atual: custo direto x ${markupMultiplier().toFixed(2)} = ${brl(c.autoSalePrice)}</span><span class="tag">com rateio: ${brl(c.autoSalePriceWithFixed)}</span><span class="tag">modo: ${escapeHtml(c.pricingMode === 'manual' ? 'manual' : 'automatico')}</span><span class="tag">tipo: ${escapeHtml(p.type)}</span><span class="tag">camadas: ${p.components.length}</span><span class="tag">adicionais: ${(p.addons || []).length}</span></div>
+    <div class="legend"><span class="tag">markup atual ${safe(c.markup).toFixed(2)}x</span><span class="tag">regra atual em uso: custo direto x ${markupMultiplier().toFixed(2)} = ${brl(c.autoSalePrice)}</span><span class="tag">com rateio fixo: ${brl(c.autoSalePriceWithFixed)} (só referência)</span><span class="tag">modo: ${escapeHtml(c.pricingMode === 'manual' ? 'manual' : 'automatico')}</span><span class="tag">tipo: ${escapeHtml(p.type)}</span><span class="tag">camadas: ${p.components.length}</span><span class="tag">adicionais: ${(p.addons || []).length}</span></div>
     <div style="margin-top:16px;"><h3 style="font-size:15px; margin:0 0 10px;">Estrutura de custo / BOM base</h3>${renderTree(c.nodes)}</div>
     ${addonSection}`;
 }
@@ -1234,11 +1265,17 @@ qs('#btnInstall').onclick = async () => {
   qs('#btnInstall').style.display = 'none';
   showToast('Instalação iniciada', 'Se o navegador permitir, o app será instalado no dispositivo.', 'info');
 };
-if ('serviceWorker' in navigator) window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));
+if ('serviceWorker' in navigator && !isLocalDevHost()) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));
+}
 
 async function initApp() {
+  await disableServiceWorkerForLocalDev();
   const syncStatus = await syncOfficialDb();
   renderAll();
+  if (syncStatus === 'dev-sync') {
+    showToast('Base local alinhada', 'No localhost, o app está sempre lendo o JSON oficial atual do projeto.', 'info');
+  }
   if (syncStatus === 'loaded') {
     showToast('Base oficial carregada', 'O app importou automaticamente o JSON oficial do projeto.', 'success');
   }
