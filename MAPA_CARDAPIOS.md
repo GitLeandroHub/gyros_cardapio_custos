@@ -249,6 +249,18 @@ Observacoes:
   - Maionese Grill (60) - R$ 0,63
   - Pote 60ml branco G697 (1) - R$ 0,24
 
+#### Maionese Chimichurri extra (60ml potinho)
+- Custo direto atual: `R$ 0,93`
+- Composicao:
+  - Maionese Chimichurri (60) - R$ 0,70
+  - Pote 60ml branco G697 (1) - R$ 0,24
+
+#### Maionese Verde extra (60ml potinho)
+- Custo direto atual: `R$ 0,92`
+- Composicao:
+  - Maionese Verde (60) - R$ 0,69
+  - Pote 60ml branco G697 (1) - R$ 0,24
+
 #### Vinagrete extra (60ml potinho)
 - Custo direto atual: `R$ 1,19`
 - Composicao:
@@ -261,9 +273,9 @@ Observacoes:
   - Saches (ketchup/maionese/mostarda/pimenta) (5) - R$ 0,60
 
 #### Barbecue extra (60ml potinho)
-- Custo direto atual: `R$ 1,03`
+- Custo direto atual: `R$ 1,26`
 - Composicao:
-  - Barbecue da casa (60) - R$ 0,80
+  - Barbecue da casa (60) - R$ 1,03
   - Pote 60ml branco G697 (1) - R$ 0,24
 
 ### Bebidas
@@ -402,6 +414,30 @@ Observacoes:
   - Fumaca em po (24) - R$ 0,47
   - Mostarda amarela (15) - R$ 0,97
 - Observacao: Assumido: 400g base de maionese Quero + 24g de fumaca em po + 15g de mostarda amarela.
+
+### Maionese Chimichurri
+- Rendimento: `440 g`
+- Custo por unidade: `R$ 0,01`
+- Custo total do lote: `R$ 5,10`
+- Base atual:
+  - Base de maionese Quero (400) - R$ 3,20
+  - Chimichurri (24) - R$ 0,93
+  - Mostarda amarela (15) - R$ 0,97
+- Observacao: Mesmo padrao da Grill: 400g de base + chimichurri + mostarda amarela.
+
+### Maionese Verde
+- Rendimento: `470 g`
+- Custo por unidade: `R$ 0,01`
+- Custo total do lote: `R$ 5,41`
+- Base atual:
+  - Base de maionese Quero (400) - R$ 3,20
+  - Mostarda amarela (15) - R$ 0,97
+  - Alho (6) - R$ 0,15
+  - Limao (suco) (15) - R$ 0,17
+  - Cheiro-verde (30) - R$ 0,67
+  - Sal e pimenta (2) - R$ 0,01
+  - Pimenta-do-reino (2) - R$ 0,22
+- Observacao: Base de maionese com mostarda, alho, limao, cheiro-verde, sal e pimenta-do-reino.
 
 ### Barbecue da casa
 - Rendimento: `3150 g`

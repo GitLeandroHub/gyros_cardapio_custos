@@ -661,6 +661,28 @@
       "wastePct": 0,
       "supplier": "Descartáveis",
       "notes": "Caixa com 1000 sachês"
+    },
+    {
+      "id": "ing_chimichurri",
+      "scope": "gyros",
+      "name": "Chimichurri",
+      "baseUnit": "g",
+      "purchaseQty": 500,
+      "purchaseCost": 19.42,
+      "wastePct": 0,
+      "supplier": "Zona Cerealista",
+      "notes": "Compra inicial informada pelo projeto: pacote com 500g"
+    },
+    {
+      "id": "ing_pimenta_reino",
+      "scope": "gyros",
+      "name": "Pimenta-do-reino",
+      "baseUnit": "g",
+      "purchaseQty": 500,
+      "purchaseCost": 55.0,
+      "wastePct": 0,
+      "supplier": "Mercado / referência web",
+      "notes": "Valor de referência para completar a base; revisar depois com a compra real"
     }
   ],
   "packaging": [
@@ -1365,6 +1387,78 @@
           "refType": "ingredient",
           "refId": "ing_cheddar",
           "qty": 110
+        }
+      ]
+    },
+    {
+      "id": "rec_maionese_chimichurri",
+      "scope": "gyros",
+      "name": "Maionese Chimichurri",
+      "yieldQty": 440,
+      "yieldUnit": "g",
+      "storage": "Descanso refrigerado",
+      "notes": "Mesmo padrao da Grill: 400g de base + chimichurri + mostarda amarela.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_maionese_ind",
+          "qty": 400
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_chimichurri",
+          "qty": 24
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_mostarda_amarela",
+          "qty": 15
+        }
+      ]
+    },
+    {
+      "id": "rec_maionese_verde",
+      "scope": "gyros",
+      "name": "Maionese Verde",
+      "yieldQty": 470,
+      "yieldUnit": "g",
+      "storage": "Descanso refrigerado",
+      "notes": "Base de maionese com mostarda, alho, limao, cheiro-verde, sal e pimenta-do-reino.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_maionese_ind",
+          "qty": 400
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_mostarda_amarela",
+          "qty": 15
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_alho",
+          "qty": 6
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_limao",
+          "qty": 15
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_cheiro_verde",
+          "qty": 30
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_tempero",
+          "qty": 2
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_pimenta_reino",
+          "qty": 2
         }
       ]
     }
@@ -3477,6 +3571,56 @@
         {
           "refType": "ingredient",
           "refId": "ing_delvalle_uva_290",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_maionese_chimichurri_extra",
+      "scope": "gyros",
+      "name": "Maionese Chimichurri extra (60ml potinho)",
+      "categoryId": "cat_molhos",
+      "type": "extra",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Potinho extra com maionese chimichurri.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese_chimichurri",
+          "qty": 60
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_maionese_verde_extra",
+      "scope": "gyros",
+      "name": "Maionese Verde extra (60ml potinho)",
+      "categoryId": "cat_molhos",
+      "type": "extra",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Potinho extra com maionese verde.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese_verde",
+          "qty": 60
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
           "qty": 1
         }
       ],
