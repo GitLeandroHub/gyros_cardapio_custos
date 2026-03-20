@@ -1,0 +1,2755 @@
+{
+  "meta": {
+    "businessName": "Gyros Greek Barbecue",
+    "projectName": "PWA de Custos do Cardápio",
+    "version": 1
+  },
+  "settings": {
+    "targetMarginPct": 68,
+    "fixedAllocationMode": "custom_units",
+    "customMonthlyUnits": 1200,
+    "currency": "BRL",
+    "defaultMarkupPct": 300,
+    "sharedFixedSplitMode": "equal",
+    "sharedFixedSplitManual": {
+      "gyros": 100,
+      "greguinho": 0
+    },
+    "operationMonthlyUnits": {
+      "gyros": 1200,
+      "greguinho": 0
+    },
+    "greguinhoEnabled": false
+  },
+  "categories": [
+    {
+      "id": "cat_assinaturas",
+      "name": "Lanches — Assinaturas (sem troca)",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_monte",
+      "name": "Monte o seu Gyros (personalização controlada)",
+      "active": false,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_combos",
+      "name": "Combos rápidos (sem configurar — só observação)",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_batatas",
+      "name": "Batatas (Fritas e Gratinadas)",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_gratinados",
+      "name": "Porções Gratinadas (Carne)",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_almoco",
+      "name": "Almoço (embalado por porções)",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_sobremesas",
+      "name": "Sobremesas",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_molhos",
+      "name": "Molhos & Extras (à parte)",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_bebidas",
+      "name": "Bebidas",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_familia",
+      "name": "Combos Família",
+      "active": true,
+      "scope": "gyros"
+    },
+    {
+      "id": "cat_base_interna",
+      "name": "Base interna (não conta no cardápio)",
+      "active": false,
+      "scope": "gyros"
+    }
+  ],
+  "ingredients": [
+    {
+      "id": "ing_pao_frances",
+      "name": "Pão francês",
+      "baseUnit": "un",
+      "purchaseQty": 30,
+      "purchaseCost": 24,
+      "wastePct": 0,
+      "supplier": "Padaria",
+      "notes": "Custo por caixa/pacote",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_parmesao",
+      "name": "Parmesão ralado",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 58,
+      "wastePct": 1,
+      "supplier": "Laticínio",
+      "notes": "Usado no pão",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_fraldinha",
+      "name": "Fraldinha preparada",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 68,
+      "wastePct": 8,
+      "supplier": "Açougue",
+      "notes": "Peso já cozido/preparado",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_frango",
+      "name": "Frango preparado",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 31,
+      "wastePct": 5,
+      "supplier": "Distribuidor",
+      "notes": "Peito e sobrecoxa",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_linguica",
+      "name": "Linguiça toscana preparada",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 29,
+      "wastePct": 6,
+      "supplier": "Açougue",
+      "notes": "Já pronta para montagem",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_mucarela",
+      "name": "Muçarela",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 36,
+      "wastePct": 2,
+      "supplier": "Laticínio",
+      "notes": "Fatiada ou ralada",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_catupiry",
+      "name": "Catupiry",
+      "baseUnit": "g",
+      "purchaseQty": 1500,
+      "purchaseCost": 60.32,
+      "wastePct": 1,
+      "supplier": "Laticínio",
+      "notes": "Bisnaga Catupiry 1,5kg",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_cheddar",
+      "name": "Cheddar",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 27,
+      "wastePct": 1,
+      "supplier": "Laticínio",
+      "notes": "Molho/creme",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_4queijos",
+      "name": "Catupiry Sabor 4 queijos",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 33,
+      "wastePct": 1,
+      "supplier": "Laticínio",
+      "notes": "Base para gratinados",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_batata",
+      "name": "Batata pré-frita",
+      "baseUnit": "g",
+      "purchaseQty": 14000,
+      "purchaseCost": 99.99,
+      "wastePct": 3,
+      "supplier": "Congelados",
+      "notes": "Caixa com 7 pacotes de 2kg",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_tempero",
+      "name": "Sal",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 8,
+      "wastePct": 0,
+      "supplier": "Secos",
+      "notes": "Sal base para batata e cozinha; estimativa simples.",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_arroz",
+      "name": "Arroz cozido",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 9.5,
+      "wastePct": 2,
+      "supplier": "Cozinha",
+      "notes": "Custo por kg pronto",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_feijao",
+      "name": "Feijão cozido",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 12,
+      "wastePct": 2,
+      "supplier": "Cozinha",
+      "notes": "Custo por kg pronto",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_salada",
+      "name": "Salada antiga / folhas / tomate",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 16,
+      "wastePct": 8,
+      "supplier": "Hortifruti",
+      "notes": "Mantida so para historico. Os pratos agora usam vinagrete.",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_tomate",
+      "name": "Tomate",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 9,
+      "wastePct": 6,
+      "supplier": "Hortifruti",
+      "notes": "Para vinagrete",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_cebola",
+      "name": "Cebola",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 5.5,
+      "wastePct": 8,
+      "supplier": "Hortifruti",
+      "notes": "Para vinagrete",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_pimentao",
+      "name": "Pimentão",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 12,
+      "wastePct": 12,
+      "supplier": "Hortifruti",
+      "notes": "Para vinagrete",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_cheiro_verde",
+      "name": "Cheiro-verde",
+      "baseUnit": "g",
+      "purchaseQty": 300,
+      "purchaseCost": 6,
+      "wastePct": 10,
+      "supplier": "Hortifruti",
+      "notes": "Para vinagrete e maionese",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_oleo_vinagre",
+      "name": "Azeite de oliva",
+      "baseUnit": "ml",
+      "purchaseQty": 2000,
+      "purchaseCost": 130,
+      "wastePct": 0,
+      "supplier": "Mercearia",
+      "notes": "Galao 2L de azeite de oliva extra virgem",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_maionese_ind",
+      "name": "Base de maionese Quero",
+      "baseUnit": "g",
+      "purchaseQty": 3000,
+      "purchaseCost": 24,
+      "wastePct": 0,
+      "supplier": "Mercearia",
+      "notes": "Maionese Grande Quero 3kg.",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_alho",
+      "name": "Alho",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 24,
+      "wastePct": 5,
+      "supplier": "Hortifruti",
+      "notes": "Para maionese",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_limao",
+      "name": "Limao (suco)",
+      "baseUnit": "ml",
+      "purchaseQty": 1000,
+      "purchaseCost": 10,
+      "wastePct": 10,
+      "supplier": "Hortifruti",
+      "notes": "Base em ml para receitas e molhos",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_bbq",
+      "name": "Molho barbecue pronto",
+      "baseUnit": "ml",
+      "purchaseQty": 2000,
+      "purchaseCost": 27.8,
+      "wastePct": 0,
+      "supplier": "Mercearia",
+      "notes": "Base pronta usada na receita do barbecue da casa.",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_saches_mix",
+      "name": "Saches (ketchup/maionese/mostarda/pimenta)",
+      "baseUnit": "un",
+      "purchaseQty": 866,
+      "purchaseCost": 104.51,
+      "wastePct": 0,
+      "supplier": "Descartáveis",
+      "notes": "Mix medio comprado; revisar conforme a composicao real.",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_massa_churros",
+      "name": "Massa/base de churros",
+      "baseUnit": "un",
+      "purchaseQty": 50,
+      "purchaseCost": 32,
+      "wastePct": 2,
+      "supplier": "Congelados",
+      "notes": "Unidade base",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_rech_dl",
+      "name": "Doce de leite",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 21,
+      "wastePct": 0,
+      "supplier": "Doçaria",
+      "notes": "Recheio",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_rech_choc",
+      "name": "Chocolate",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 19,
+      "wastePct": 0,
+      "supplier": "Doçaria",
+      "notes": "Recheio",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_rech_goi",
+      "name": "Goiabada",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 14,
+      "wastePct": 0,
+      "supplier": "Doçaria",
+      "notes": "Recheio",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_refri_350",
+      "name": "Refrigerante lata 350ml",
+      "baseUnit": "un",
+      "purchaseQty": 72,
+      "purchaseCost": 250.14,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Media de Coca, Coca Zero, Fanta e Guarana em lata 350ml",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_garrafa_450",
+      "name": "Garrafa 450ml",
+      "baseUnit": "un",
+      "purchaseQty": 12,
+      "purchaseCost": 51.6,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Ice Tea 450ml nos sabores limao e pessego",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_suco_natural",
+      "name": "Suco natural (garrafinha)",
+      "baseUnit": "un",
+      "purchaseQty": 10,
+      "purchaseCost": 42,
+      "wastePct": 0,
+      "supplier": "Produção",
+      "notes": "Custo médio por garrafinha",
+      "scope": "gyros"
+    },
+    {
+      "id": "ing_manteiga",
+      "scope": "gyros",
+      "name": "Manteiga com sal",
+      "baseUnit": "g",
+      "purchaseQty": 500,
+      "purchaseCost": 32.5,
+      "wastePct": 0,
+      "supplier": "Mercado",
+      "notes": "Referencia de mercado: manteiga com sal 500g; revisar depois."
+    },
+    {
+      "id": "ing_mel",
+      "scope": "gyros",
+      "name": "Mel",
+      "baseUnit": "g",
+      "purchaseQty": 500,
+      "purchaseCost": 20,
+      "wastePct": 0,
+      "supplier": "Mercearia",
+      "notes": "Valor informado pelo usuario."
+    },
+    {
+      "id": "ing_fumaca_po",
+      "scope": "gyros",
+      "name": "Fumaca em po",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 19.43,
+      "wastePct": 0,
+      "supplier": "Zona Cerealista",
+      "notes": "Compra inicial Zona Cerealista."
+    },
+    {
+      "id": "ing_mostarda_amarela",
+      "scope": "gyros",
+      "name": "Mostarda amarela",
+      "baseUnit": "g",
+      "purchaseQty": 200,
+      "purchaseCost": 12.99,
+      "wastePct": 0,
+      "supplier": "Mercado",
+      "notes": "Referencia de mercado: mostarda amarela squeeze 200g; revisar depois."
+    },
+    {
+      "id": "ing_lemon_pepper",
+      "scope": "gyros",
+      "name": "Lemon pepper",
+      "baseUnit": "g",
+      "purchaseQty": 500,
+      "purchaseCost": 15,
+      "wastePct": 0,
+      "supplier": "Zona Cerealista",
+      "notes": "Compra inicial Zona Cerealista."
+    },
+    {
+      "id": "ing_paprica_doce",
+      "scope": "gyros",
+      "name": "Paprica doce",
+      "baseUnit": "g",
+      "purchaseQty": 500,
+      "purchaseCost": 10,
+      "wastePct": 0,
+      "supplier": "Zona Cerealista",
+      "notes": "Compra inicial Zona Cerealista."
+    },
+    {
+      "id": "ing_farofa_pronta",
+      "scope": "gyros",
+      "name": "Farofa pronta",
+      "baseUnit": "g",
+      "purchaseQty": 500,
+      "purchaseCost": 8.99,
+      "wastePct": 0,
+      "supplier": "Mercearia",
+      "notes": "Referencia de mercado: farofa temperada 500g; revisar depois."
+    },
+    {
+      "id": "ing_ketchup",
+      "scope": "gyros",
+      "name": "Ketchup",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 19.98,
+      "wastePct": 0,
+      "supplier": "Mercearia",
+      "notes": "Referencia de mercado: ketchup 1kg; revisar depois."
+    }
+  ],
+  "packaging": [
+    {
+      "id": "pkg_lanche",
+      "name": "Papel acoplado mono frios 30x38",
+      "purchaseQty": 400,
+      "purchaseCost": 27,
+      "notes": "Involucro de cada lanche do Gyros.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_bat_p",
+      "name": "Saco de papel hamburgao plastificado",
+      "purchaseQty": 100,
+      "purchaseCost": 5.95,
+      "notes": "Batata pequena e churros.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_bat_m",
+      "name": "Saco de papel mono 1/2 kg plastificado",
+      "purchaseQty": 100,
+      "purchaseCost": 7.5,
+      "notes": "Batata media/grande.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_bat_g",
+      "name": "Saco de papel mono 1/2 kg plastificado",
+      "purchaseQty": 100,
+      "purchaseCost": 7.5,
+      "notes": "Batata media/grande.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_almoco",
+      "name": "Caixa marmita branca",
+      "purchaseQty": 150,
+      "purchaseCost": 426.09,
+      "notes": "Estoque atual do Gyros; custo historico por unidade R$ 2,84.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_potinho_30",
+      "name": "Pote 60ml branco G697",
+      "purchaseQty": 25,
+      "purchaseCost": 5.9,
+      "notes": "Mantido como alias temporario do pote 60ml; revisar se seguira em uso.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_potinho_60",
+      "name": "Pote 60ml branco G697",
+      "purchaseQty": 25,
+      "purchaseCost": 5.9,
+      "notes": "Assumido pacote com 25 unidades; revisar quantidade real do fornecedor.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_sobremesa",
+      "name": "Saco de papel hamburgao plastificado",
+      "purchaseQty": 100,
+      "purchaseCost": 5.95,
+      "notes": "Saquinho para churros.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_sacola_delivery",
+      "name": "Saco liso branco medio",
+      "purchaseQty": 400,
+      "purchaseCost": 335,
+      "notes": "Samppael, incluindo frete rateado.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_guardanapo",
+      "name": "Guardanapo sache 28x20,5 liso",
+      "purchaseQty": 250,
+      "purchaseCost": 38.5,
+      "notes": "Usado no almoco; lanches podem migrar depois se desejado.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_combo_familia",
+      "name": "Caixa combo familia",
+      "purchaseQty": 50,
+      "purchaseCost": 69,
+      "notes": "Sem alteracao nesta rodada.",
+      "scope": "gyros"
+    },
+    {
+      "id": "pkg_talher_kit",
+      "scope": "gyros",
+      "name": "Kit talheres",
+      "purchaseQty": 50,
+      "purchaseCost": 24.5,
+      "notes": "Para pratos de almoco do Gyros."
+    },
+    {
+      "id": "pkg_potinho_feijao",
+      "scope": "gyros",
+      "name": "Pote redondo 145ml com sobretampa",
+      "purchaseQty": 24,
+      "purchaseCost": 8.2,
+      "notes": "Para feijao do almoco."
+    },
+    {
+      "id": "pkg_bandeja_m90",
+      "scope": "gyros",
+      "name": "Bandeja aluminio M90 220ml",
+      "purchaseQty": 100,
+      "purchaseCost": 46.9,
+      "notes": "Batata gratinada pequena."
+    },
+    {
+      "id": "pkg_bandeja_m120",
+      "scope": "gyros",
+      "name": "Bandeja aluminio M120 500ml",
+      "purchaseQty": 100,
+      "purchaseCost": 66.9,
+      "notes": "Batata gratinada media/grande."
+    }
+  ],
+  "recipes": [
+    {
+      "id": "rec_pao_parmesao",
+      "name": "Pão com parmesão",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Produção do lanche",
+      "notes": "Semiacabado do pao. A manteiga com alho entra na hora de finalizar o lanche.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_pao_frances",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_parmesao",
+          "qty": 29
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_vinagrete",
+      "name": "Vinagrete da casa",
+      "yieldQty": 600,
+      "yieldUnit": "ml",
+      "storage": "Descanso refrigerado",
+      "notes": "Tomate, cebola, limao, cheiro-verde, azeite, sal e pimenta",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_tomate",
+          "qty": 300
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_cebola",
+          "qty": 150
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_cheiro_verde",
+          "qty": 50
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_oleo_vinagre",
+          "qty": 60
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_limao",
+          "qty": 60
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_tempero",
+          "qty": 6
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_maionese",
+      "name": "Maionese Grill",
+      "yieldQty": 440,
+      "yieldUnit": "g",
+      "storage": "Descanso refrigerado",
+      "notes": "Assumido: 400g base de maionese Quero + 24g de fumaca em po + 15g de mostarda amarela.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_maionese_ind",
+          "qty": 400
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_fumaca_po",
+          "qty": 24
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_mostarda_amarela",
+          "qty": 15
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_batata_p",
+      "name": "Batata frita base pequena",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Quente / fritadeira",
+      "notes": "Porcao pequena de 130g, sal padrao.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_batata",
+          "qty": 130
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_tempero",
+          "qty": 3
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_batata_m",
+      "name": "Batata frita base media (historico)",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Quente / fritadeira",
+      "notes": "Receita antiga mantida apenas para historico.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_batata",
+          "qty": 120
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_tempero",
+          "qty": 3
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_batata_g",
+      "name": "Batata frita base grande",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Quente / fritadeira",
+      "notes": "Porcao grande de 240g, sal padrao.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_batata",
+          "qty": 240
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_tempero",
+          "qty": 5
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_grat_muc",
+      "name": "Cobertura gratinada muçarela",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Cobertura padrão para gratinar",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_mucarela",
+          "qty": 45
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_grat_cat",
+      "name": "Cobertura gratinada catupiry",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Cobertura com catupiry",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_catupiry",
+          "qty": 50
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_grat_cheddar",
+      "name": "Cobertura gratinada cheddar",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Cobertura com cheddar",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_cheddar",
+          "qty": 50
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_grat_4q",
+      "name": "Cobertura gratinada 4 queijos",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Cobertura com mix 4 queijos",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_4queijos",
+          "qty": 50
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_prato_alpha",
+      "name": "Prato Alpha base",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Montagem almoço",
+      "notes": "Prato com fraldinha, feijao em pote e vinagrete/farofa em potes de 60ml.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_arroz",
+          "qty": 150
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_feijao",
+          "qty": 100
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 60
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_farofa_pronta",
+          "qty": 40
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_fraldinha",
+          "qty": 150
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_prato_beta",
+      "name": "Prato Beta base",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Montagem almoço",
+      "notes": "Prato com frango, feijao em pote e vinagrete/farofa em potes de 60ml.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_arroz",
+          "qty": 150
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_feijao",
+          "qty": 100
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 60
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_farofa_pronta",
+          "qty": 40
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_frango",
+          "qty": 150
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_prato_gamma",
+      "name": "Prato Gamma base",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Montagem almoço",
+      "notes": "Prato com linguica, feijao em pote e vinagrete/farofa em potes de 60ml.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_arroz",
+          "qty": 150
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_feijao",
+          "qty": 100
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 60
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_farofa_pronta",
+          "qty": 40
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_linguica",
+          "qty": 150
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_churros_dl",
+      "name": "Churros recheado — doce de leite",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Fritadeira / sobremesa",
+      "notes": "Unidade de sobremesa",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_massa_churros",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_rech_dl",
+          "qty": 35
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_churros_choc",
+      "name": "Churros recheado — chocolate",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Fritadeira / sobremesa",
+      "notes": "Unidade de sobremesa",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_massa_churros",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_rech_choc",
+          "qty": 35
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_churros_goi",
+      "name": "Churros recheado — goiabada",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Fritadeira / sobremesa",
+      "notes": "Unidade de sobremesa",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_massa_churros",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_rech_goi",
+          "qty": 35
+        }
+      ],
+      "scope": "gyros"
+    },
+    {
+      "id": "rec_manteiga_alho",
+      "scope": "gyros",
+      "name": "Manteiga com alho",
+      "yieldQty": 530,
+      "yieldUnit": "g",
+      "storage": "Geladeira / producao do lanche",
+      "notes": "Assumido: 500g de manteiga + 30g de alho triturado (3 colheres cheias).",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_manteiga",
+          "qty": 500
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_alho",
+          "qty": 30
+        }
+      ]
+    },
+    {
+      "id": "rec_barbecue_casa",
+      "scope": "gyros",
+      "name": "Barbecue da casa",
+      "yieldQty": 3150,
+      "yieldUnit": "g",
+      "storage": "Molheira / refrigerado",
+      "notes": "Receita: 2kg de molho barbecue pronto + 1kg de ketchup + 150g de mel.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_bbq",
+          "qty": 2000
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_ketchup",
+          "qty": 1000
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_mel",
+          "qty": 150
+        }
+      ]
+    },
+    {
+      "id": "rec_tempero_batata_plus",
+      "scope": "gyros",
+      "name": "Tempero premium para batata",
+      "yieldQty": 100,
+      "yieldUnit": "g",
+      "storage": "Seco / mise en place",
+      "notes": "Assumido 50% lemon pepper e 50% paprica doce; usar apenas como adicional opcional.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_lemon_pepper",
+          "qty": 50
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_paprica_doce",
+          "qty": 50
+        }
+      ]
+    },
+    {
+      "id": "rec_grat_muc_p",
+      "scope": "gyros",
+      "name": "Cobertura gratinada muçarela pequena",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Quantidade estimada de Muçarela para esta versao; revisar depois.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_mucarela",
+          "qty": 45
+        }
+      ]
+    },
+    {
+      "id": "rec_grat_cat_p",
+      "scope": "gyros",
+      "name": "Cobertura gratinada catupiry pequena",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Quantidade estimada de Catupiry para esta versao; revisar depois.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_catupiry",
+          "qty": 55
+        }
+      ]
+    },
+    {
+      "id": "rec_grat_4q_p",
+      "scope": "gyros",
+      "name": "Cobertura gratinada 4 queijos pequena",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Quantidade estimada de 4 queijos para esta versao; revisar depois.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_4queijos",
+          "qty": 55
+        }
+      ]
+    },
+    {
+      "id": "rec_grat_cheddar_p",
+      "scope": "gyros",
+      "name": "Cobertura gratinada cheddar pequena",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Quantidade estimada de Cheddar para esta versao; revisar depois.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_cheddar",
+          "qty": 70
+        }
+      ]
+    },
+    {
+      "id": "rec_grat_muc_g",
+      "scope": "gyros",
+      "name": "Cobertura gratinada muçarela grande",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Quantidade estimada de Muçarela para esta versao; revisar depois.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_mucarela",
+          "qty": 80
+        }
+      ]
+    },
+    {
+      "id": "rec_grat_cat_g",
+      "scope": "gyros",
+      "name": "Cobertura gratinada catupiry grande",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Quantidade estimada de Catupiry para esta versao; revisar depois.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_catupiry",
+          "qty": 90
+        }
+      ]
+    },
+    {
+      "id": "rec_grat_4q_g",
+      "scope": "gyros",
+      "name": "Cobertura gratinada 4 queijos grande",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Quantidade estimada de 4 queijos para esta versao; revisar depois.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_4queijos",
+          "qty": 90
+        }
+      ]
+    },
+    {
+      "id": "rec_grat_cheddar_g",
+      "scope": "gyros",
+      "name": "Cobertura gratinada cheddar grande",
+      "yieldQty": 1,
+      "yieldUnit": "un",
+      "storage": "Salamandra",
+      "notes": "Quantidade estimada de Cheddar para esta versao; revisar depois.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_cheddar",
+          "qty": 110
+        }
+      ]
+    }
+  ],
+  "products": [
+    {
+      "id": "prd_base_lanche_medio",
+      "name": "Base interna — Lanche assinatura médio",
+      "categoryId": "cat_base_interna",
+      "type": "base",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Base média para combos rápidos",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_pao_parmesao",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_frango",
+          "qty": 110
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_mucarela",
+          "qty": 35
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 30
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese",
+          "qty": 20
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_lanche",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_base_prato_medio",
+      "name": "Base interna — Prato médio",
+      "categoryId": "cat_base_interna",
+      "type": "base",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Base média para combos de almoço",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_arroz",
+          "qty": 160
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_feijao",
+          "qty": 120
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_salada",
+          "qty": 80
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_frango",
+          "qty": 120
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_almoco",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_alpha",
+      "name": "Alpha — Gyros Fraldinha (Assinatura)",
+      "categoryId": "cat_assinaturas",
+      "type": "menu",
+      "salePrice": 35,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Base alinhada ao cardápio enviado",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_pao_parmesao",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_fraldinha",
+          "qty": 110
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_manteiga_alho",
+          "qty": 5
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_mucarela",
+          "qty": 50
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 60
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese",
+          "qty": 10
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_lanche",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_beta",
+      "name": "Beta — Gyros Frango (Assinatura)",
+      "categoryId": "cat_assinaturas",
+      "type": "menu",
+      "salePrice": 35,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Base alinhada ao cardápio enviado",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_pao_parmesao",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_frango",
+          "qty": 110
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_manteiga_alho",
+          "qty": 5
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_catupiry",
+          "qty": 35
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 30
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese",
+          "qty": 10
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_lanche",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_gamma",
+      "name": "Gamma — Gyros Linguiça (Assinatura)",
+      "categoryId": "cat_assinaturas",
+      "type": "menu",
+      "salePrice": 35,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Base alinhada ao cardápio enviado",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_pao_parmesao",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_linguica",
+          "qty": 110
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_manteiga_alho",
+          "qty": 5
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_4queijos",
+          "qty": 35
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 30
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese",
+          "qty": 10
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_lanche",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_combo1",
+      "name": "Combo 1 — Lanche + Batata Pequena (130g)",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 52,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo por camadas usando base interna de lanche",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_base_lanche_medio",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_combo2",
+      "name": "Combo 2 — Lanche + Bebida 350ml",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 41,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo por camadas usando base interna de lanche",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_base_lanche_medio",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_combo3",
+      "name": "Combo 3 — Lanche + Batata Pequena + Bebida 350ml",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 55,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo por camadas usando base interna de lanche",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_base_lanche_medio",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_bat_p",
+      "name": "Batata frita — Pequena (130g)",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "salePrice": 18,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Sal padrão. Lemon pepper e páprica doce entram como adicionais opcionais.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_bat_p_lp",
+          "name": "Lemon pepper",
+          "group": "Tempero adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Escolha opcional. Repasse final ainda em decisão.",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_lemon_pepper",
+              "qty": 2
+            }
+          ]
+        },
+        {
+          "id": "add_bat_p_pap",
+          "name": "Páprica doce",
+          "group": "Tempero adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Escolha opcional. Repasse final ainda em decisão.",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_paprica_doce",
+              "qty": 2
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_m",
+      "name": "Batata frita temperada — Media (historico)",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "salePrice": 28,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Item antigo mantido apenas para historico.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_m",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_m",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_bat_g",
+      "name": "Batata frita — Grande (240g)",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "salePrice": 36,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Sal padrão. Lemon pepper e páprica doce entram como adicionais opcionais.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_g",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_g",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_bat_g_lp",
+          "name": "Lemon pepper",
+          "group": "Tempero adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Escolha opcional. Repasse final ainda em decisão.",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_lemon_pepper",
+              "qty": 4
+            }
+          ]
+        },
+        {
+          "id": "add_bat_g_pap",
+          "name": "Páprica doce",
+          "group": "Tempero adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Escolha opcional. Repasse final ainda em decisão.",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_paprica_doce",
+              "qty": 4
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_grat_p",
+      "name": "Batata gratinada — Pequena (M90 220ml)",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "salePrice": 26,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Muçarela padrão. Catupiry, 4 queijos e cheddar entram como adicionais opcionais.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_muc_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m90",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_bat_grat_p_cat",
+          "name": "Catupiry",
+          "group": "Queijo adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Troca ou upgrade sobre a muçarela padrão.",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_grat_cat_p",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_bat_grat_p_4q",
+          "name": "Catupiry sabor 4 queijos",
+          "group": "Queijo adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Troca ou upgrade sobre a muçarela padrão.",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_grat_4q_p",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_bat_grat_p_che",
+          "name": "Cheddar",
+          "group": "Queijo adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Troca ou upgrade sobre a muçarela padrão.",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_grat_cheddar_p",
+              "qty": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_grat_m",
+      "name": "Batata gratinada — Media (historico)",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "salePrice": 36,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Item antigo mantido apenas para historico.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_m",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_muc",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m120",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_bat_grat_g",
+      "name": "Batata gratinada — Grande (M120 500ml)",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "salePrice": 44,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Muçarela padrão. Catupiry, 4 queijos e cheddar entram como adicionais opcionais.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_g",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_muc_g",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m120",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_bat_grat_g_cat",
+          "name": "Catupiry",
+          "group": "Queijo adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Troca ou upgrade sobre a muçarela padrão.",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_grat_cat_g",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_bat_grat_g_4q",
+          "name": "Catupiry sabor 4 queijos",
+          "group": "Queijo adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Troca ou upgrade sobre a muçarela padrão.",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_grat_4q_g",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_bat_grat_g_che",
+          "name": "Cheddar",
+          "group": "Queijo adicional",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Troca ou upgrade sobre a muçarela padrão.",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_grat_cheddar_g",
+              "qty": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prd_carne_grat",
+      "name": "Carne Gyros Gratinada (porção)",
+      "categoryId": "cat_gratinados",
+      "type": "menu",
+      "salePrice": 39,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Modelo padrão com frango + muçarela. Ajuste proteína e queijo conforme o real.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_frango",
+          "qty": 140
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_muc",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m120",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_prato_alpha",
+      "name": "Prato Alpha — Fraldinha",
+      "categoryId": "cat_almoco",
+      "type": "menu",
+      "salePrice": 30,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_prato_alpha",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_almoco",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_feijao",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
+          "qty": 2
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_talher_kit",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_prato_beta",
+      "name": "Prato Beta — Frango",
+      "categoryId": "cat_almoco",
+      "type": "menu",
+      "salePrice": 30,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_prato_beta",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_almoco",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_feijao",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
+          "qty": 2
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_talher_kit",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_prato_gamma",
+      "name": "Prato Gamma — Linguiça",
+      "categoryId": "cat_almoco",
+      "type": "menu",
+      "salePrice": 30,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_prato_gamma",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_almoco",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_feijao",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
+          "qty": 2
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_talher_kit",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_combo_almoco",
+      "name": "Combo Almoço — Prato + Bebida + Mini batata (80g)",
+      "categoryId": "cat_almoco",
+      "type": "combo",
+      "salePrice": 45,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo almoco usando prato real do Gyros.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_prato_beta",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_churros",
+      "name": "Churros (unidade)",
+      "categoryId": "cat_sobremesas",
+      "type": "menu",
+      "salePrice": 11.9,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Modelo padrão com doce de leite. Troque a receita para outro recheio quando quiser.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_churros_dl",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sobremesa",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_molho_extra",
+      "name": "Maionese Grill extra (60ml potinho)",
+      "categoryId": "cat_molhos",
+      "type": "extra",
+      "salePrice": 2.5,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Molho padrao do lanche vendido a parte.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese",
+          "qty": 60
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_vinagrete_extra",
+      "name": "Vinagrete extra (60ml potinho)",
+      "categoryId": "cat_molhos",
+      "type": "extra",
+      "salePrice": 2.5,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Use 60ml para extra à parte",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 60
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_sache5",
+      "name": "Pacote extra com 5 sachês",
+      "categoryId": "cat_molhos",
+      "type": "extra",
+      "salePrice": 2,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Ketchup, maionese e mostarda",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_saches_mix",
+          "qty": 5
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_coca",
+      "name": "Coca-Cola 350ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "salePrice": 7,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Lata 350ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_coca_zero",
+      "name": "Coca Zero 350ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "salePrice": 7,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Lata 350ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_fanta",
+      "name": "Fanta 350ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "salePrice": 7,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Lata 350ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_garrafa_450",
+      "name": "Garrafa 450ml (pêssego ou limão)",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "salePrice": 9,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Bebida 450ml",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_garrafa_450",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_suco_natural",
+      "name": "Suco natural (garrafinha)",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "salePrice": 10,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Produção própria",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_suco_natural",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_combo_familia",
+      "name": "Combo Família Gyros",
+      "categoryId": "cat_familia",
+      "type": "combo",
+      "salePrice": 169,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Modelo de família usando base média de lanche",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_base_lanche_medio",
+          "qty": 4
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_g",
+          "qty": 2
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 4
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_g",
+          "qty": 2
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_combo_familia",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_almoco_familia",
+      "name": "Almoço Família (horário almoço)",
+      "categoryId": "cat_familia",
+      "type": "combo",
+      "salePrice": 129,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Modelo com pratos médios + bebida",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_base_prato_medio",
+          "qty": 4
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 4
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_combo_familia",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros"
+    },
+    {
+      "id": "prd_barbecue_extra",
+      "scope": "gyros",
+      "name": "Barbecue extra (60ml potinho)",
+      "categoryId": "cat_molhos",
+      "type": "extra",
+      "salePrice": 0,
+      "pricingMode": "auto",
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Barbecue da casa vendido a parte.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_barbecue_casa",
+          "qty": 60
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_p_lp",
+      "scope": "gyros",
+      "name": "Batata frita temperada — Pequena (130g) • Lemon Pepper",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir custo correto sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_lemon_pepper",
+          "qty": 2
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_p_pap",
+      "scope": "gyros",
+      "name": "Batata frita temperada — Pequena (130g) • Páprica doce",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir custo correto sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_paprica_doce",
+          "qty": 2
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_g_lp",
+      "scope": "gyros",
+      "name": "Batata frita temperada — Grande (240g) • Lemon Pepper",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir custo correto sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_g",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_lemon_pepper",
+          "qty": 4
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_g",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_g_pap",
+      "scope": "gyros",
+      "name": "Batata frita temperada — Grande (240g) • Páprica doce",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir custo correto sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_g",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_paprica_doce",
+          "qty": 4
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_g",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_grat_p_cat",
+      "scope": "gyros",
+      "name": "Batata gratinada — Pequena (M90 220ml) • Catupiry",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_cat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m90",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_grat_p_4q",
+      "scope": "gyros",
+      "name": "Batata gratinada — Pequena (M90 220ml) • Catupiry sabor 4 queijos",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_4q_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m90",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_grat_p_che",
+      "scope": "gyros",
+      "name": "Batata gratinada — Pequena (M90 220ml) • Cheddar",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_cheddar_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m90",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_grat_g_cat",
+      "scope": "gyros",
+      "name": "Batata gratinada — Grande (M120 500ml) • Catupiry",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_g",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_cat_g",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m120",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_grat_g_4q",
+      "scope": "gyros",
+      "name": "Batata gratinada — Grande (M120 500ml) • Catupiry sabor 4 queijos",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_g",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_4q_g",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m120",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "id": "prd_bat_grat_g_che",
+      "scope": "gyros",
+      "name": "Batata gratinada — Grande (M120 500ml) • Cheddar",
+      "categoryId": "cat_batatas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_g",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_grat_cheddar_g",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bandeja_m120",
+          "qty": 1
+        }
+      ]
+    }
+  ],
+  "fixedCosts": [
+    {
+      "id": "fix_aluguel",
+      "name": "Aluguel",
+      "amount": 1000,
+      "notes": "Rateado por item ativo do cardápio",
+      "scope": "gyros"
+    },
+    {
+      "id": "fix_folha",
+      "name": "Funcionários / pró-labore",
+      "amount": 6000,
+      "notes": "Rateado por item ativo do cardápio",
+      "scope": "gyros"
+    },
+    {
+      "id": "fix_energia",
+      "name": "Energia + gás + água",
+      "amount": 1800,
+      "notes": "Rateado por item ativo do cardápio",
+      "scope": "gyros"
+    },
+    {
+      "id": "fix_ifood",
+      "name": "Software / taxas / operação",
+      "amount": 950,
+      "notes": "Rateado por item ativo do cardápio",
+      "scope": "gyros"
+    },
+    {
+      "id": "fix_outros",
+      "name": "Outros custos fixos",
+      "amount": 900,
+      "notes": "Contabilidade, manutenção, internet etc.",
+      "scope": "gyros"
+    }
+  ]
+}
