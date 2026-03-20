@@ -441,7 +441,7 @@ Observacoes:
 
 ### Barbecue da casa
 - Rendimento: `3150 g`
-- Custo por unidade: `R$ 0,01`
+- Custo por unidade: `R$ 0,02`
 - Custo total do lote: `R$ 41,87`
 - Base atual:
   - Molho barbecue pronto (2000) - R$ 15,89
