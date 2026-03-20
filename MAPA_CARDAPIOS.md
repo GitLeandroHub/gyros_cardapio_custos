@@ -49,25 +49,73 @@ Observacoes:
 
 ### Combos rápidos (sem configurar — só observação)
 
-#### Combo 1 — Lanche + Batata Pequena (130g)
-- Custo direto atual: `R$ 10,31`
+#### Combo 1 — Alpha + Batata Pequena (130g)
+- Custo direto atual: `R$ 15,93`
 - Composicao:
-  - Base interna — Lanche assinatura médio (1) - R$ 8,44
+  - Alpha — Gyros Fraldinha (Assinatura) (1) - R$ 14,06
   - Batata frita base pequena (1) - R$ 0,98
   - Saco de papel hamburgao plastificado (1) - R$ 0,06
   - Saco liso branco medio (1) - R$ 0,84
 
-#### Combo 2 — Lanche + Bebida 350ml
-- Custo direto atual: `R$ 12,75`
+#### Combo 1 — Beta + Batata Pequena (130g)
+- Custo direto atual: `R$ 10,50`
 - Composicao:
-  - Base interna — Lanche assinatura médio (1) - R$ 8,44
+  - Beta — Gyros Frango (Assinatura) (1) - R$ 8,63
+  - Batata frita base pequena (1) - R$ 0,98
+  - Saco de papel hamburgao plastificado (1) - R$ 0,06
+  - Saco liso branco medio (1) - R$ 0,84
+
+#### Combo 1 — Gamma + Batata Pequena (130g)
+- Custo direto atual: `R$ 10,05`
+- Composicao:
+  - Gamma — Gyros Linguiça (Assinatura) (1) - R$ 8,17
+  - Batata frita base pequena (1) - R$ 0,98
+  - Saco de papel hamburgao plastificado (1) - R$ 0,06
+  - Saco liso branco medio (1) - R$ 0,84
+
+#### Combo 2 — Alpha + Bebida 350ml
+- Custo direto atual: `R$ 18,37`
+- Composicao:
+  - Alpha — Gyros Fraldinha (Assinatura) (1) - R$ 14,06
   - Refrigerante lata 350ml (1) - R$ 3,47
   - Saco liso branco medio (1) - R$ 0,84
 
-#### Combo 3 — Lanche + Batata Pequena + Bebida 350ml
-- Custo direto atual: `R$ 13,79`
+#### Combo 2 — Beta + Bebida 350ml
+- Custo direto atual: `R$ 12,94`
 - Composicao:
-  - Base interna — Lanche assinatura médio (1) - R$ 8,44
+  - Beta — Gyros Frango (Assinatura) (1) - R$ 8,63
+  - Refrigerante lata 350ml (1) - R$ 3,47
+  - Saco liso branco medio (1) - R$ 0,84
+
+#### Combo 2 — Gamma + Bebida 350ml
+- Custo direto atual: `R$ 12,49`
+- Composicao:
+  - Gamma — Gyros Linguiça (Assinatura) (1) - R$ 8,17
+  - Refrigerante lata 350ml (1) - R$ 3,47
+  - Saco liso branco medio (1) - R$ 0,84
+
+#### Combo 3 — Alpha + Batata Pequena + Bebida 350ml
+- Custo direto atual: `R$ 19,41`
+- Composicao:
+  - Alpha — Gyros Fraldinha (Assinatura) (1) - R$ 14,06
+  - Batata frita base pequena (1) - R$ 0,98
+  - Refrigerante lata 350ml (1) - R$ 3,47
+  - Saco de papel hamburgao plastificado (1) - R$ 0,06
+  - Saco liso branco medio (1) - R$ 0,84
+
+#### Combo 3 — Beta + Batata Pequena + Bebida 350ml
+- Custo direto atual: `R$ 13,98`
+- Composicao:
+  - Beta — Gyros Frango (Assinatura) (1) - R$ 8,63
+  - Batata frita base pequena (1) - R$ 0,98
+  - Refrigerante lata 350ml (1) - R$ 3,47
+  - Saco de papel hamburgao plastificado (1) - R$ 0,06
+  - Saco liso branco medio (1) - R$ 0,84
+
+#### Combo 3 — Gamma + Batata Pequena + Bebida 350ml
+- Custo direto atual: `R$ 13,53`
+- Composicao:
+  - Gamma — Gyros Linguiça (Assinatura) (1) - R$ 8,17
   - Batata frita base pequena (1) - R$ 0,98
   - Refrigerante lata 350ml (1) - R$ 3,47
   - Saco de papel hamburgao plastificado (1) - R$ 0,06
@@ -158,10 +206,28 @@ Observacoes:
   - Guardanapo sache 28x20,5 liso (1) - R$ 0,15
   - Kit talheres (1) - R$ 0,49
 
-#### Combo Almoço — Prato + Bebida + Mini batata (80g)
+#### Combo Almoço — Alpha + Bebida + Batata Pequena
+- Custo direto atual: `R$ 25,08`
+- Composicao:
+  - Prato Alpha — Fraldinha (1) - R$ 19,73
+  - Batata frita base pequena (1) - R$ 0,98
+  - Refrigerante lata 350ml (1) - R$ 3,47
+  - Saco de papel hamburgao plastificado (1) - R$ 0,06
+  - Saco liso branco medio (1) - R$ 0,84
+
+#### Combo Almoço — Beta + Bebida + Batata Pequena
 - Custo direto atual: `R$ 18,89`
 - Composicao:
   - Prato Beta — Frango (1) - R$ 13,54
+  - Batata frita base pequena (1) - R$ 0,98
+  - Refrigerante lata 350ml (1) - R$ 3,47
+  - Saco de papel hamburgao plastificado (1) - R$ 0,06
+  - Saco liso branco medio (1) - R$ 0,84
+
+#### Combo Almoço — Gamma + Bebida + Batata Pequena
+- Custo direto atual: `R$ 18,63`
+- Composicao:
+  - Prato Gamma — Linguiça (1) - R$ 13,27
   - Batata frita base pequena (1) - R$ 0,98
   - Refrigerante lata 350ml (1) - R$ 3,47
   - Saco de papel hamburgao plastificado (1) - R$ 0,06

@@ -1488,9 +1488,9 @@
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 52,
-      "active": true,
-      "includeInCatalogCount": true,
-      "notes": "Combo por camadas usando base interna de lanche",
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
       "components": [
         {
           "refType": "product",
@@ -1522,9 +1522,9 @@
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 41,
-      "active": true,
-      "includeInCatalogCount": true,
-      "notes": "Combo por camadas usando base interna de lanche",
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
       "components": [
         {
           "refType": "product",
@@ -1551,9 +1551,9 @@
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 55,
-      "active": true,
-      "includeInCatalogCount": true,
-      "notes": "Combo por camadas usando base interna de lanche",
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
       "components": [
         {
           "refType": "product",
@@ -2083,9 +2083,9 @@
       "categoryId": "cat_almoco",
       "type": "combo",
       "salePrice": 45,
-      "active": true,
-      "includeInCatalogCount": true,
-      "notes": "Combo almoco usando prato real do Gyros.",
+      "active": false,
+      "includeInCatalogCount": false,
+      "notes": "Combo almoco usando prato real do Gyros. Historico: substituido por combos de almoco separados em Alpha, Beta e Gamma.",
       "components": [
         {
           "refType": "product",
@@ -2713,6 +2713,441 @@
           "qty": 1
         }
       ]
+    },
+    {
+      "id": "prd_combo1_alpha",
+      "name": "Combo 1 — Alpha + Batata Pequena (130g)",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Alpha como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_alpha",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo1_beta",
+      "name": "Combo 1 — Beta + Batata Pequena (130g)",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Beta como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_beta",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo1_gamma",
+      "name": "Combo 1 — Gamma + Batata Pequena (130g)",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Gamma como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_gamma",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo2_alpha",
+      "name": "Combo 2 — Alpha + Bebida 350ml",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Alpha como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_alpha",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo2_beta",
+      "name": "Combo 2 — Beta + Bebida 350ml",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Beta como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_beta",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo2_gamma",
+      "name": "Combo 2 — Gamma + Bebida 350ml",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Gamma como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_gamma",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo3_alpha",
+      "name": "Combo 3 — Alpha + Batata Pequena + Bebida 350ml",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Alpha como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_alpha",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo3_beta",
+      "name": "Combo 3 — Beta + Batata Pequena + Bebida 350ml",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Beta como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_beta",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo3_gamma",
+      "name": "Combo 3 — Gamma + Batata Pequena + Bebida 350ml",
+      "categoryId": "cat_combos",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo fechado com Gamma como item principal.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_gamma",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo_almoco_alpha",
+      "name": "Combo Almoço — Alpha + Bebida + Batata Pequena",
+      "categoryId": "cat_almoco",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo almoço fechado com Alpha — Fraldinha.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_prato_alpha",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo_almoco_beta",
+      "name": "Combo Almoço — Beta + Bebida + Batata Pequena",
+      "categoryId": "cat_almoco",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo almoço fechado com Beta — Frango.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_prato_beta",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
+    },
+    {
+      "id": "prd_combo_almoco_gamma",
+      "name": "Combo Almoço — Gamma + Bebida + Batata Pequena",
+      "categoryId": "cat_almoco",
+      "type": "combo",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Combo almoço fechado com Gamma — Linguiça.",
+      "components": [
+        {
+          "refType": "product",
+          "refId": "prd_prato_gamma",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_batata_p",
+          "qty": 1
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_bat_p",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sacola_delivery",
+          "qty": 1
+        }
+      ],
+      "pricingMode": "auto",
+      "scope": "gyros",
+      "addons": []
     }
   ],
   "fixedCosts": [
