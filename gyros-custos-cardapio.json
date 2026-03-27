@@ -9,7 +9,7 @@
     "fixedAllocationMode": "custom_units",
     "customMonthlyUnits": 1200,
     "currency": "BRL",
-    "defaultMarkupPct": 300,
+    "defaultMarkupPct": 200,
     "sharedFixedSplitMode": "equal",
     "sharedFixedSplitManual": {
       "gyros": 100,
@@ -117,10 +117,10 @@
       "name": "Fraldinha preparada",
       "baseUnit": "g",
       "purchaseQty": 1000,
-      "purchaseCost": 68,
+      "purchaseCost": 51,
       "wastePct": 8,
       "supplier": "Açougue",
-      "notes": "Peso já cozido/preparado",
+      "notes": "Peso já cozido/preparado. Atualizado para R$ 51,00/kg.",
       "scope": "gyros"
     },
     {
@@ -357,12 +357,12 @@
     {
       "id": "ing_massa_churros",
       "name": "Massa/base de churros",
-      "baseUnit": "un",
-      "purchaseQty": 50,
-      "purchaseCost": 32,
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 29.9,
       "wastePct": 2,
       "supplier": "Congelados",
-      "notes": "Unidade base",
+      "notes": "Churros congelado comprado pronto em pacote de 1kg. Assumido: cerca de 20g por unidade.",
       "scope": "gyros"
     },
     {
@@ -547,7 +547,7 @@
       "name": "Budweiser long neck 330ml",
       "baseUnit": "un",
       "purchaseQty": 24,
-      "purchaseCost": 143.0,
+      "purchaseCost": 143,
       "wastePct": 0,
       "supplier": "Bebidas",
       "notes": "Pacote com 24 unidades"
@@ -558,7 +558,7 @@
       "name": "Heineken long neck 330ml",
       "baseUnit": "un",
       "purchaseQty": 24,
-      "purchaseCost": 166.0,
+      "purchaseCost": 166,
       "wastePct": 0,
       "supplier": "Bebidas",
       "notes": "Pacote com 24 unidades"
@@ -679,10 +679,21 @@
       "name": "Pimenta-do-reino",
       "baseUnit": "g",
       "purchaseQty": 500,
-      "purchaseCost": 55.0,
+      "purchaseCost": 55,
       "wastePct": 0,
       "supplier": "Mercado / referência web",
       "notes": "Valor de referência para completar a base; revisar depois com a compra real"
+    },
+    {
+      "id": "ing_acucar_canela",
+      "name": "Acucar com canela",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 12,
+      "wastePct": 0,
+      "supplier": "Mercearia / referencia web",
+      "notes": "Mistura simples para polvilhar o churros. Custo de referencia; revisar depois.",
+      "scope": "gyros"
     }
   ],
   "packaging": [
@@ -699,7 +710,7 @@
       "name": "Saco de papel hamburgao plastificado",
       "purchaseQty": 100,
       "purchaseCost": 5.95,
-      "notes": "Batata pequena e churros.",
+      "notes": "Batata M (200g) e churros.",
       "scope": "gyros"
     },
     {
@@ -707,7 +718,7 @@
       "name": "Saco de papel mono 1/2 kg plastificado",
       "purchaseQty": 100,
       "purchaseCost": 7.5,
-      "notes": "Batata media/grande.",
+      "notes": "Historico: antiga embalagem intermediaria.",
       "scope": "gyros"
     },
     {
@@ -715,7 +726,7 @@
       "name": "Saco de papel mono 1/2 kg plastificado",
       "purchaseQty": 100,
       "purchaseCost": 7.5,
-      "notes": "Batata media/grande.",
+      "notes": "Batata G (400g).",
       "scope": "gyros"
     },
     {
@@ -796,7 +807,7 @@
       "name": "Bandeja aluminio M90 220ml",
       "purchaseQty": 100,
       "purchaseCost": 46.9,
-      "notes": "Batata gratinada pequena."
+      "notes": "Porcao de 220ml para 200g de batata ou proteina gratinada."
     },
     {
       "id": "pkg_bandeja_m120",
@@ -804,7 +815,7 @@
       "name": "Bandeja aluminio M120 500ml",
       "purchaseQty": 100,
       "purchaseCost": 66.9,
-      "notes": "Batata gratinada media/grande."
+      "notes": "Porcao de 500ml para 400g de batata ou proteina gratinada."
     }
   ],
   "recipes": [
@@ -898,28 +909,28 @@
     },
     {
       "id": "rec_batata_p",
-      "name": "Batata frita base pequena",
+      "name": "Batata frita base M",
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Quente / fritadeira",
-      "notes": "Porcao pequena de 130g, sal padrao.",
+      "notes": "Porcao M de 200g, sal padrao.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_batata",
-          "qty": 130
+          "qty": 200
         },
         {
           "refType": "ingredient",
           "refId": "ing_tempero",
-          "qty": 3
+          "qty": 4
         }
       ],
       "scope": "gyros"
     },
     {
       "id": "rec_batata_m",
-      "name": "Batata frita base media (historico)",
+      "name": "Batata frita base media (historico 120g)",
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Quente / fritadeira",
@@ -940,21 +951,21 @@
     },
     {
       "id": "rec_batata_g",
-      "name": "Batata frita base grande",
+      "name": "Batata frita base G",
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Quente / fritadeira",
-      "notes": "Porcao grande de 240g, sal padrao.",
+      "notes": "Porcao G de 400g, sal padrao.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_batata",
-          "qty": 240
+          "qty": 400
         },
         {
           "refType": "ingredient",
           "refId": "ing_tempero",
-          "qty": 5
+          "qty": 8
         }
       ],
       "scope": "gyros"
@@ -1137,12 +1148,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Fritadeira / sobremesa",
-      "notes": "Unidade de sobremesa",
+      "notes": "Unidade de churros. Massa estimada em 20g por unidade.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_massa_churros",
-          "qty": 1
+          "qty": 20
         },
         {
           "refType": "ingredient",
@@ -1158,12 +1169,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Fritadeira / sobremesa",
-      "notes": "Unidade de sobremesa",
+      "notes": "Unidade de churros. Massa estimada em 20g por unidade.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_massa_churros",
-          "qty": 1
+          "qty": 20
         },
         {
           "refType": "ingredient",
@@ -1179,12 +1190,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Fritadeira / sobremesa",
-      "notes": "Unidade de sobremesa",
+      "notes": "Unidade de churros. Massa estimada em 20g por unidade.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_massa_churros",
-          "qty": 1
+          "qty": 20
         },
         {
           "refType": "ingredient",
@@ -1269,12 +1280,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Quantidade estimada de Muçarela para esta versao; revisar depois.",
+      "notes": "Cobertura padrao para porcao de 200g; revisar depois se necessario.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_mucarela",
-          "qty": 45
+          "qty": 90
         }
       ]
     },
@@ -1285,12 +1296,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Quantidade estimada de Catupiry para esta versao; revisar depois.",
+      "notes": "Cobertura padrao para porcao de 200g; revisar depois se necessario.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_catupiry",
-          "qty": 55
+          "qty": 90
         }
       ]
     },
@@ -1301,12 +1312,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Quantidade estimada de 4 queijos para esta versao; revisar depois.",
+      "notes": "Cobertura padrao para porcao de 200g; revisar depois se necessario.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_4queijos",
-          "qty": 55
+          "qty": 90
         }
       ]
     },
@@ -1317,12 +1328,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Quantidade estimada de Cheddar para esta versao; revisar depois.",
+      "notes": "Cobertura padrao para porcao de 200g; revisar depois se necessario.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_cheddar",
-          "qty": 70
+          "qty": 90
         }
       ]
     },
@@ -1333,12 +1344,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Quantidade estimada de Muçarela para esta versao; revisar depois.",
+      "notes": "Cobertura padrao para porcao de 400g; revisar depois se necessario.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_mucarela",
-          "qty": 80
+          "qty": 180
         }
       ]
     },
@@ -1349,12 +1360,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Quantidade estimada de Catupiry para esta versao; revisar depois.",
+      "notes": "Cobertura padrao para porcao de 400g; revisar depois se necessario.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_catupiry",
-          "qty": 90
+          "qty": 180
         }
       ]
     },
@@ -1365,12 +1376,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Quantidade estimada de 4 queijos para esta versao; revisar depois.",
+      "notes": "Cobertura padrao para porcao de 400g; revisar depois se necessario.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_4queijos",
-          "qty": 90
+          "qty": 180
         }
       ]
     },
@@ -1381,12 +1392,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Quantidade estimada de Cheddar para esta versao; revisar depois.",
+      "notes": "Cobertura padrao para porcao de 400g; revisar depois se necessario.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_cheddar",
-          "qty": 110
+          "qty": 180
         }
       ]
     },
@@ -1472,7 +1483,7 @@
       "salePrice": 0,
       "active": false,
       "includeInCatalogCount": false,
-      "notes": "Base média para combos rápidos",
+      "notes": "Base interna media usada como referencia para combos familia.",
       "components": [
         {
           "refType": "recipe",
@@ -1482,22 +1493,27 @@
         {
           "refType": "ingredient",
           "refId": "ing_frango",
-          "qty": 110
+          "qty": 150
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_manteiga_alho",
+          "qty": 5
         },
         {
           "refType": "ingredient",
           "refId": "ing_mucarela",
-          "qty": 35
+          "qty": 40
         },
         {
           "refType": "recipe",
           "refId": "rec_vinagrete",
-          "qty": 30
+          "qty": 40
         },
         {
           "refType": "recipe",
           "refId": "rec_maionese",
-          "qty": 20
+          "qty": 10
         },
         {
           "refType": "packaging",
@@ -1507,7 +1523,7 @@
         {
           "refType": "packaging",
           "refId": "pkg_guardanapo",
-          "qty": 2
+          "qty": 1
         }
       ],
       "pricingMode": "auto",
@@ -1521,27 +1537,32 @@
       "salePrice": 0,
       "active": false,
       "includeInCatalogCount": false,
-      "notes": "Base média para combos de almoço",
+      "notes": "Base interna media usada como referencia para combos familia de almoco.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_arroz",
-          "qty": 160
+          "qty": 150
         },
         {
           "refType": "ingredient",
           "refId": "ing_feijao",
-          "qty": 120
+          "qty": 100
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 60
         },
         {
           "refType": "ingredient",
-          "refId": "ing_salada",
-          "qty": 80
+          "refId": "ing_farofa_pronta",
+          "qty": 40
         },
         {
           "refType": "ingredient",
           "refId": "ing_frango",
-          "qty": 120
+          "qty": 150
         },
         {
           "refType": "packaging",
@@ -1550,8 +1571,23 @@
         },
         {
           "refType": "packaging",
-          "refId": "pkg_guardanapo",
+          "refId": "pkg_potinho_feijao",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
           "qty": 2
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_talher_kit",
+          "qty": 1
         }
       ],
       "pricingMode": "auto",
@@ -1562,7 +1598,7 @@
       "name": "Alpha — Gyros Fraldinha (Assinatura)",
       "categoryId": "cat_assinaturas",
       "type": "menu",
-      "salePrice": 35,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Base alinhada ao cardápio enviado",
@@ -1575,7 +1611,7 @@
         {
           "refType": "ingredient",
           "refId": "ing_fraldinha",
-          "qty": 110
+          "qty": 150
         },
         {
           "refType": "recipe",
@@ -1585,7 +1621,7 @@
         {
           "refType": "ingredient",
           "refId": "ing_mucarela",
-          "qty": 50
+          "qty": 90
         },
         {
           "refType": "recipe",
@@ -1616,7 +1652,7 @@
       "name": "Beta — Gyros Frango (Assinatura)",
       "categoryId": "cat_assinaturas",
       "type": "menu",
-      "salePrice": 35,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Base alinhada ao cardápio enviado",
@@ -1629,7 +1665,7 @@
         {
           "refType": "ingredient",
           "refId": "ing_frango",
-          "qty": 110
+          "qty": 150
         },
         {
           "refType": "recipe",
@@ -1639,7 +1675,7 @@
         {
           "refType": "ingredient",
           "refId": "ing_catupiry",
-          "qty": 35
+          "qty": 90
         },
         {
           "refType": "recipe",
@@ -1670,7 +1706,7 @@
       "name": "Gamma — Gyros Linguiça (Assinatura)",
       "categoryId": "cat_assinaturas",
       "type": "menu",
-      "salePrice": 35,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Base alinhada ao cardápio enviado",
@@ -1683,7 +1719,7 @@
         {
           "refType": "ingredient",
           "refId": "ing_linguica",
-          "qty": 110
+          "qty": 150
         },
         {
           "refType": "recipe",
@@ -1693,7 +1729,7 @@
         {
           "refType": "ingredient",
           "refId": "ing_4queijos",
-          "qty": 35
+          "qty": 90
         },
         {
           "refType": "recipe",
@@ -1721,10 +1757,10 @@
     },
     {
       "id": "prd_combo1",
-      "name": "Combo 1 — Lanche + Batata Pequena (130g)",
+      "name": "Combo 1 — Historico (base antiga de batata pequena)",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 52,
+      "salePrice": 0,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
@@ -1758,7 +1794,7 @@
       "name": "Combo 2 — Lanche + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 41,
+      "salePrice": 0,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
@@ -1784,10 +1820,10 @@
     },
     {
       "id": "prd_combo3",
-      "name": "Combo 3 — Lanche + Batata Pequena + Bebida 350ml",
+      "name": "Combo 3 — Historico (base antiga de batata pequena)",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 55,
+      "salePrice": 0,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
@@ -1823,13 +1859,13 @@
     },
     {
       "id": "prd_bat_p",
-      "name": "Batata frita — Pequena (130g)",
+      "name": "Batata frita — M (200g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 18,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Sal padrão. Lemon pepper e páprica doce entram como adicionais opcionais.",
+      "notes": "Sal padrao. Lemon pepper e paprica doce entram como adicionais opcionais.",
       "components": [
         {
           "refType": "recipe",
@@ -1861,7 +1897,7 @@
             {
               "refType": "ingredient",
               "refId": "ing_lemon_pepper",
-              "qty": 2
+              "qty": 3
             }
           ]
         },
@@ -1876,7 +1912,7 @@
             {
               "refType": "ingredient",
               "refId": "ing_paprica_doce",
-              "qty": 2
+              "qty": 3
             }
           ]
         }
@@ -1884,10 +1920,10 @@
     },
     {
       "id": "prd_bat_m",
-      "name": "Batata frita temperada — Media (historico)",
+      "name": "Batata frita temperada — Media (historico 120g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 28,
+      "salePrice": 0,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Item antigo mantido apenas para historico.",
@@ -1913,13 +1949,13 @@
     },
     {
       "id": "prd_bat_g",
-      "name": "Batata frita — Grande (240g)",
+      "name": "Batata frita — G (400g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 36,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Sal padrão. Lemon pepper e páprica doce entram como adicionais opcionais.",
+      "notes": "Sal padrao. Lemon pepper e paprica doce entram como adicionais opcionais.",
       "components": [
         {
           "refType": "recipe",
@@ -1951,7 +1987,7 @@
             {
               "refType": "ingredient",
               "refId": "ing_lemon_pepper",
-              "qty": 4
+              "qty": 6
             }
           ]
         },
@@ -1966,7 +2002,7 @@
             {
               "refType": "ingredient",
               "refId": "ing_paprica_doce",
-              "qty": 4
+              "qty": 6
             }
           ]
         }
@@ -1974,10 +2010,10 @@
     },
     {
       "id": "prd_bat_grat_p",
-      "name": "Batata gratinada — Pequena (M90 220ml)",
+      "name": "Batata gratinada — M (M90 220ml / 200g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 26,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Muçarela padrão. Catupiry, 4 queijos e cheddar entram como adicionais opcionais.",
@@ -2050,10 +2086,10 @@
     },
     {
       "id": "prd_bat_grat_m",
-      "name": "Batata gratinada — Media (historico)",
+      "name": "Batata gratinada — Media (historico 120g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 36,
+      "salePrice": 0,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Item antigo mantido apenas para historico.",
@@ -2079,10 +2115,10 @@
     },
     {
       "id": "prd_bat_grat_g",
-      "name": "Batata gratinada — Grande (M120 500ml)",
+      "name": "Batata gratinada — G (M120 500ml / 400g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 44,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Muçarela padrão. Catupiry, 4 queijos e cheddar entram como adicionais opcionais.",
@@ -2155,22 +2191,22 @@
     },
     {
       "id": "prd_carne_grat",
-      "name": "Carne Gyros Gratinada (porção)",
+      "name": "Carne Gyros Gratinada (500ml / 400g)",
       "categoryId": "cat_gratinados",
       "type": "menu",
-      "salePrice": 39,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Modelo padrão com frango + muçarela. Ajuste proteína e queijo conforme o real.",
+      "notes": "Porcao gratinada em bandeja de 500ml com 400g de proteina. Modelo atual com frango + muçarela.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_frango",
-          "qty": 140
+          "qty": 400
         },
         {
           "refType": "recipe",
-          "refId": "rec_grat_muc",
+          "refId": "rec_grat_muc_g",
           "qty": 1
         },
         {
@@ -2187,7 +2223,7 @@
       "name": "Prato Alpha — Fraldinha",
       "categoryId": "cat_almoco",
       "type": "menu",
-      "salePrice": 30,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
@@ -2231,7 +2267,7 @@
       "name": "Prato Beta — Frango",
       "categoryId": "cat_almoco",
       "type": "menu",
-      "salePrice": 30,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
@@ -2275,7 +2311,7 @@
       "name": "Prato Gamma — Linguiça",
       "categoryId": "cat_almoco",
       "type": "menu",
-      "salePrice": 30,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
@@ -2319,7 +2355,7 @@
       "name": "Combo Almoço — Prato + Bebida + Mini batata (80g)",
       "categoryId": "cat_almoco",
       "type": "combo",
-      "salePrice": 45,
+      "salePrice": 0,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Combo almoco usando prato real do Gyros. Historico: substituido por combos de almoco separados em Alpha, Beta e Gamma.",
@@ -2355,18 +2391,23 @@
     },
     {
       "id": "prd_churros",
-      "name": "Churros (unidade)",
+      "name": "Churros (porção com 6 unidades)",
       "categoryId": "cat_sobremesas",
       "type": "menu",
-      "salePrice": 11.9,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Modelo padrão com doce de leite. Troque a receita para outro recheio quando quiser.",
+      "notes": "Porcao padrao com 6 unidades de churros congelado pronto, polvilhado com acucar e canela.",
       "components": [
         {
-          "refType": "recipe",
-          "refId": "rec_churros_dl",
-          "qty": 1
+          "refType": "ingredient",
+          "refId": "ing_massa_churros",
+          "qty": 120
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_acucar_canela",
+          "qty": 8
         },
         {
           "refType": "packaging",
@@ -2382,7 +2423,7 @@
       "name": "Maionese Grill extra (60ml potinho)",
       "categoryId": "cat_molhos",
       "type": "extra",
-      "salePrice": 2.5,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Molho padrao do lanche vendido a parte.",
@@ -2406,7 +2447,7 @@
       "name": "Vinagrete extra (60ml potinho)",
       "categoryId": "cat_molhos",
       "type": "extra",
-      "salePrice": 2.5,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Use 60ml para extra à parte",
@@ -2430,7 +2471,7 @@
       "name": "Pacote extra com 5 sachês",
       "categoryId": "cat_molhos",
       "type": "extra",
-      "salePrice": 2,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Ketchup, maionese e mostarda",
@@ -2449,7 +2490,7 @@
       "name": "Coca-Cola 350ml",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 7,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 350ml",
@@ -2468,7 +2509,7 @@
       "name": "Coca Zero 350ml",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 7,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 350ml",
@@ -2487,7 +2528,7 @@
       "name": "Fanta 350ml",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 7,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 350ml",
@@ -2506,7 +2547,7 @@
       "name": "Garrafa 450ml (pêssego ou limão)",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 9,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Bebida 450ml",
@@ -2525,7 +2566,7 @@
       "name": "Suco natural (garrafinha)",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 10,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Produção própria",
@@ -2544,7 +2585,7 @@
       "name": "Combo Família (lanche)",
       "categoryId": "cat_familia",
       "type": "combo",
-      "salePrice": 169,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "3 lanches + 1 Coca-Cola 2L.",
@@ -2578,7 +2619,7 @@
       "name": "Almoço Família",
       "categoryId": "cat_familia",
       "type": "combo",
-      "salePrice": 129,
+      "salePrice": 0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "3 pratos + 1 Coca-Cola 2L.",
@@ -2634,7 +2675,7 @@
     {
       "id": "prd_bat_p_lp",
       "scope": "gyros",
-      "name": "Batata frita temperada — Pequena (130g) • Lemon Pepper",
+      "name": "Batata frita temperada — Pequena (130g) • Lemon Pepper (historico)",
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
@@ -2668,7 +2709,7 @@
     {
       "id": "prd_bat_p_pap",
       "scope": "gyros",
-      "name": "Batata frita temperada — Pequena (130g) • Páprica doce",
+      "name": "Batata frita temperada — Pequena (130g) • Páprica doce (historico)",
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
@@ -2702,7 +2743,7 @@
     {
       "id": "prd_bat_g_lp",
       "scope": "gyros",
-      "name": "Batata frita temperada — Grande (240g) • Lemon Pepper",
+      "name": "Batata frita temperada — Grande (240g) • Lemon Pepper (historico)",
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
@@ -2736,7 +2777,7 @@
     {
       "id": "prd_bat_g_pap",
       "scope": "gyros",
-      "name": "Batata frita temperada — Grande (240g) • Páprica doce",
+      "name": "Batata frita temperada — Grande (240g) • Páprica doce (historico)",
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
@@ -2770,7 +2811,7 @@
     {
       "id": "prd_bat_grat_p_cat",
       "scope": "gyros",
-      "name": "Batata gratinada — Pequena (M90 220ml) • Catupiry",
+      "name": "Batata gratinada — Pequena (M90 220ml) • Catupiry (historico)",
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
@@ -2799,7 +2840,7 @@
     {
       "id": "prd_bat_grat_p_4q",
       "scope": "gyros",
-      "name": "Batata gratinada — Pequena (M90 220ml) • Catupiry sabor 4 queijos",
+      "name": "Batata gratinada — Pequena (M90 220ml) • Catupiry sabor 4 queijos (historico)",
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
@@ -2828,7 +2869,7 @@
     {
       "id": "prd_bat_grat_p_che",
       "scope": "gyros",
-      "name": "Batata gratinada — Pequena (M90 220ml) • Cheddar",
+      "name": "Batata gratinada — Pequena (M90 220ml) • Cheddar (historico)",
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
@@ -2943,7 +2984,7 @@
     },
     {
       "id": "prd_combo1_alpha",
-      "name": "Combo 1 — Alpha + Batata Pequena (130g)",
+      "name": "Combo 1 — Alpha + Batata M (200g)",
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 0,
@@ -2978,7 +3019,7 @@
     },
     {
       "id": "prd_combo1_beta",
-      "name": "Combo 1 — Beta + Batata Pequena (130g)",
+      "name": "Combo 1 — Beta + Batata M (200g)",
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 0,
@@ -3013,7 +3054,7 @@
     },
     {
       "id": "prd_combo1_gamma",
-      "name": "Combo 1 — Gamma + Batata Pequena (130g)",
+      "name": "Combo 1 — Gamma + Batata M (200g)",
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 0,
@@ -3138,7 +3179,7 @@
     },
     {
       "id": "prd_combo3_alpha",
-      "name": "Combo 3 — Alpha + Batata Pequena + Bebida 350ml",
+      "name": "Combo 3 — Alpha + Batata M + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 0,
@@ -3178,7 +3219,7 @@
     },
     {
       "id": "prd_combo3_beta",
-      "name": "Combo 3 — Beta + Batata Pequena + Bebida 350ml",
+      "name": "Combo 3 — Beta + Batata M + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 0,
@@ -3218,7 +3259,7 @@
     },
     {
       "id": "prd_combo3_gamma",
-      "name": "Combo 3 — Gamma + Batata Pequena + Bebida 350ml",
+      "name": "Combo 3 — Gamma + Batata M + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
       "salePrice": 0,
@@ -3258,7 +3299,7 @@
     },
     {
       "id": "prd_combo_almoco_alpha",
-      "name": "Combo Almoço — Alpha + Bebida + Batata Pequena",
+      "name": "Combo Almoço — Alpha + Bebida + Batata M",
       "categoryId": "cat_almoco",
       "type": "combo",
       "salePrice": 0,
@@ -3298,7 +3339,7 @@
     },
     {
       "id": "prd_combo_almoco_beta",
-      "name": "Combo Almoço — Beta + Bebida + Batata Pequena",
+      "name": "Combo Almoço — Beta + Bebida + Batata M",
       "categoryId": "cat_almoco",
       "type": "combo",
       "salePrice": 0,
@@ -3338,7 +3379,7 @@
     },
     {
       "id": "prd_combo_almoco_gamma",
-      "name": "Combo Almoço — Gamma + Bebida + Batata Pequena",
+      "name": "Combo Almoço — Gamma + Bebida + Batata M",
       "categoryId": "cat_almoco",
       "type": "combo",
       "salePrice": 0,
