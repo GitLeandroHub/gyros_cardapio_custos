@@ -149,6 +149,12 @@ function applyPricingRules(target) {
     if (!Array.isArray(product.addons)) {
       product.addons = [];
     }
+    if (!Array.isArray(product.components)) {
+      product.components = [];
+    }
+    product.components.forEach(component => {
+      component.pricingMode = componentPricingMode(component.pricingMode);
+    });
     product.addons.forEach(addon => {
       if (!addon.id) addon.id = uid('add');
       if (!Array.isArray(addon.components)) addon.components = [];
@@ -548,6 +554,14 @@ function addonChargeModeLabel(mode) {
   return mode === 'included' ? 'absorvido no item' : 'cobrado à parte';
 }
 
+function componentPricingMode(mode) {
+  return mode === 'pass_through' ? 'pass_through' : 'markup';
+}
+
+function componentPricingModeLabel(mode) {
+  return componentPricingMode(mode) === 'pass_through' ? 'só repassar custo' : 'entrar no markup';
+}
+
 function statusClass(marginPct) {
   if (marginPct >= 60) return 'good';
   if (marginPct >= 40) return 'warn';
@@ -614,7 +628,11 @@ function resolveNode(refType, refId, qty=1, stack=[]) {
 }
 
 function resolveComponentList(components = [], stack = []) {
-  return (components || []).map(c => resolveNode(c.refType, c.refId, num(c.qty), stack));
+  return (components || []).map(c => ({
+    ...resolveNode(c.refType, c.refId, num(c.qty), stack),
+    pricingMode: componentPricingMode(c.pricingMode),
+    sourceComponent: c
+  }));
 }
 
 function computeAddon(addon, ownerKey = 'addon') {
@@ -622,13 +640,15 @@ function computeAddon(addon, ownerKey = 'addon') {
   const directCost = nodes.reduce((sum, n) => sum + n.cost, 0);
   const suggestedSalePrice = autoSalePriceFromCost(directCost);
   const configuredSalePrice = num(addon.salePriceDelta);
+  const effectiveSalePrice = configuredSalePrice > 0 ? configuredSalePrice : suggestedSalePrice;
   return {
     ...addon,
     nodes,
     directCost,
     suggestedSalePrice,
     configuredSalePrice,
-    effectiveSalePrice: configuredSalePrice > 0 ? configuredSalePrice : suggestedSalePrice
+    effectiveSalePrice,
+    ifoodSalePrice: effectiveSalePrice * ifoodMultiplier()
   };
 }
 
@@ -637,17 +657,19 @@ function computeProduct(productId, operationView = state.operationView) {
   if (!product) return null;
   const nodes = resolveComponentList(product.components, [`product:${productId}`]);
   const directCost = nodes.reduce((sum, n) => sum + n.cost, 0);
+  const passThroughCost = nodes.reduce((sum, n) => sum + (n.pricingMode === 'pass_through' ? n.cost : 0), 0);
+  const markupBaseCost = Math.max(0, directCost - passThroughCost);
   const fixedCost = product.includeInCatalogCount === false || product.active === false ? 0 : fixedSharePerCatalogItem(operationView);
   const totalCost = directCost + fixedCost;
   const pricingMode = productPricingMode(product);
-  const autoSalePrice = autoSalePriceFromCost(directCost);
+  const autoSalePrice = autoSalePriceFromCost(markupBaseCost) + passThroughCost;
   const autoSalePriceWithFixed = autoSalePriceFromCost(totalCost);
   const salePrice = pricingMode === 'manual' ? num(product.salePrice) : autoSalePrice;
   const ifoodSalePrice = salePrice * ifoodMultiplier();
   const marginPct = salePrice > 0 ? ((salePrice - directCost) / salePrice) * 100 : 0;
   const markup = directCost > 0 ? salePrice / directCost : 0;
   const addons = (product.addons || []).map((addon, index) => computeAddon(addon, `product:${productId}:addon:${addon.id || index}`));
-  return { product, nodes, addons, directCost, fixedCost, totalCost, salePrice, ifoodSalePrice, marginPct, markup, autoSalePrice, autoSalePriceWithFixed, pricingMode };
+  return { product, nodes, addons, directCost, passThroughCost, markupBaseCost, fixedCost, totalCost, salePrice, ifoodSalePrice, marginPct, markup, autoSalePrice, autoSalePriceWithFixed, pricingMode };
 }
 
 function renderNav() {
@@ -776,8 +798,8 @@ function renderDashboard() {
 
 function renderTree(nodes) {
   return `<div class="cost-tree">${nodes.map(node => `
-    <div class="cost-node">
-      <div class="top"><div><div class="name">${escapeHtml(node.title)}</div><div class="meta">${escapeHtml(componentTypeLabel(node.refType))} • qtd ${node.qty}${node.meta ? ' • ' + escapeHtml(node.meta) : ''}</div></div><div><strong>${brl(node.cost)}</strong></div></div>
+    <div class="cost-node ${node.pricingMode === 'pass_through' ? 'pass-through' : ''}">
+      <div class="top"><div><div class="name">${escapeHtml(node.title)}</div><div class="meta">${escapeHtml(componentTypeLabel(node.refType))} • qtd ${node.qty}${node.meta ? ' • ' + escapeHtml(node.meta) : ''}${node.pricingMode ? ' • ' + escapeHtml(componentPricingModeLabel(node.pricingMode)) : ''}</div></div><div><strong>${brl(node.cost)}</strong></div></div>
       ${node.children?.length ? `<div class="children">${renderTree(node.children)}</div>` : ''}
     </div>`).join('')}</div>`;
 }
@@ -786,7 +808,9 @@ function renderProductDetailHtml(c) {
   const p = c.product;
   const scope = p.scope || legacyScopeForRecord('products', p);
   const addonSection = c.addons?.length
-    ? `<div style="margin-top:16px;"><h3 style="font-size:15px; margin:0 0 10px;">Adicionais e escolhas possíveis</h3><div class="stack">${c.addons.map(addon => `
+    ? `<div style="margin-top:16px;"><h3 style="font-size:15px; margin:0 0 10px;">Adicionais e escolhas possíveis</h3>
+        <div class="note" style="margin-bottom:10px;">Cada adicional aparece com custo, preço base sugerido e preço iFood. Isso ajuda a revisar repasse sem transformar tudo em produto solto no catálogo principal.</div>
+        <div class="stack">${c.addons.map(addon => `
         <div class="cost-node">
           <div class="top">
             <div>
@@ -795,8 +819,14 @@ function renderProductDetailHtml(c) {
             </div>
             <div style="text-align:right">
               <strong>${brl(addon.directCost)}</strong>
-              <div class="small muted">repasse sugerido ${brl(addon.suggestedSalePrice)}${addon.configuredSalePrice > 0 ? ` • configurado ${brl(addon.configuredSalePrice)}` : ''}</div>
+              <div class="small muted">custo direto</div>
             </div>
+          </div>
+          <div class="info-grid" style="margin-top:12px;">
+            <div class="info-cell"><div class="k">Custo</div><div class="v">${brl(addon.directCost)}</div></div>
+            <div class="info-cell"><div class="k">Venda base</div><div class="v">${brl(addon.effectiveSalePrice)}</div></div>
+            <div class="info-cell"><div class="k">Venda iFood</div><div class="v">${brl(addon.ifoodSalePrice)}</div></div>
+            <div class="info-cell"><div class="k">Origem do preço</div><div class="v" style="font-size:15px">${addon.configuredSalePrice > 0 ? 'configurado' : 'sugestão pela regra'}</div></div>
           </div>
           ${addon.nodes?.length ? `<div class="children">${renderTree(addon.nodes)}</div>` : ''}
         </div>`).join('')}</div></div>`
@@ -811,10 +841,12 @@ function renderProductDetailHtml(c) {
       <div class="info-cell"><div class="k">Preço pela regra atual</div><div class="v">${brl(c.autoSalePrice)}</div></div>
       <div class="info-cell"><div class="k">Preço com rateio fixo (só referência)</div><div class="v">${brl(c.autoSalePriceWithFixed)}</div></div>
       <div class="info-cell"><div class="k">Custo direto</div><div class="v">${brl(c.directCost)}</div></div>
+      <div class="info-cell"><div class="k">Custo que só repassa</div><div class="v">${brl(c.passThroughCost)}</div></div>
+      <div class="info-cell"><div class="k">Base que entra no markup</div><div class="v">${brl(c.markupBaseCost)}</div></div>
       <div class="info-cell"><div class="k">Rateio fixo</div><div class="v">${brl(c.fixedCost)}</div></div>
       <div class="info-cell"><div class="k">Custo total</div><div class="v">${brl(c.totalCost)}</div></div>
     </div>
-    <div class="legend"><span class="tag">markup atual ${safe(c.markup).toFixed(2)}x</span><span class="tag">regra atual em uso: custo direto x ${markupMultiplier().toFixed(2)} = ${brl(c.autoSalePrice)}</span><span class="tag">iFood: ${brl(c.ifoodSalePrice)} (${Math.round((ifoodMultiplier() - 1) * 100)}% acima do preço base)</span><span class="tag">com rateio fixo: ${brl(c.autoSalePriceWithFixed)} (só referência)</span><span class="tag">modo: ${escapeHtml(c.pricingMode === 'manual' ? 'manual' : 'automatico')}</span><span class="tag">tipo: ${escapeHtml(p.type)}</span><span class="tag">camadas: ${p.components.length}</span><span class="tag">adicionais: ${(p.addons || []).length}</span></div>
+    <div class="legend"><span class="tag">markup atual ${safe(c.markup).toFixed(2)}x</span><span class="tag">regra atual em uso: (${brl(c.markupBaseCost)} x ${markupMultiplier().toFixed(2)}) + ${brl(c.passThroughCost)} = ${brl(c.autoSalePrice)}</span><span class="tag">iFood: ${brl(c.ifoodSalePrice)} (${Math.round((ifoodMultiplier() - 1) * 100)}% acima do preço base)</span><span class="tag">com rateio fixo: ${brl(c.autoSalePriceWithFixed)} (só referência)</span><span class="tag">modo: ${escapeHtml(c.pricingMode === 'manual' ? 'manual' : 'automatico')}</span><span class="tag">tipo: ${escapeHtml(p.type)}</span><span class="tag">camadas: ${p.components.length}</span><span class="tag">adicionais: ${(p.addons || []).length}</span></div>
     <div style="margin-top:16px;"><h3 style="font-size:15px; margin:0 0 10px;">Estrutura de custo / BOM base</h3>${renderTree(c.nodes)}</div>
     ${addonSection}`;
 }
@@ -1010,6 +1042,11 @@ function closeModal() {
   qs('#modalWrap').classList.remove('show');
 }
 
+function componentPricingOptions(selectedMode = 'markup') {
+  const mode = componentPricingMode(selectedMode);
+  return `<option value="markup" ${mode==='markup'?'selected':''}>Entrar no markup</option><option value="pass_through" ${mode==='pass_through'?'selected':''}>Só repassar custo</option>`;
+}
+
 function componentRowHtml(comp, index) {
   const refType = comp.refType || 'ingredient';
   const typeMap = { ingredient: 'ingredients', recipe: 'recipes', packaging: 'packaging', product: 'products' };
@@ -1017,11 +1054,14 @@ function componentRowHtml(comp, index) {
   const options = refType === 'ingredient'
     ? recordsForOwnerScope('ingredients', ownerScope)
     : refType === 'recipe'
-      ? recordsForOwnerScope('recipes', ownerScope)
-      : refType === 'packaging'
-        ? recordsForOwnerScope('packaging', ownerScope)
-        : recordsForOwnerScope('products', ownerScope);
-  return `<div class="component-row" data-index="${index}"><div class="field"><label>Tipo</label><select data-comp-field="refType">${['ingredient','recipe','packaging','product'].map(v => `<option value="${v}" ${refType===v?'selected':''}>${componentTypeLabel(v)}</option>`).join('')}</select></div><div class="field"><label>Referência</label><select data-comp-field="refId">${options.map(item => `<option value="${item.id}" ${comp.refId===item.id?'selected':''}>${escapeHtml(item.name)} (${scopeBadge(item.scope || legacyScopeForRecord(typeMap[refType], item))})</option>`).join('')}</select></div><div class="field"><label>Qtd</label><input type="number" step="0.01" data-comp-field="qty" value="${comp.qty}"></div><button class="btn danger" type="button" data-remove-component="${index}">Remover</button></div>`;
+    ? recordsForOwnerScope('recipes', ownerScope)
+    : refType === 'packaging'
+      ? recordsForOwnerScope('packaging', ownerScope)
+      : recordsForOwnerScope('products', ownerScope);
+  const pricingHint = refType === 'packaging'
+    ? 'Para embalagens como a caixa marmita, você pode só repassar o custo.'
+    : 'Por padrão, esse custo entra na base do markup.';
+  return `<div class="component-row" data-index="${index}"><div class="field"><label>Tipo</label><select data-comp-field="refType">${['ingredient','recipe','packaging','product'].map(v => `<option value="${v}" ${refType===v?'selected':''}>${componentTypeLabel(v)}</option>`).join('')}</select></div><div class="field"><label>Referência</label><select data-comp-field="refId">${options.map(item => `<option value="${item.id}" ${comp.refId===item.id?'selected':''}>${escapeHtml(item.name)} (${scopeBadge(item.scope || legacyScopeForRecord(typeMap[refType], item))})</option>`).join('')}</select></div><div class="field"><label>Qtd</label><input type="number" step="0.01" data-comp-field="qty" value="${comp.qty}"></div><div class="field"><label>Como precificar</label><select data-comp-field="pricingMode">${componentPricingOptions(comp.pricingMode)}</select><div class="small muted">${pricingHint}</div></div><button class="btn danger" type="button" data-remove-component="${index}">Remover</button></div>`;
 }
 
 function addonComponentRowHtml(addon, comp, addonIndex, compIndex) {
@@ -1055,7 +1095,7 @@ function addonCardHtml(addon, index) {
 function modalComplexForm(data, isProduct) {
   const pricingMode = data.pricingMode === 'manual' ? 'manual' : 'auto';
   const addonsHtml = isProduct ? `<div class="field" style="margin-top:16px;"><label>Adicionais e escolhas opcionais</label><div class="note">Use esta área para mapear custos opcionais que podem ser repassados ou absorvidos depois. Isso evita duplicar produtos só por causa de um adicional.</div><div class="component-list" id="addonList">${(data.addons || []).map((addon, index) => addonCardHtml(addon, index)).join('') || '<div class="empty">Nenhum adicional ainda.</div>'}</div><button class="btn ghost" id="addAddonBtn" type="button">Adicionar adicional</button></div>` : '';
-  return `<div class="form-grid"><div class="field"><label>Nome</label><input data-field="name" value="${escapeHtml(data.name)}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope)}</select></div>${isProduct ? `<div class="field"><label>Categoria</label><select data-field="categoryId">${db.categories.map(c => `<option value="${c.id}" ${data.categoryId===c.id?'selected':''}>${escapeHtml(c.name)}</option>`).join('')}</select></div>` : `<div class="field"><label>Armazenamento / etapa</label><input data-field="storage" value="${escapeHtml(data.storage||'')}"></div>`}${isProduct ? `<div class="field"><label>Tipo</label><select data-field="type">${['menu','combo','extra','bebida','base'].map(v => `<option value="${v}" ${data.type===v?'selected':''}>${v}</option>`).join('')}</select></div>` : `<div class="field"><label>Rendimento</label><input type="number" step="0.01" data-field="yieldQty" value="${data.yieldQty}"></div>`}${isProduct ? `<div class="field"><label>Regra de preco</label><select data-field="pricingMode"><option value="auto" ${pricingMode==='auto'?'selected':''}>Automatica pelo markup padrao</option><option value="manual" ${pricingMode==='manual'?'selected':''}>Preco manual</option></select></div>` : `<div class="field"><label>Unidade do rendimento</label><select data-field="yieldUnit">${['g','ml','un'].map(v => `<option value="${v}" ${data.yieldUnit===v?'selected':''}>${v}</option>`).join('')}</select></div>`}${isProduct ? `<div class="field"><label>${pricingMode === 'manual' ? 'Preco de venda manual' : 'Preco pela regra padrao'}</label><input type="number" step="0.01" data-field="salePrice" value="${data.salePrice}" ${pricingMode === 'manual' ? '' : 'disabled'}></div><div class="field"><label>Explicacao da regra</label><div class="note">${pricingMode === 'manual' ? 'Este item ignora a regra automatica e usa o valor digitado por voce.' : `Com markup padrao de ${defaultMarkupPct()}%, o app vende ${defaultMarkupPct()}% acima do custo direto, ou seja, custo x ${markupMultiplier().toFixed(2)}. O preco iFood soma mais 27% sobre esse valor.`}</div></div>` : ''}${isProduct ? `<div class="field"><label>Ativo no cardápio</label><select data-field="active"><option value="true" ${data.active!==false?'selected':''}>Sim</option><option value="false" ${data.active===false?'selected':''}>Não</option></select></div><div class="field"><label>Conta no rateio fixo</label><select data-field="includeInCatalogCount"><option value="true" ${data.includeInCatalogCount!==false?'selected':''}>Sim</option><option value="false" ${data.includeInCatalogCount===false?'selected':''}>Não</option></select></div>` : ''}<div class="field" style="grid-column:1/-1"><label>Notas</label><textarea data-field="notes">${escapeHtml(data.notes||'')}</textarea></div></div><div class="field"><label>Componentes da BOM</label><div class="note">Use ingrediente, preparo, embalagem ou até outro item. Isso cobre lanches, pratos, molhos, vinagrete e combos por camadas.</div><div class="component-list" id="componentList">${(data.components||[]).map((comp, index) => componentRowHtml(comp, index)).join('') || '<div class="empty">Nenhum componente ainda.</div>'}</div><button class="btn ghost" id="addComponentBtn" type="button">Adicionar componente</button></div>${addonsHtml}`;
+  return `<div class="form-grid"><div class="field"><label>Nome</label><input data-field="name" value="${escapeHtml(data.name)}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope)}</select></div>${isProduct ? `<div class="field"><label>Categoria</label><select data-field="categoryId">${db.categories.map(c => `<option value="${c.id}" ${data.categoryId===c.id?'selected':''}>${escapeHtml(c.name)}</option>`).join('')}</select></div>` : `<div class="field"><label>Armazenamento / etapa</label><input data-field="storage" value="${escapeHtml(data.storage||'')}"></div>`}${isProduct ? `<div class="field"><label>Tipo</label><select data-field="type">${['menu','combo','extra','bebida','base'].map(v => `<option value="${v}" ${data.type===v?'selected':''}>${v}</option>`).join('')}</select></div>` : `<div class="field"><label>Rendimento</label><input type="number" step="0.01" data-field="yieldQty" value="${data.yieldQty}"></div>`}${isProduct ? `<div class="field"><label>Regra de preco</label><select data-field="pricingMode"><option value="auto" ${pricingMode==='auto'?'selected':''}>Automatica pelo markup padrao</option><option value="manual" ${pricingMode==='manual'?'selected':''}>Preco manual</option></select></div>` : `<div class="field"><label>Unidade do rendimento</label><select data-field="yieldUnit">${['g','ml','un'].map(v => `<option value="${v}" ${data.yieldUnit===v?'selected':''}>${v}</option>`).join('')}</select></div>`}${isProduct ? `<div class="field"><label>${pricingMode === 'manual' ? 'Preco de venda manual' : 'Preco pela regra padrao'}</label><input type="number" step="0.01" data-field="salePrice" value="${data.salePrice}" ${pricingMode === 'manual' ? '' : 'disabled'}></div><div class="field"><label>Explicacao da regra</label><div class="note">${pricingMode === 'manual' ? 'Este item ignora a regra automatica e usa o valor digitado por voce.' : `Com markup padrao de ${defaultMarkupPct()}%, o app vende ${defaultMarkupPct()}% acima do custo direto, ou seja, custo x ${markupMultiplier().toFixed(2)}. Componentes marcados como <strong>só repassar custo</strong> entram no preço apenas pelo valor que custam, sem multiplicar para lucro. O preco iFood soma mais 27% sobre esse valor base.`}</div></div>` : ''}${isProduct ? `<div class="field"><label>Ativo no cardápio</label><select data-field="active"><option value="true" ${data.active!==false?'selected':''}>Sim</option><option value="false" ${data.active===false?'selected':''}>Não</option></select></div><div class="field"><label>Conta no rateio fixo</label><select data-field="includeInCatalogCount"><option value="true" ${data.includeInCatalogCount!==false?'selected':''}>Sim</option><option value="false" ${data.includeInCatalogCount===false?'selected':''}>Não</option></select></div>` : ''}<div class="field" style="grid-column:1/-1"><label>Notas</label><textarea data-field="notes">${escapeHtml(data.notes||'')}</textarea></div></div><div class="field"><label>Componentes da BOM</label><div class="note">Use ingrediente, preparo, embalagem ou até outro item. Isso cobre lanches, pratos, molhos, vinagrete e combos por camadas. Em embalagens como a caixa marmita, você pode marcar <strong>só repassar custo</strong> para não aplicar o markup x3 sobre ela.</div><div class="component-list" id="componentList">${(data.components||[]).map((comp, index) => componentRowHtml(comp, index)).join('') || '<div class="empty">Nenhum componente ainda.</div>'}</div><button class="btn ghost" id="addComponentBtn" type="button">Adicionar componente</button></div>${addonsHtml}`;
 }
 
 function modalBodyHtml(type, data) {
@@ -1089,7 +1129,7 @@ function bindModalFields() {
   const addBtn = qs('#addComponentBtn');
   if (addBtn) addBtn.onclick = () => {
     state.modal.data.components = state.modal.data.components || [];
-    state.modal.data.components.push({refType:'ingredient', refId: recordsForOwnerScope('ingredients', state.modal.data.scope)[0]?.id || '', qty:1});
+    state.modal.data.components.push({refType:'ingredient', refId: recordsForOwnerScope('ingredients', state.modal.data.scope)[0]?.id || '', qty:1, pricingMode:'markup'});
     renderModal();
   };
 
@@ -1138,6 +1178,7 @@ function bindModalFields() {
       const key = input.dataset.compField;
       let value = input.value;
       if (key === 'qty') value = num(value);
+      if (key === 'pricingMode') value = componentPricingMode(value);
       state.modal.data.components[index][key] = value;
       if (key === 'refType') {
         const list = value === 'ingredient'
@@ -1187,6 +1228,13 @@ function saveModal() {
   if (!state.modal) return;
   const {type, data} = state.modal;
   if (!String(data.name || '').trim()) { showToast('Nome obrigatório', 'Preencha o nome antes de salvar.', 'error'); return; }
+  if (type === 'products') {
+    data.components = (data.components || []).map(comp => ({
+      ...comp,
+      qty: num(comp.qty),
+      pricingMode: componentPricingMode(comp.pricingMode)
+    })).filter(comp => comp.refId && comp.qty > 0);
+  }
   const list = db[type];
   const idx = list.findIndex(x => x.id === data.id);
   if (idx >= 0) list[idx] = deepClone(data); else list.unshift(deepClone(data));

@@ -694,6 +694,138 @@
       "supplier": "Mercearia / referencia web",
       "notes": "Mistura simples para polvilhar o churros. Custo de referencia; revisar depois.",
       "scope": "gyros"
+    },
+    {
+      "id": "ing_berinjela",
+      "scope": "gyros",
+      "name": "Berinjela",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 7.98,
+      "wastePct": 18,
+      "supplier": "Hortifruti / referência web",
+      "notes": "Valor estimado por kg para montar o antipasto de berinjela; revisar depois."
+    },
+    {
+      "id": "ing_vinagre",
+      "scope": "gyros",
+      "name": "Vinagre",
+      "baseUnit": "ml",
+      "purchaseQty": 750,
+      "purchaseCost": 3.99,
+      "wastePct": 0,
+      "supplier": "Mercearia / referência web",
+      "notes": "Usado só para o descanso da berinjela."
+    },
+    {
+      "id": "ing_pimentao_vermelho",
+      "scope": "gyros",
+      "name": "Pimentão vermelho",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 29.49,
+      "wastePct": 15,
+      "supplier": "Hortifruti / referência web",
+      "notes": "Estimativa de mercado para o antipasto de berinjela."
+    },
+    {
+      "id": "ing_pimentao_amarelo",
+      "scope": "gyros",
+      "name": "Pimentão amarelo",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 29.49,
+      "wastePct": 15,
+      "supplier": "Hortifruti / referência web",
+      "notes": "Estimativa de mercado para o antipasto de berinjela."
+    },
+    {
+      "id": "ing_cebola_roxa",
+      "scope": "gyros",
+      "name": "Cebola roxa",
+      "baseUnit": "g",
+      "purchaseQty": 1000,
+      "purchaseCost": 13.5,
+      "wastePct": 10,
+      "supplier": "Hortifruti / referência web",
+      "notes": "Estimativa de mercado para o antipasto de berinjela."
+    },
+    {
+      "id": "ing_tomate_seco",
+      "scope": "gyros",
+      "name": "Tomate seco",
+      "baseUnit": "g",
+      "purchaseQty": 500,
+      "purchaseCost": 49.9,
+      "wastePct": 0,
+      "supplier": "Mercearia / referência web",
+      "notes": "Estimativa intermediária para tomate seco; revisar depois."
+    },
+    {
+      "id": "ing_shoyu",
+      "scope": "gyros",
+      "name": "Shoyu",
+      "baseUnit": "ml",
+      "purchaseQty": 500,
+      "purchaseCost": 14.99,
+      "wastePct": 0,
+      "supplier": "Mercearia / referência web",
+      "notes": "Estimativa para molho shoyu tradicional 500ml."
+    },
+    {
+      "id": "ing_manjericao",
+      "scope": "gyros",
+      "name": "Manjericão",
+      "baseUnit": "g",
+      "purchaseQty": 20,
+      "purchaseCost": 4.99,
+      "wastePct": 10,
+      "supplier": "Hortifruti / referência web",
+      "notes": "Maço pequeno."
+    },
+    {
+      "id": "ing_louro",
+      "scope": "gyros",
+      "name": "Louro",
+      "baseUnit": "g",
+      "purchaseQty": 20,
+      "purchaseCost": 5.49,
+      "wastePct": 0,
+      "supplier": "Mercearia / referência web",
+      "notes": "Folhas secas."
+    },
+    {
+      "id": "ing_oregano",
+      "scope": "gyros",
+      "name": "Orégano",
+      "baseUnit": "g",
+      "purchaseQty": 20,
+      "purchaseCost": 4.99,
+      "wastePct": 0,
+      "supplier": "Mercearia / referência web",
+      "notes": "Tempero seco."
+    },
+    {
+      "id": "ing_pimenta_calabresa",
+      "scope": "gyros",
+      "name": "Pimenta calabresa",
+      "baseUnit": "g",
+      "purchaseQty": 50,
+      "purchaseCost": 6.99,
+      "wastePct": 0,
+      "supplier": "Mercearia / referência web",
+      "notes": "Tempero seco."
+    },
+    {
+      "id": "ing_coca_zero_2l",
+      "scope": "gyros",
+      "name": "Coca-Cola Zero 2L",
+      "baseUnit": "un",
+      "purchaseQty": 6,
+      "purchaseCost": 65.72,
+      "wastePct": 0,
+      "supplier": "Bebidas",
+      "notes": "Sem compra específica ainda; custo espelhado provisoriamente na Coca-Cola 2L."
     }
   ],
   "packaging": [
@@ -1472,6 +1604,82 @@
           "qty": 2
         }
       ]
+    },
+    {
+      "id": "rec_berinjela_antepasto",
+      "scope": "gyros",
+      "name": "Antepasto de berinjela",
+      "yieldQty": 2500,
+      "yieldUnit": "g",
+      "storage": "Refrigerado / preparo",
+      "notes": "Receita baseada nas anotações: berinjela, pimentões, cebola roxa, tomate seco, shoyu, manjericão, louro, orégano, pimenta calabresa, azeite e vinagre de descanso.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_berinjela",
+          "qty": 3000
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_vinagre",
+          "qty": 45
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_tempero",
+          "qty": 12
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_pimentao_vermelho",
+          "qty": 450
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_pimentao_amarelo",
+          "qty": 450
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_cebola_roxa",
+          "qty": 500
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_tomate_seco",
+          "qty": 500
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_shoyu",
+          "qty": 250
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_manjericao",
+          "qty": 20
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_louro",
+          "qty": 2
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_oregano",
+          "qty": 8
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_pimenta_calabresa",
+          "qty": 6
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_oleo_vinagre",
+          "qty": 300
+        }
+      ]
     }
   ],
   "products": [
@@ -1480,7 +1688,7 @@
       "name": "Base interna — Lanche assinatura médio",
       "categoryId": "cat_base_interna",
       "type": "base",
-      "salePrice": 0,
+      "salePrice": 30.41,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Base interna media usada como referencia para combos familia.",
@@ -1534,7 +1742,7 @@
       "name": "Base interna — Prato médio",
       "categoryId": "cat_base_interna",
       "type": "base",
-      "salePrice": 0,
+      "salePrice": 34.94,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Base interna media usada como referencia para combos familia de almoco.",
@@ -1567,7 +1775,8 @@
         {
           "refType": "packaging",
           "refId": "pkg_almoco",
-          "qty": 1
+          "qty": 1,
+          "pricingMode": "pass_through"
         },
         {
           "refType": "packaging",
@@ -1598,7 +1807,7 @@
       "name": "Alpha — Gyros Fraldinha (Assinatura)",
       "categoryId": "cat_assinaturas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 47.13,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Base alinhada ao cardápio enviado",
@@ -1645,14 +1854,316 @@
         }
       ],
       "pricingMode": "auto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 30g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 30
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "prd_beta",
       "name": "Beta — Gyros Frango (Assinatura)",
       "categoryId": "cat_assinaturas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 36.49,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Base alinhada ao cardápio enviado",
@@ -1699,14 +2210,316 @@
         }
       ],
       "pricingMode": "auto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 30g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 30
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "prd_gamma",
       "name": "Gamma — Gyros Linguiça (Assinatura)",
       "categoryId": "cat_assinaturas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 33.73,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Base alinhada ao cardápio enviado",
@@ -1753,14 +2566,672 @@
         }
       ],
       "pricingMode": "auto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 30g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 30
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prd_vegetariano",
+      "scope": "gyros",
+      "name": "Vegetariano Gyros",
+      "categoryId": "cat_assinaturas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 49.92,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Pão com parmesão, antepasto de berinjela, vinagrete, muçarela gratinada e maionese grill.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_pao_parmesao",
+          "qty": 1
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_berinjela_antepasto",
+          "qty": 150
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_manteiga_alho",
+          "qty": 5
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_mucarela",
+          "qty": 90
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_vinagrete",
+          "qty": 60
+        },
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese",
+          "qty": 10
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_lanche",
+          "qty": 1
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_guardanapo",
+          "qty": 1
+        }
+      ],
+      "addons": [
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Porção técnica assumida: 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 30g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 30
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Lanche: adicional técnico assumido em 40g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 40
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "prd_combo1",
       "name": "Combo 1 — Historico (base antiga de batata pequena)",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 37.62,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
@@ -1794,7 +3265,7 @@
       "name": "Combo 2 — Lanche + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 43.35,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
@@ -1823,7 +3294,7 @@
       "name": "Combo 3 — Historico (base antiga de batata pequena)",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 48.04,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Combo por camadas usando base interna de lanche Historico: substituido por combos separados em Alpha, Beta e Gamma.",
@@ -1862,7 +3333,7 @@
       "name": "Batata frita — M (200g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 5.62,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Sal padrao. Lemon pepper e paprica doce entram como adicionais opcionais.",
@@ -1923,7 +3394,7 @@
       "name": "Batata frita temperada — Media (historico 120g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 3.87,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Item antigo mantido apenas para historico.",
@@ -1952,7 +3423,7 @@
       "name": "Batata frita — G (400g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 10.18,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Sal padrao. Lemon pepper e paprica doce entram como adicionais opcionais.",
@@ -2013,7 +3484,7 @@
       "name": "Batata gratinada — M (M90 220ml / 200g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 15.84,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Muçarela padrão. Catupiry, 4 queijos e cheddar entram como adicionais opcionais.",
@@ -2081,6 +3552,321 @@
               "qty": 1
             }
           ]
+        },
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 50g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_mini_churros___6un_sobremesas",
+          "name": "Mini Churros - 6un",
+          "group": "Sobremesas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Produto base atual do PWA; o iFood antigo usava sabores separados.",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_churros",
+              "qty": 1
+            }
+          ]
         }
       ]
     },
@@ -2089,7 +3875,7 @@
       "name": "Batata gratinada — Media (historico 120g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 9.69,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Item antigo mantido apenas para historico.",
@@ -2118,7 +3904,7 @@
       "name": "Batata gratinada — G (M120 500ml / 400g)",
       "categoryId": "cat_batatas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 30.87,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Muçarela padrão. Catupiry, 4 queijos e cheddar entram como adicionais opcionais.",
@@ -2186,6 +3972,321 @@
               "qty": 1
             }
           ]
+        },
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 50g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_mini_churros___6un_sobremesas",
+          "name": "Mini Churros - 6un",
+          "group": "Sobremesas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Produto base atual do PWA; o iFood antigo usava sabores separados.",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_churros",
+              "qty": 1
+            }
+          ]
         }
       ]
     },
@@ -2194,7 +4295,7 @@
       "name": "Carne Gyros Gratinada (500ml / 400g)",
       "categoryId": "cat_gratinados",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 61.0,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Porcao gratinada em bandeja de 500ml com 400g de proteina. Modelo atual com frango + muçarela.",
@@ -2216,14 +4317,331 @@
         }
       ],
       "pricingMode": "auto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 50g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_mini_churros___6un_sobremesas",
+          "name": "Mini Churros - 6un",
+          "group": "Sobremesas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Produto base atual do PWA; o iFood antigo usava sabores separados.",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_churros",
+              "qty": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "prd_prato_alpha",
       "name": "Prato Alpha — Fraldinha",
       "categoryId": "cat_almoco",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 45.2,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
@@ -2236,7 +4654,8 @@
         {
           "refType": "packaging",
           "refId": "pkg_almoco",
-          "qty": 1
+          "qty": 1,
+          "pricingMode": "pass_through"
         },
         {
           "refType": "packaging",
@@ -2260,14 +4679,331 @@
         }
       ],
       "pricingMode": "auto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 50g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_mini_churros___6un_sobremesas",
+          "name": "Mini Churros - 6un",
+          "group": "Sobremesas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Produto base atual do PWA; o iFood antigo usava sabores separados.",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_churros",
+              "qty": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "prd_prato_beta",
       "name": "Prato Beta — Frango",
       "categoryId": "cat_almoco",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 34.94,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
@@ -2280,7 +5016,8 @@
         {
           "refType": "packaging",
           "refId": "pkg_almoco",
-          "qty": 1
+          "qty": 1,
+          "pricingMode": "pass_through"
         },
         {
           "refType": "packaging",
@@ -2304,14 +5041,331 @@
         }
       ],
       "pricingMode": "auto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 50g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_mini_churros___6un_sobremesas",
+          "name": "Mini Churros - 6un",
+          "group": "Sobremesas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Produto base atual do PWA; o iFood antigo usava sabores separados.",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_churros",
+              "qty": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "prd_prato_gamma",
       "name": "Prato Gamma — Linguiça",
       "categoryId": "cat_almoco",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 34.14,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Almoco com feijao em pote, vinagrete e farofa em potes de 60ml.",
@@ -2324,7 +5378,8 @@
         {
           "refType": "packaging",
           "refId": "pkg_almoco",
-          "qty": 1
+          "qty": 1,
+          "pricingMode": "pass_through"
         },
         {
           "refType": "packaging",
@@ -2348,14 +5403,331 @@
         }
       ],
       "pricingMode": "auto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "addons": [
+        {
+          "id": "add_antepasto_de_berinjela_turbine_sua_refeição",
+          "name": "Antepasto de Berinjela",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "recipe",
+              "refId": "rec_berinjela_antepasto",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_linguica_toscana_turbine_sua_refeição",
+          "name": "Linguiça Toscana",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_linguica",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_frango_(peito_e_sobrecoxa)_turbine_sua_refeição",
+          "name": "Frango (Peito e Sobrecoxa)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_frango",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_carne_(fraldinha)_turbine_sua_refeição",
+          "name": "Carne (Fraldinha)",
+          "group": "Turbine sua refeição",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: porção técnica assumida em 150g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_fraldinha",
+              "qty": 150
+            }
+          ]
+        },
+        {
+          "id": "add_bacon_adicionais",
+          "name": "Bacon",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 50g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_bacon_cubos",
+              "qty": 50
+            }
+          ]
+        },
+        {
+          "id": "add_queijo_mucarela_adicionais",
+          "name": "Queijo Muçarela",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_mucarela",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_original_adicionais",
+          "name": "Catupiry Original",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_catupiry",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_catupiry_4_queijos_adicionais",
+          "name": "Catupiry 4 queijos",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_4queijos",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_cheddar_adicionais",
+          "name": "Cheddar",
+          "group": "Adicionais",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Almoço: adicional técnico assumido em 60g",
+          "components": [
+            {
+              "refType": "ingredient",
+              "refId": "ing_cheddar",
+              "qty": 60
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_da_casa_molhos",
+          "name": "Maionese da Casa",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_molho_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_verde_molhos",
+          "name": "Maionese Verde",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_verde_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_maionese_de_chimichurri_molhos",
+          "name": "Maionese de Chimichurri",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_chimichurri_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_barbecue_molhos",
+          "name": "Barbecue",
+          "group": "Molhos",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Potinho de 60ml",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_barbecue_extra",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_limao_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Limão 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_limao_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_cha_ice_tea_leao_pêssego_450ml_escolha_as_bebidas",
+          "name": "Chá Ice Tea Leão Pêssego 450ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_ice_tea_pessego_450",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_guarana_antarctica_350ml_escolha_as_bebidas",
+          "name": "Guaraná Antarctica 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_guarana_350",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_2l_escolha_as_bebidas",
+          "name": "Coca-Cola 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_2l_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 2L",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero_2l",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_coca_cola_zero_350ml_escolha_as_bebidas",
+          "name": "Coca-Cola Zero 350ml",
+          "group": "Escolha as Bebidas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_coca_zero",
+              "qty": 1
+            }
+          ]
+        },
+        {
+          "id": "add_mini_churros___6un_sobremesas",
+          "name": "Mini Churros - 6un",
+          "group": "Sobremesas",
+          "chargeMode": "extra",
+          "salePriceDelta": 0,
+          "notes": "Produto base atual do PWA; o iFood antigo usava sabores separados.",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_churros",
+              "qty": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "prd_combo_almoco",
       "name": "Combo Almoço — Prato + Bebida + Mini batata (80g)",
       "categoryId": "cat_almoco",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 58.25,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Combo almoco usando prato real do Gyros. Historico: substituido por combos de almoco separados em Alpha, Beta e Gamma.",
@@ -2394,7 +5766,7 @@
       "name": "Churros (porção com 6 unidades)",
       "categoryId": "cat_sobremesas",
       "type": "menu",
-      "salePrice": 0,
+      "salePrice": 11.45,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Porcao padrao com 6 unidades de churros congelado pronto, polvilhado com acucar e canela.",
@@ -2423,7 +5795,7 @@
       "name": "Maionese Grill extra (60ml potinho)",
       "categoryId": "cat_molhos",
       "type": "extra",
-      "salePrice": 0,
+      "salePrice": 2.61,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Molho padrao do lanche vendido a parte.",
@@ -2447,7 +5819,7 @@
       "name": "Vinagrete extra (60ml potinho)",
       "categoryId": "cat_molhos",
       "type": "extra",
-      "salePrice": 0,
+      "salePrice": 3.56,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Use 60ml para extra à parte",
@@ -2471,7 +5843,7 @@
       "name": "Pacote extra com 5 sachês",
       "categoryId": "cat_molhos",
       "type": "extra",
-      "salePrice": 0,
+      "salePrice": 1.81,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Ketchup, maionese e mostarda",
@@ -2490,7 +5862,7 @@
       "name": "Coca-Cola 350ml",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 0,
+      "salePrice": 10.42,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 350ml",
@@ -2509,7 +5881,7 @@
       "name": "Coca Zero 350ml",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 0,
+      "salePrice": 10.42,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 350ml",
@@ -2528,7 +5900,7 @@
       "name": "Fanta 350ml",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 0,
+      "salePrice": 10.42,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 350ml",
@@ -2547,7 +5919,7 @@
       "name": "Garrafa 450ml (pêssego ou limão)",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 0,
+      "salePrice": 12.9,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Bebida 450ml",
@@ -2566,7 +5938,7 @@
       "name": "Suco natural (garrafinha)",
       "categoryId": "cat_bebidas",
       "type": "bebida",
-      "salePrice": 0,
+      "salePrice": 12.6,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Produção própria",
@@ -2585,7 +5957,7 @@
       "name": "Combo Família (lanche)",
       "categoryId": "cat_familia",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 130.74,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "3 lanches + 1 Coca-Cola 2L.",
@@ -2619,7 +5991,7 @@
       "name": "Almoço Família",
       "categoryId": "cat_familia",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 161.37,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "3 pratos + 1 Coca-Cola 2L.",
@@ -2654,7 +6026,7 @@
       "name": "Barbecue extra (60ml potinho)",
       "categoryId": "cat_molhos",
       "type": "extra",
-      "salePrice": 0,
+      "salePrice": 3.78,
       "pricingMode": "auto",
       "active": true,
       "includeInCatalogCount": true,
@@ -2679,7 +6051,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 5.8,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir custo correto sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2713,7 +6085,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 5.74,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir custo correto sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2747,7 +6119,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 10.54,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir custo correto sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2781,7 +6153,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 10.42,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir custo correto sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2815,7 +6187,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 16.89,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2844,7 +6216,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 14.92,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2873,7 +6245,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 13.28,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2902,7 +6274,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 32.97,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2931,7 +6303,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 29.03,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2960,7 +6332,7 @@
       "categoryId": "cat_batatas",
       "type": "menu",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 25.76,
       "active": false,
       "includeInCatalogCount": false,
       "notes": "Variante vendavel separada, para refletir troca de queijo sem motor de opcionais. Historico: substituido pela modelagem de adicionais do item base.",
@@ -2987,7 +6359,7 @@
       "name": "Combo 1 — Alpha + Batata M (200g)",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 55.26,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Alpha como item principal.",
@@ -2998,13 +6370,8 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
@@ -3022,7 +6389,7 @@
       "name": "Combo 1 — Beta + Batata M (200g)",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 44.62,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Beta como item principal.",
@@ -3033,13 +6400,8 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
@@ -3057,7 +6419,7 @@
       "name": "Combo 1 — Gamma + Batata M (200g)",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 41.86,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Gamma como item principal.",
@@ -3068,13 +6430,8 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
@@ -3092,7 +6449,7 @@
       "name": "Combo 2 — Alpha + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 60.07,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Alpha como item principal.",
@@ -3122,7 +6479,7 @@
       "name": "Combo 2 — Beta + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 49.43,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Beta como item principal.",
@@ -3152,7 +6509,7 @@
       "name": "Combo 2 — Gamma + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 46.66,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Gamma como item principal.",
@@ -3182,7 +6539,7 @@
       "name": "Combo 3 — Alpha + Batata M + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 65.68,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Alpha como item principal.",
@@ -3193,18 +6550,13 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
           "refType": "ingredient",
           "refId": "ing_refri_350",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
           "qty": 1
         },
         {
@@ -3222,7 +6574,7 @@
       "name": "Combo 3 — Beta + Batata M + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 55.05,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Beta como item principal.",
@@ -3233,18 +6585,13 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
           "refType": "ingredient",
           "refId": "ing_refri_350",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
           "qty": 1
         },
         {
@@ -3262,7 +6609,7 @@
       "name": "Combo 3 — Gamma + Batata M + Bebida 350ml",
       "categoryId": "cat_combos",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 52.28,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo fechado com Gamma como item principal.",
@@ -3273,18 +6620,13 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
           "refType": "ingredient",
           "refId": "ing_refri_350",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
           "qty": 1
         },
         {
@@ -3302,7 +6644,7 @@
       "name": "Combo Almoço — Alpha + Bebida + Batata M",
       "categoryId": "cat_almoco",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 69.43,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo almoço fechado com Alpha — Fraldinha.",
@@ -3313,18 +6655,13 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
           "refType": "ingredient",
           "refId": "ing_refri_350",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
           "qty": 1
         },
         {
@@ -3342,7 +6679,7 @@
       "name": "Combo Almoço — Beta + Bebida + Batata M",
       "categoryId": "cat_almoco",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 59.17,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo almoço fechado com Beta — Frango.",
@@ -3353,18 +6690,13 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
           "refType": "ingredient",
           "refId": "ing_refri_350",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
           "qty": 1
         },
         {
@@ -3382,7 +6714,7 @@
       "name": "Combo Almoço — Gamma + Bebida + Batata M",
       "categoryId": "cat_almoco",
       "type": "combo",
-      "salePrice": 0,
+      "salePrice": 58.37,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Combo almoço fechado com Gamma — Linguiça.",
@@ -3393,18 +6725,13 @@
           "qty": 1
         },
         {
-          "refType": "recipe",
-          "refId": "rec_batata_p",
+          "refType": "product",
+          "refId": "prd_bat_p",
           "qty": 1
         },
         {
           "refType": "ingredient",
           "refId": "ing_refri_350",
-          "qty": 1
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_bat_p",
           "qty": 1
         },
         {
@@ -3424,7 +6751,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 3.76,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Água sem gás 510ml",
@@ -3444,7 +6771,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 4.94,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Água mineral com gás 510ml",
@@ -3464,7 +6791,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 17.88,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Long neck 330ml",
@@ -3484,7 +6811,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 20.75,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Long neck 330ml",
@@ -3504,7 +6831,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 32.86,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Garrafa PET 2 litros",
@@ -3524,7 +6851,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 14.02,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Garrafa PET 500ml",
@@ -3544,7 +6871,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 14.02,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Garrafa PET 500ml",
@@ -3564,7 +6891,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 11.6,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 350ml",
@@ -3584,7 +6911,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 10.98,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 350ml",
@@ -3604,7 +6931,7 @@
       "categoryId": "cat_bebidas",
       "type": "bebida",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 11.01,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Lata 290ml",
@@ -3624,7 +6951,7 @@
       "categoryId": "cat_molhos",
       "type": "extra",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 2.8,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Potinho extra com maionese chimichurri.",
@@ -3649,7 +6976,7 @@
       "categoryId": "cat_molhos",
       "type": "extra",
       "pricingMode": "auto",
-      "salePrice": 0,
+      "salePrice": 2.77,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Potinho extra com maionese verde.",
@@ -3662,6 +6989,146 @@
         {
           "refType": "packaging",
           "refId": "pkg_potinho_60",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_ice_tea_limao_450",
+      "scope": "gyros",
+      "name": "Chá Ice Tea Leão Limão 450ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 12.9,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Separado para refletir o cardápio do iFood.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_garrafa_450",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_ice_tea_pessego_450",
+      "scope": "gyros",
+      "name": "Chá Ice Tea Leão Pêssego 450ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 12.9,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Separado para refletir o cardápio do iFood.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_garrafa_450",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_guarana_350",
+      "scope": "gyros",
+      "name": "Guaraná Antarctica 350ml",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 10.42,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Usa o custo médio da família de refrigerante lata 350ml.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_refri_350",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_coca_zero_2l",
+      "scope": "gyros",
+      "name": "Coca-Cola Zero 2L",
+      "categoryId": "cat_bebidas",
+      "type": "bebida",
+      "pricingMode": "auto",
+      "salePrice": 32.86,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Produto separado para refletir o cardápio do iFood.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_coca_zero_2l",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_mini_churros_dl",
+      "scope": "gyros",
+      "name": "Mini Churros Doce de Leite",
+      "categoryId": "cat_sobremesas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 11.45,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Mesmo custo do churros base congelado. O sabor no iFood não altera o custo oficial atual.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_massa_churros",
+          "qty": 120
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_acucar_canela",
+          "qty": 8
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sobremesa",
+          "qty": 1
+        }
+      ],
+      "addons": []
+    },
+    {
+      "id": "prd_mini_churros_goi",
+      "scope": "gyros",
+      "name": "Mini Churros Goiabada",
+      "categoryId": "cat_sobremesas",
+      "type": "menu",
+      "pricingMode": "auto",
+      "salePrice": 11.45,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Mesmo custo do churros base congelado. O sabor no iFood não altera o custo oficial atual.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_massa_churros",
+          "qty": 120
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_acucar_canela",
+          "qty": 8
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_sobremesa",
           "qty": 1
         }
       ],
