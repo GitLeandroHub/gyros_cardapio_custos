@@ -1192,6 +1192,76 @@ function renderSettingsHtml() {
   return `<div class="detail-header"><div><div class="tag">Parâmetros</div><h3>Regra de preço e rateio</h3><p>Configure markup, operações e divisão dos custos compartilhados.</p></div></div><div class="stack"><div class="field"><label>Markup padrão (%) sobre o custo</label><input id="settingDefaultMarkup" type="number" step="1" value="${defaultMarkupPct()}"></div><div class="note">Exemplo profissional e claro: se você colocar <strong>200%</strong>, o app entende que quer vender <strong>200% acima do custo direto</strong>. Isso vira <strong>custo x 3</strong> no preço base e gera uma margem aproximada de <strong>${pct(targetMarginFromMarkupPct())}</strong> sobre a venda. O preço <strong>iFood</strong> aplica mais 27% sobre esse valor base.</div><div class="field"><label>Modo de rateio fixo</label><select id="settingAllocationMode"><option value="catalog_items" ${db.settings.fixedAllocationMode==='catalog_items'?'selected':''}>Dividir pela quantidade de itens ativos do cardápio</option><option value="custom_units" ${db.settings.fixedAllocationMode==='custom_units'?'selected':''}>Dividir por unidades mensais informadas</option></select></div><div class="field"><label>Divisão dos custos compartilhados</label><select id="settingSharedSplitMode"><option value="equal" ${db.settings.sharedFixedSplitMode==='equal'?'selected':''}>50/50 entre Gyros e Greguinho</option><option value="manual" ${db.settings.sharedFixedSplitMode==='manual'?'selected':''}>Percentual manual</option><option value="volume" ${db.settings.sharedFixedSplitMode==='volume'?'selected':''}>Por volume mensal estimado</option></select></div><div class="form-grid"><div class="field"><label>Volume mensal Gyros</label><input id="settingUnitsGyros" type="number" step="1" value="${num(units.gyros)}"></div><div class="field"><label>Volume mensal Greguinho</label><input id="settingUnitsGreguinho" type="number" step="1" value="${num(units.greguinho)}"></div><div class="field"><label>Manual Gyros (%)</label><input id="settingManualGyros" type="number" step="1" value="${num(manual.gyros)}"></div><div class="field"><label>Manual Greguinho (%)</label><input id="settingManualGreguinho" type="number" step="1" value="${num(manual.greguinho)}"></div></div><div class="note">Padrão atual: <strong>${db.settings.sharedFixedSplitMode === 'manual' ? `manual ${num(manual.gyros)}% / ${num(manual.greguinho)}%` : db.settings.sharedFixedSplitMode === 'volume' ? 'por volume mensal estimado' : '50/50'}</strong>. Nesta fase, o markup automático principal usa o custo direto; o preço com rateio fica como referência gerencial.</div><div><button class="btn primary" id="saveSettingsBtn">Salvar parâmetros</button></div></div>`;
 }
 
+function renderSettingsSummaryHtml() {
+  const active = activeCatalogProducts(state.operationView);
+  const computed = active.map(item => computeProduct(item.id, state.operationView)).filter(Boolean);
+  const monthlyUnitsConfig = db.settings.operationMonthlyUnits || { gyros: 1200, greguinho: 1200 };
+  const monthlyUnits = Math.max(0, num(state.operationView === 'greguinho' ? monthlyUnitsConfig.greguinho : monthlyUnitsConfig.gyros));
+  const fixedMonthly = totalFixedCosts(state.operationView);
+  const avgDirectCost = computed.length ? computed.reduce((sum, item) => sum + item.directCost, 0) / computed.length : 0;
+  const avgSalePrice = computed.length ? computed.reduce((sum, item) => sum + item.salePrice, 0) / computed.length : 0;
+  const avgContribution = computed.length ? computed.reduce((sum, item) => sum + (item.salePrice - item.directCost), 0) / computed.length : 0;
+  const fixedPerSale = monthlyUnits > 0 ? fixedMonthly / monthlyUnits : 0;
+  const breakEvenUnits = avgContribution > 0 ? fixedMonthly / avgContribution : 0;
+  const contributionMarginPct = avgSalePrice > 0 ? (avgContribution / avgSalePrice) * 100 : 0;
+  const breakEvenRevenue = contributionMarginPct > 0 ? fixedMonthly / (contributionMarginPct / 100) : 0;
+  const projectedVariableOutflow = monthlyUnits * avgDirectCost;
+  const projectedMonthlyOperatingNeed = fixedMonthly + projectedVariableOutflow;
+  const allocationLabel = db.settings.fixedAllocationMode === 'custom_units'
+    ? 'Baseado no volume mensal informado'
+    : 'Baseado na quantidade de itens ativos do catálogo';
+
+  return `
+    <div class="stack">
+      <section class="panel hero-panel" style="box-shadow:none;">
+        <div class="panel-body">
+          <div class="eyebrow">Leitura financeira</div>
+          <h3 style="margin:6px 0 8px; font-size:24px;">Fluxo, ponto de equilíbrio e giro da operação</h3>
+          <p class="note" style="font-size:14px;">A lógica aqui é de dono: no fim, quem paga a conta é a unidade <strong>vendida</strong>, não tudo o que está disponível para vender. Por isso o app cruza custo direto, despesas fixas e volume mensal estimado para mostrar a leitura mais útil de caixa e viabilidade.</p>
+        </div>
+      </section>
+      <div class="grid-2">
+        <div class="metric"><div class="label">Custos fixos mensais</div><div class="value">${brl(fixedMonthly)}</div><div class="sub">Soma dos custos fixos cadastrados para ${operationLabel()}.</div></div>
+        <div class="metric"><div class="label">Volume mensal estimado</div><div class="value">${monthlyUnits ? monthlyUnits.toLocaleString('pt-BR') : '—'}</div><div class="sub">${allocationLabel}.</div></div>
+        <div class="metric"><div class="label">Contribuição média por venda</div><div class="value">${brl(avgContribution)}</div><div class="sub">Preço base médio menos custo direto médio: ${pct(contributionMarginPct)} de margem de contribuição.</div></div>
+        <div class="metric"><div class="label">Rateio fixo técnico por venda</div><div class="value">${monthlyUnits > 0 ? brl(fixedPerSale) : '—'}</div><div class="sub">Custos fixos mensais divididos pelo volume mensal projetado.</div></div>
+      </div>
+      <div class="grid-2">
+        <div class="panel">
+          <div class="panel-head"><div><h3>Ponto de equilíbrio</h3><p>Quantas vendas médias a operação precisa para pagar os custos fixos.</p></div></div>
+          <div class="panel-body">
+            <div class="info-grid">
+              <div class="info-cell"><div class="k">Unidades para empatar</div><div class="v">${breakEvenUnits > 0 ? Math.ceil(breakEvenUnits).toLocaleString('pt-BR') : '—'}</div></div>
+              <div class="info-cell"><div class="k">Faturamento mínimo</div><div class="v">${breakEvenRevenue > 0 ? brl(breakEvenRevenue) : '—'}</div></div>
+            </div>
+            <div class="note" style="margin-top:12px;">Conta usada: <strong>custos fixos ÷ contribuição média por venda</strong>. É uma leitura técnica para responder “quantas vendas/mês preciso para a operação se pagar?”.</div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head"><div><h3>Giro operacional do mês</h3><p>Leitura de caixa para sustentar o plano mensal informado.</p></div></div>
+          <div class="panel-body">
+            <div class="info-grid">
+              <div class="info-cell"><div class="k">Custo direto médio por venda</div><div class="v">${brl(avgDirectCost)}</div></div>
+              <div class="info-cell"><div class="k">Preço base médio</div><div class="v">${brl(avgSalePrice)}</div></div>
+              <div class="info-cell"><div class="k">Necessidade variável do mês</div><div class="v">${monthlyUnits > 0 ? brl(projectedVariableOutflow) : '—'}</div></div>
+              <div class="info-cell"><div class="k">Necessidade total do mês</div><div class="v">${monthlyUnits > 0 ? brl(projectedMonthlyOperatingNeed) : brl(fixedMonthly)}</div></div>
+            </div>
+            <div class="note" style="margin-top:12px;">Aqui o app soma <strong>custo direto projetado</strong> para o volume informado com os <strong>custos fixos mensais</strong>. Isso não substitui DRE nem fluxo de caixa, mas já dá uma leitura bem “shark tank” do tamanho da operação.</div>
+          </div>
+        </div>
+      </div>
+      <section class="panel">
+        <div class="panel-head"><div><h3>Como pensar isso na prática</h3><p>Regra simples para tomada de decisão.</p></div></div>
+        <div class="panel-body">
+          <div class="note">1. O cardápio pode ter muitos itens, mas o que importa no final é o volume real vendido.</div>
+          <div class="note">2. Cada venda precisa cobrir o próprio custo direto e contribuir para pagar os custos fixos do mês.</div>
+          <div class="note">3. Quando o volume sobe, o custo fixo por venda cai. Quando o volume cai, o custo fixo por venda sobe.</div>
+          <div class="note">4. Por isso a precificação, o mix vendido e a projeção de unidades mensais precisam andar juntos.</div>
+        </div>
+      </section>
+    </div>`;
+}
+
 function renderResourceTable(tab) {
   if (tab === 'ingredients') {
     return `<table><thead><tr><th>Ingrediente</th><th>Escopo</th><th>Procedência</th><th>Fornecedor</th><th>Unidade</th><th>Custo unitário</th><th>Perda</th></tr></thead><tbody>${visibleRecords('ingredients').map(item => `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.name)}</strong><div class="small muted">${supplierModeLabel(item.supplierMode)}</div></td><td>${scopeTag(item.scope || legacyScopeForRecord('ingredients', item))}</td><td>${evidenceTag(item)}</td><td>${escapeHtml(item.supplier||'')}</td><td>${item.baseUnit}</td><td>${brl(ingredientUnitCost(item))}</td><td>${pct(item.wastePct)}</td></tr>`).join('')}</tbody></table>`;
@@ -1228,7 +1298,7 @@ function renderResources() {
   if (state.resourceTab === 'settings') detailHtml = renderSettingsHtml();
 
   qs('#page-resources').innerHTML = `
-    <div class="stack"><section class="panel"><div class="panel-head"><div><h3>Cadastros-base</h3><p>O jeito mais prático de manter a BOM viva e consistente.</p></div><div class="tabs">${tabs.map(([id,label]) => `<button class="${state.resourceTab===id?'active':''}" data-tab="${id}">${label}</button>`).join('')}</div></div><div class="panel-body"><div class="split"><div class="panel" style="box-shadow:none;"><div class="panel-head"><div><h3>${tabs.find(t => t[0]===state.resourceTab)?.[1] || ''}</h3><p>${resourceSubtitle(state.resourceTab)}</p></div>${state.resourceTab !== 'settings' ? `<button class="btn primary" id="addResourceBtn">Novo</button>` : ''}</div><div class="panel-body" style="padding:0 0 8px 0; overflow:auto;">${state.resourceTab === 'settings' ? '<div class="empty">Os parâmetros aparecem no painel ao lado.</div>' : renderResourceTable(state.resourceTab)}</div></div><div class="panel" style="box-shadow:none;"><div class="panel-body" id="resourceDetail">${detailHtml}</div></div></div></div></section></div>`;
+    <div class="stack"><section class="panel"><div class="panel-head"><div><h3>Cadastros-base</h3><p>O jeito mais prático de manter a BOM viva e consistente.</p></div><div class="tabs">${tabs.map(([id,label]) => `<button class="${state.resourceTab===id?'active':''}" data-tab="${id}">${label}</button>`).join('')}</div></div><div class="panel-body"><div class="split"><div class="panel" style="box-shadow:none;"><div class="panel-head"><div><h3>${tabs.find(t => t[0]===state.resourceTab)?.[1] || ''}</h3><p>${resourceSubtitle(state.resourceTab)}</p></div>${state.resourceTab !== 'settings' ? `<button class="btn primary" id="addResourceBtn">Novo</button>` : ''}</div><div class="panel-body" style="padding:0 0 8px 0; overflow:auto;">${state.resourceTab === 'settings' ? renderSettingsSummaryHtml() : renderResourceTable(state.resourceTab)}</div></div><div class="panel" style="box-shadow:none;"><div class="panel-body" id="resourceDetail">${detailHtml}</div></div></div></div></section></div>`;
 
   qsa('[data-tab]').forEach(btn => btn.onclick = () => { state.resourceTab = btn.dataset.tab; state.selectedResourceId = null; renderResources(); });
   qsa('[data-resource-id]').forEach(row => row.onclick = () => { state.selectedResourceId = row.dataset.resourceId; renderResources(); });
