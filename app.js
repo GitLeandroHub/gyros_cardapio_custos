@@ -215,7 +215,205 @@ function pct(v) { return `${safe(v).toFixed(1)}%`; }
 function escapeHtml(s='') { return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m])); }
 
 function normalizeDb(target) {
-  return applyMultiOperationRules(applyPricingRules(applyPurchaseUpdates(target)));
+  return normalizeSupplierData(applyMultiOperationRules(applyPricingRules(applyPurchaseUpdates(target))));
+}
+
+function procurementEvidenceType(record = {}) {
+  const text = `${record.sourceReference || ''} ${record.notes || ''}`.toLowerCase();
+  if (record.sourceType) return record.sourceType;
+  if (record.evidenceType) return record.evidenceType;
+  if (text.includes('manual')) return 'manual';
+  if (text.includes('referência web') || text.includes('referencia web') || text.includes('estimativa') || text.includes('pesquisa') || text.includes('revisar')) return 'estimated';
+  return 'documented';
+}
+
+function procurementEvidenceLabel(type) {
+  if (type === 'estimated') return 'Pesquisado / estimado';
+  if (type === 'manual') return 'Manual / revisar';
+  if (type === 'review') return 'Revisão';
+  return 'Comprovado';
+}
+
+function procurementEvidenceClass(type) {
+  if (type === 'estimated') return 'evidence-estimated';
+  if (type === 'manual') return 'evidence-review';
+  if (type === 'review') return 'evidence-review';
+  return 'evidence-documented';
+}
+
+function normalizePaymentMethods(value) {
+  if (Array.isArray(value)) return value.filter(Boolean);
+  return String(value || '').split(',').map(item => item.trim()).filter(Boolean);
+}
+
+function slugify(value='') {
+  return String(value)
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '_')
+    .replace(/^_+|_+$/g, '');
+}
+
+function isNamedDocumentedSupplier(name='') {
+  const normalized = slugify(name);
+  return ['zona_cerealista', 'samppael', 'samppel', 'bom_clima', 'shopee', 'pmg', 'armazem_sao_vito', 'sao_vito'].includes(normalized);
+}
+
+function supplierModeLabel(value='single') {
+  return value === 'multiple' ? 'Múltiplos fornecedores' : 'Fornecedor único';
+}
+
+function normalizeSupplierData(target) {
+  if (!target) return target;
+  target.suppliers = Array.isArray(target.suppliers) ? target.suppliers : [];
+  target.purchaseOrders = Array.isArray(target.purchaseOrders) ? target.purchaseOrders : [];
+  target.purchaseItems = Array.isArray(target.purchaseItems) ? target.purchaseItems : [];
+  target.inputs = Array.isArray(target.inputs) ? target.inputs : [];
+
+  ['ingredients', 'packaging'].forEach(type => {
+    (target[type] || []).forEach(record => {
+      if (!record.sourceType) record.sourceType = procurementEvidenceType(record);
+      if (!record.sourceReference) {
+        record.sourceReference = record.sourceType === 'estimated'
+          ? 'Pesquisa web / estimativa'
+          : 'Lista de compras, nota fiscal ou orçamento';
+      }
+      if (type === 'packaging' && typeof record.supplier !== 'string') record.supplier = '';
+    });
+  });
+
+  const supplierNames = new Set();
+  ['ingredients', 'packaging'].forEach(type => {
+    (target[type] || []).forEach(record => {
+      const supplierName = String(record.supplier || '').trim();
+      if (supplierName) supplierNames.add(supplierName);
+    });
+  });
+
+  supplierNames.forEach(name => {
+    const id = `sup_${slugify(name)}`;
+    const existing = (target.suppliers || []).find(item => item.id === id);
+    const related = [
+      ...(target.ingredients || []).filter(item => String(item.supplier || '').trim() === name),
+      ...(target.packaging || []).filter(item => String(item.supplier || '').trim() === name)
+    ];
+    const documentedCount = related.filter(item => procurementEvidenceType(item) === 'documented').length;
+    const estimatedCount = related.filter(item => procurementEvidenceType(item) === 'estimated').length;
+    const defaultEvidenceType = name.toLowerCase().includes('referência web') || name.toLowerCase().includes('referencia web')
+      ? 'estimated'
+      : isNamedDocumentedSupplier(name)
+        ? 'documented'
+        : documentedCount > 0 && estimatedCount === 0
+          ? 'review'
+          : estimatedCount > 0 && documentedCount === 0
+            ? 'estimated'
+            : 'review';
+    const payload = {
+      id,
+      scope: 'gyros',
+      name,
+      legalName: existing?.legalName || '',
+      cnpj: existing?.cnpj || '',
+      sellerName: existing?.sellerName || '',
+      sellerPhone: existing?.sellerPhone || '',
+      sellerEmail: existing?.sellerEmail || '',
+      address: existing?.address || '',
+      cep: existing?.cep || '',
+      city: existing?.city || '',
+      state: existing?.state || '',
+      pixKey: existing?.pixKey || '',
+      pixKeyType: existing?.pixKeyType || 'aleatoria',
+      paymentMethods: normalizePaymentMethods(existing?.paymentMethods || ['PIX']),
+      notes: existing?.notes || '',
+      evidenceType: existing?.evidenceType || defaultEvidenceType,
+      evidenceSource: existing?.evidenceSource || (defaultEvidenceType === 'documented' ? 'Fornecedor identificado em nota, lista de compras ou orçamento' : defaultEvidenceType === 'estimated' ? 'Fornecedor ligado a custos pesquisados / estimados' : 'Fornecedor inferido a partir da base atual; revisar com documento ou contato')
+    };
+    if (existing) Object.assign(existing, payload);
+    else target.suppliers.push(payload);
+  });
+
+  const evidencePriority = { documented: 3, review: 2, manual: 2, estimated: 1 };
+  const mergedSuppliers = [];
+  const supplierAliasMap = new Map();
+  (target.suppliers || []).forEach(supplier => {
+    const key = slugify(supplier.name);
+    const existing = mergedSuppliers.find(item => slugify(item.name) === key);
+    if (!existing) {
+      mergedSuppliers.push(supplier);
+      return;
+    }
+    const keepExisting = (evidencePriority[existing.evidenceType] || 0) >= (evidencePriority[supplier.evidenceType] || 0);
+    const primary = keepExisting ? existing : supplier;
+    const secondary = keepExisting ? supplier : existing;
+    Object.keys(secondary).forEach(field => {
+      const current = primary[field];
+      const incoming = secondary[field];
+      if ((current === '' || current == null || (Array.isArray(current) && !current.length)) && incoming != null && incoming !== '' && (!Array.isArray(incoming) || incoming.length)) {
+        primary[field] = incoming;
+      }
+    });
+    primary.paymentMethods = normalizePaymentMethods([...(primary.paymentMethods || []), ...(secondary.paymentMethods || [])]);
+    supplierAliasMap.set(secondary.id, primary.id);
+    if (!keepExisting) {
+      const idx = mergedSuppliers.indexOf(existing);
+      if (idx >= 0) mergedSuppliers[idx] = primary;
+    }
+  });
+  target.suppliers = mergedSuppliers;
+  if (supplierAliasMap.size) {
+    (target.purchaseOrders || []).forEach(order => {
+      if (supplierAliasMap.has(order.supplierId)) order.supplierId = supplierAliasMap.get(order.supplierId);
+    });
+    (target.purchaseItems || []).forEach(item => {
+      if (supplierAliasMap.has(item.supplierId)) item.supplierId = supplierAliasMap.get(item.supplierId);
+    });
+    (target.inputs || []).forEach(item => {
+      if (supplierAliasMap.has(item.supplierId)) item.supplierId = supplierAliasMap.get(item.supplierId);
+    });
+  }
+
+  if (!target.purchaseOrders.length && !target.purchaseItems.length) {
+    target.suppliers.forEach(supplier => {
+      const linkedIngredients = (target.ingredients || []).filter(item => item.supplier === supplier.name && procurementEvidenceType(item) === 'documented');
+      const linkedPackaging = (target.packaging || []).filter(item => item.supplier === supplier.name && procurementEvidenceType(item) === 'documented');
+      const linked = [...linkedIngredients.map(item => ({ ...item, recordType: 'ingredients' })), ...linkedPackaging.map(item => ({ ...item, recordType: 'packaging' }))];
+      if (!linked.length) return;
+      const orderId = `ord_import_${supplier.id}`;
+      target.purchaseOrders.push({
+        id: orderId,
+        scope: supplier.scope || 'gyros',
+        supplierId: supplier.id,
+        label: 'Base importada do PWA',
+        date: '',
+        documentNumber: '',
+        paymentMethod: '',
+        paymentStatus: 'pending',
+        totalAmount: linked.reduce((sum, item) => sum + num(item.purchaseCost), 0),
+        notes: 'Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.',
+        evidenceType: 'documented',
+        evidenceSource: 'Lista de compras, notas e custos oficiais já incorporados na base'
+      });
+      linked.forEach(item => {
+        target.purchaseItems.push({
+          id: `pit_${slugify(item.id)}`,
+          orderId,
+          supplierId: supplier.id,
+          resourceType: item.recordType === 'ingredients' ? 'ingredient' : 'packaging',
+          resourceId: item.id,
+          description: item.name,
+          qty: num(item.purchaseQty),
+          unit: item.baseUnit || 'un',
+          unitPrice: num(item.purchaseCost) / Math.max(1, num(item.purchaseQty)),
+          totalPrice: num(item.purchaseCost),
+          evidenceType: procurementEvidenceType(item),
+          evidenceSource: item.sourceReference || 'Lista de compras, notas e custos oficiais já incorporados na base'
+        });
+      });
+    });
+  }
+
+  return target;
 }
 
 function isLocalDevHost() {
@@ -879,14 +1077,76 @@ function resourceSubtitle(tab) {
     ingredients: 'Preço de compra, quantidade base, perdas e custo unitário.',
     recipes: 'Preparos com rendimento. Ex.: vinagrete, maionese, bases.',
     packaging: 'Tudo que entra no CMV final além da comida.',
+    suppliers: 'Quem fornece, como recebe e o que já foi comprado com custo comprovado ou estimado.',
+    inputs: 'Notas, orçamentos, pedidos, comprovantes e listas que sustentam os custos.',
     fixedCosts: 'Rateio mensal que sobe para o custo final dos itens.',
     settings: 'Markup padrão, escopo das operações e rateio dos custos compartilhados.'
   }[tab] || '';
 }
 
+function evidenceTag(record = {}) {
+  const type = procurementEvidenceType(record);
+  return `<span class="tag ${procurementEvidenceClass(type)}">${procurementEvidenceLabel(type)}</span>`;
+}
+
+function supplierLinkedRecords(supplier) {
+  if (!supplier) return [];
+  return [
+    ...visibleRecords('ingredients').filter(item => String(item.supplier || '').trim() === supplier.name).map(item => ({ type: 'ingredient', item })),
+    ...visibleRecords('packaging').filter(item => String(item.supplier || '').trim() === supplier.name).map(item => ({ type: 'packaging', item }))
+  ];
+}
+
+function supplierOrders(supplierId) {
+  return (db.purchaseOrders || []).filter(order => order.supplierId === supplierId);
+}
+
+function supplierOrderItems(orderId) {
+  return (db.purchaseItems || []).filter(item => item.orderId === orderId);
+}
+
+function supplierInputs(supplier) {
+  if (!supplier) return [];
+  return (db.inputs || []).filter(item => item.supplierId === supplier.id || slugify(item.supplierName || '') === slugify(supplier.name));
+}
+
+function paymentStatusLabel(value='') {
+  return {
+    pending: 'Pendente',
+    pendente: 'Pendente',
+    scheduled: 'Agendado',
+    agendado: 'Agendado',
+    paid: 'Pago',
+    pago: 'Pago'
+  }[value] || 'Pendente';
+}
+
+function inputTypeLabel(value='') {
+  return {
+    invoice: 'Nota fiscal',
+    purchase_list: 'Lista de compras',
+    quote: 'Orçamento',
+    payment_receipt: 'Comprovante',
+    order: 'Pedido',
+    screenshot: 'Captura / print',
+    other: 'Outro'
+  }[value] || 'Outro';
+}
+
+function inputChannelLabel(value='') {
+  return {
+    online: 'Online',
+    physical_store: 'Loja física',
+    whatsapp: 'WhatsApp',
+    email: 'E-mail',
+    phone: 'Telefone',
+    other: 'Outro'
+  }[value] || 'Outro';
+}
+
 function renderIngredientDetailHtml(item) {
   if (!item) return '<div class="empty">Selecione um ingrediente.</div>';
-  return `<div class="detail-header"><div><div class="legend"><span class="tag">Ingrediente</span>${scopeTag(item.scope || legacyScopeForRecord('ingredients', item))}</div><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.notes||'')}</p></div><div class="detail-actions"><button class="btn ghost" data-action="edit-resource" data-type="ingredients" data-id="${item.id}">Editar</button><button class="btn danger" data-action="delete-resource" data-type="ingredients" data-id="${item.id}">Excluir</button></div></div><div class="info-grid"><div class="info-cell"><div class="k">Fornecedor</div><div class="v">${escapeHtml(item.supplier||'—')}</div></div><div class="info-cell"><div class="k">Unidade base</div><div class="v">${item.baseUnit}</div></div><div class="info-cell"><div class="k">Preço de compra</div><div class="v">${brl(item.purchaseCost)}</div></div><div class="info-cell"><div class="k">Quantidade do pacote</div><div class="v">${item.purchaseQty} ${item.baseUnit}</div></div><div class="info-cell"><div class="k">Perda</div><div class="v">${pct(item.wastePct)}</div></div><div class="info-cell"><div class="k">Custo unitário real</div><div class="v">${brl(ingredientUnitCost(item))}</div></div></div>`;
+  return `<div class="detail-header"><div><div class="legend"><span class="tag">Ingrediente</span>${scopeTag(item.scope || legacyScopeForRecord('ingredients', item))}${evidenceTag(item)}</div><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.notes||'')}</p></div><div class="detail-actions"><button class="btn ghost" data-action="edit-resource" data-type="ingredients" data-id="${item.id}">Editar</button><button class="btn danger" data-action="delete-resource" data-type="ingredients" data-id="${item.id}">Excluir</button></div></div><div class="info-grid"><div class="info-cell"><div class="k">Fornecedor</div><div class="v">${escapeHtml(item.supplier||'—')}</div></div><div class="info-cell"><div class="k">Modelo de compra</div><div class="v" style="font-size:15px">${supplierModeLabel(item.supplierMode)}</div></div><div class="info-cell"><div class="k">Unidade base</div><div class="v">${item.baseUnit}</div></div><div class="info-cell"><div class="k">Preço de compra</div><div class="v">${brl(item.purchaseCost)}</div></div><div class="info-cell"><div class="k">Quantidade do pacote</div><div class="v">${item.purchaseQty} ${item.baseUnit}</div></div><div class="info-cell"><div class="k">Perda</div><div class="v">${pct(item.wastePct)}</div></div><div class="info-cell"><div class="k">Custo unitário real</div><div class="v">${brl(ingredientUnitCost(item))}</div></div></div><div class="pill-line"><span class="tag ${procurementEvidenceClass(procurementEvidenceType(item))}">${escapeHtml(item.sourceReference || 'Sem referência')}</span></div>`;
 }
 function renderRecipeDetailHtml(item) {
   if (!item) return '<div class="empty">Selecione um preparo.</div>';
@@ -896,7 +1156,27 @@ function renderRecipeDetailHtml(item) {
 }
 function renderPackagingDetailHtml(item) {
   if (!item) return '<div class="empty">Selecione uma embalagem.</div>';
-  return `<div class="detail-header"><div><div class="legend"><span class="tag">Embalagem</span>${scopeTag(item.scope || legacyScopeForRecord('packaging', item))}</div><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.notes||'')}</p></div><div class="detail-actions"><button class="btn ghost" data-action="edit-resource" data-type="packaging" data-id="${item.id}">Editar</button><button class="btn danger" data-action="delete-resource" data-type="packaging" data-id="${item.id}">Excluir</button></div></div><div class="info-grid"><div class="info-cell"><div class="k">Pacote de compra</div><div class="v">${item.purchaseQty} un</div></div><div class="info-cell"><div class="k">Preço do pacote</div><div class="v">${brl(item.purchaseCost)}</div></div><div class="info-cell"><div class="k">Custo unitário</div><div class="v">${brl(packagingUnitCost(item))}</div></div><div class="info-cell"><div class="k">Tipo</div><div class="v">Descartável</div></div></div>`;
+  const evidenceType = procurementEvidenceType(item);
+  return `<div class="detail-header"><div><div class="legend"><span class="tag">Embalagem</span>${scopeTag(item.scope || legacyScopeForRecord('packaging', item))}${evidenceTag(item)}</div><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.notes||'')}</p></div><div class="detail-actions"><button class="btn ghost" data-action="edit-resource" data-type="packaging" data-id="${item.id}">Editar</button><button class="btn danger" data-action="delete-resource" data-type="packaging" data-id="${item.id}">Excluir</button></div></div><div class="info-grid"><div class="info-cell"><div class="k">Fornecedor</div><div class="v">${escapeHtml(item.supplier || '—')}</div></div><div class="info-cell"><div class="k">Modelo de compra</div><div class="v" style="font-size:15px">${supplierModeLabel(item.supplierMode)}</div></div><div class="info-cell"><div class="k">Pacote de compra</div><div class="v">${item.purchaseQty} un</div></div><div class="info-cell"><div class="k">Preço do pacote</div><div class="v">${brl(item.purchaseCost)}</div></div><div class="info-cell"><div class="k">Custo unitário</div><div class="v">${brl(packagingUnitCost(item))}</div></div><div class="info-cell"><div class="k">Tipo</div><div class="v">Descartável</div></div><div class="info-cell"><div class="k">Procedência do custo</div><div class="v" style="font-size:15px">${procurementEvidenceLabel(evidenceType)}</div></div></div><div class="pill-line"><span class="tag ${procurementEvidenceClass(evidenceType)}">${escapeHtml(item.sourceReference || 'Sem referência')}</span></div>`;
+}
+
+function renderInputDetailHtml(item) {
+  if (!item) return '<div class="empty">Selecione um input.</div>';
+  const supplier = item.supplierId ? byId('suppliers', item.supplierId) : null;
+  const fileHref = item.filePath || item.fileUrl || '';
+  const fileOrigin = item.filePath ? 'Arquivo local do projeto' : item.fileUrl ? 'Link externo' : 'Sem arquivo';
+  const fileActions = fileHref
+    ? `<div class="pill-line" style="margin-top:12px;"><a class="btn ghost" href="${escapeHtml(fileHref)}" target="_blank" rel="noopener noreferrer">Abrir ${item.filePath ? 'arquivo' : 'link'}</a></div>`
+    : '';
+  return `<div class="detail-header"><div><div class="legend"><span class="tag">Input</span>${scopeTag(item.scope || 'gyros')}${evidenceTag(item)}</div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.notes || 'Registro de apoio para nota, orçamento, pedido, comprovante ou lista de compras.')}</p></div><div class="detail-actions"><button class="btn ghost" data-action="edit-resource" data-type="inputs" data-id="${item.id}">Editar</button><button class="btn danger" data-action="delete-resource" data-type="inputs" data-id="${item.id}">Excluir</button></div></div><div class="info-grid"><div class="info-cell"><div class="k">Tipo</div><div class="v">${inputTypeLabel(item.inputType)}</div></div><div class="info-cell"><div class="k">Canal</div><div class="v">${inputChannelLabel(item.sourceChannel)}</div></div><div class="info-cell"><div class="k">Fornecedor</div><div class="v">${escapeHtml(supplier?.name || item.supplierName || '—')}</div></div><div class="info-cell"><div class="k">Documento / pedido</div><div class="v">${escapeHtml(item.documentNumber || '—')}</div></div><div class="info-cell"><div class="k">Data</div><div class="v">${escapeHtml(item.date || '—')}</div></div><div class="info-cell"><div class="k">Pagamento</div><div class="v">${escapeHtml(item.paymentMethod || '—')}${item.paymentStatus ? ` • ${paymentStatusLabel(item.paymentStatus)}` : ''}</div></div><div class="info-cell"><div class="k">Valor total</div><div class="v">${item.totalAmount ? brl(item.totalAmount) : '—'}</div></div><div class="info-cell"><div class="k">Arquivo / referência</div><div class="v" style="font-size:15px">${escapeHtml(item.fileLabel || item.filePath || item.fileUrl || '—')}</div><div class="small muted" style="margin-top:6px;">${escapeHtml(fileOrigin)}</div></div></div>${fileActions}<div class="pill-line"><span class="tag ${procurementEvidenceClass(item.evidenceType || procurementEvidenceType(item))}">${escapeHtml(item.evidenceSource || 'Sem referência')}</span></div>`;
+}
+
+function renderSupplierDetailHtml(item) {
+  if (!item) return '<div class="empty">Selecione um fornecedor.</div>';
+  const linked = supplierLinkedRecords(item);
+  const orders = supplierOrders(item.id);
+  const inputs = supplierInputs(item);
+  return `<div class="detail-header"><div><div class="legend"><span class="tag">Fornecedor</span>${scopeTag(item.scope || 'gyros')}${evidenceTag(item)}</div><h3>${escapeHtml(item.name)}</h3><p>${escapeHtml(item.notes || 'Cadastro de fornecedor, vendedor e formas de pagamento.')}</p></div><div class="detail-actions"><button class="btn ghost" data-action="edit-resource" data-type="suppliers" data-id="${item.id}">Editar</button><button class="btn danger" data-action="delete-resource" data-type="suppliers" data-id="${item.id}">Excluir</button></div></div><div class="info-grid"><div class="info-cell"><div class="k">Razão social</div><div class="v">${escapeHtml(item.legalName || '—')}</div></div><div class="info-cell"><div class="k">CNPJ</div><div class="v">${escapeHtml(item.cnpj || '—')}</div></div><div class="info-cell"><div class="k">Vendedor</div><div class="v">${escapeHtml(item.sellerName || '—')}</div></div><div class="info-cell"><div class="k">Contato</div><div class="v">${escapeHtml(item.sellerPhone || item.sellerEmail || '—')}</div></div><div class="info-cell"><div class="k">Endereço</div><div class="v" style="font-size:15px">${escapeHtml(item.address || '—')}</div></div><div class="info-cell"><div class="k">CEP / cidade</div><div class="v" style="font-size:15px">${escapeHtml([item.cep, item.city, item.state].filter(Boolean).join(' • ') || '—')}</div></div><div class="info-cell"><div class="k">Chave PIX</div><div class="v">${escapeHtml(item.pixKey || '—')}</div></div><div class="info-cell"><div class="k">Tipo da chave PIX</div><div class="v">${escapeHtml(item.pixKeyType || '—')}</div></div><div class="info-cell"><div class="k">Formas de pagamento</div><div class="v" style="font-size:15px">${escapeHtml(normalizePaymentMethods(item.paymentMethods).join(', ') || '—')}</div></div><div class="info-cell"><div class="k">Origem do cadastro</div><div class="v" style="font-size:15px">${procurementEvidenceLabel(item.evidenceType || procurementEvidenceType(item))}</div></div></div><div class="pill-line"><span class="tag ${procurementEvidenceClass(item.evidenceType || procurementEvidenceType(item))}">${escapeHtml(item.evidenceSource || 'Sem referência')}</span></div><div class="stack" style="margin-top:16px;"><section class="evidence-panel ${procurementEvidenceClass(item.evidenceType || procurementEvidenceType(item))}"><h3 style="font-size:15px; margin:0 0 10px;">Itens vinculados</h3>${linked.length ? linked.map(({ type, item: linkedItem }) => `<div class="kpi-row"><div><strong>${escapeHtml(linkedItem.name)}</strong><div class="small muted">${type === 'ingredient' ? 'Ingrediente' : 'Embalagem'} • ${supplierModeLabel(linkedItem.supplierMode)} • ${escapeHtml(linkedItem.notes || '')}</div><div class="pill-line">${evidenceTag(linkedItem)}</div></div><div style="text-align:right"><div><strong>${type === 'ingredient' ? brl(ingredientUnitCost(linkedItem)) : brl(packagingUnitCost(linkedItem))}</strong></div><div class="small muted">${escapeHtml(linkedItem.sourceReference || 'Sem referência')}</div></div></div>`).join('') : '<div class="empty">Nenhum ingrediente ou embalagem vinculado a este fornecedor.</div>'}</section><section class="panel"><div class="panel-head"><div><h3>Inputs vinculados</h3><p>Arquivos, capturas, notas, orçamentos e listas associados a este fornecedor.</p></div></div><div class="panel-body kpi-list">${inputs.length ? inputs.map(input => `<div class="cost-node ${procurementEvidenceClass(input.evidenceType || procurementEvidenceType(input))}"><div class="top"><div><div class="name">${escapeHtml(input.title)}</div><div class="meta">${inputTypeLabel(input.inputType)} • ${inputChannelLabel(input.sourceChannel)} • ${escapeHtml(input.documentNumber || 'Sem número')} • ${escapeHtml(input.date || 'Sem data')}</div></div><div><strong>${input.totalAmount ? brl(input.totalAmount) : '—'}</strong></div></div>${(input.filePath || input.fileUrl) ? `<div class="pill-line" style="margin-top:10px;"><a class="btn ghost" href="${escapeHtml(input.filePath || input.fileUrl)}" target="_blank" rel="noopener noreferrer">Abrir ${input.filePath ? 'arquivo' : 'link'}</a></div>` : ''}</div>`).join('') : '<div class="empty">Nenhum input vinculado ainda para este fornecedor.</div>'}</div></section><section class="panel"><div class="panel-head"><div><h3>Pedidos / histórico de compra</h3><p>Registro importado da base atual para começar o histórico.</p></div></div><div class="panel-body kpi-list">${orders.length ? orders.map(order => `<div class="cost-node ${procurementEvidenceClass(order.evidenceType || procurementEvidenceType(order))}"><div class="top"><div><div class="name">${escapeHtml(order.label || 'Pedido')}</div><div class="meta">${escapeHtml(order.date || 'Sem data')} • ${escapeHtml(order.documentNumber || 'Sem documento')} • ${escapeHtml(order.paymentMethod || 'Forma não informada')} • ${paymentStatusLabel(order.paymentStatus)}</div></div><div><strong>${brl(order.totalAmount)}</strong></div></div><div class="children">${supplierOrderItems(order.id).map(row => `<div class="cost-node ${procurementEvidenceClass(row.evidenceType || procurementEvidenceType(row))}"><div class="top"><div><div class="name">${escapeHtml(row.description)}</div><div class="meta">${escapeHtml(row.qty)} ${escapeHtml(row.unit || 'un')} • unit ${brl(row.unitPrice)}</div></div><div><strong>${brl(row.totalPrice)}</strong></div></div></div>`).join('')}</div></div>`).join('') : '<div class="empty">Nenhum pedido registrado ainda para este fornecedor.</div>'}</div></section></div>`;
 }
 function renderFixedCostDetailHtml(item) {
   if (!item) return '<div class="empty">Selecione um custo fixo.</div>';
@@ -914,13 +1194,19 @@ function renderSettingsHtml() {
 
 function renderResourceTable(tab) {
   if (tab === 'ingredients') {
-    return `<table><thead><tr><th>Ingrediente</th><th>Escopo</th><th>Unidade</th><th>Custo unitário</th><th>Perda</th></tr></thead><tbody>${visibleRecords('ingredients').map(item => `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.name)}</strong><div class="small muted">${escapeHtml(item.supplier||'')}</div></td><td>${scopeTag(item.scope || legacyScopeForRecord('ingredients', item))}</td><td>${item.baseUnit}</td><td>${brl(ingredientUnitCost(item))}</td><td>${pct(item.wastePct)}</td></tr>`).join('')}</tbody></table>`;
+    return `<table><thead><tr><th>Ingrediente</th><th>Escopo</th><th>Procedência</th><th>Fornecedor</th><th>Unidade</th><th>Custo unitário</th><th>Perda</th></tr></thead><tbody>${visibleRecords('ingredients').map(item => `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.name)}</strong><div class="small muted">${supplierModeLabel(item.supplierMode)}</div></td><td>${scopeTag(item.scope || legacyScopeForRecord('ingredients', item))}</td><td>${evidenceTag(item)}</td><td>${escapeHtml(item.supplier||'')}</td><td>${item.baseUnit}</td><td>${brl(ingredientUnitCost(item))}</td><td>${pct(item.wastePct)}</td></tr>`).join('')}</tbody></table>`;
   }
   if (tab === 'recipes') {
     return `<table><thead><tr><th>Preparo</th><th>Escopo</th><th>Rendimento</th><th>Custo por unidade</th><th>Componentes</th></tr></thead><tbody>${visibleRecords('recipes').map(item => { const node = resolveNode('recipe', item.id, 1, []); return `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.name)}</strong><div class="small muted">${escapeHtml(item.storage||'')}</div></td><td>${scopeTag(item.scope || legacyScopeForRecord('recipes', item))}</td><td>${item.yieldQty} ${item.yieldUnit}</td><td>${brl(node.unitCost)}</td><td>${item.components.length}</td></tr>`; }).join('')}</tbody></table>`;
   }
   if (tab === 'packaging') {
-    return `<table><thead><tr><th>Embalagem</th><th>Escopo</th><th>Pacote</th><th>Custo unitário</th><th>Nota</th></tr></thead><tbody>${visibleRecords('packaging').map(item => `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.name)}</strong></td><td>${scopeTag(item.scope || legacyScopeForRecord('packaging', item))}</td><td>${item.purchaseQty} un</td><td>${brl(packagingUnitCost(item))}</td><td class="small muted">${escapeHtml(item.notes||'')}</td></tr>`).join('')}</tbody></table>`;
+    return `<table><thead><tr><th>Embalagem</th><th>Escopo</th><th>Procedência</th><th>Fornecedor</th><th>Pacote</th><th>Custo unitário</th><th>Nota</th></tr></thead><tbody>${visibleRecords('packaging').map(item => `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.name)}</strong><div class="small muted">${supplierModeLabel(item.supplierMode)}</div></td><td>${scopeTag(item.scope || legacyScopeForRecord('packaging', item))}</td><td>${evidenceTag(item)}</td><td>${escapeHtml(item.supplier || '')}</td><td>${item.purchaseQty} un</td><td>${brl(packagingUnitCost(item))}</td><td class="small muted">${escapeHtml(item.notes||'')}</td></tr>`).join('')}</tbody></table>`;
+  }
+  if (tab === 'suppliers') {
+    return `<table><thead><tr><th>Fornecedor</th><th>Procedência</th><th>Registros</th><th>Vendedor</th><th>PIX</th><th>Pagamento</th></tr></thead><tbody>${visibleRecords('suppliers').map(item => { const linkedCount = supplierLinkedRecords(item).length; return `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.name)}</strong><div class="small muted">${escapeHtml(item.legalName || item.cnpj || '')}</div></td><td>${evidenceTag(item)}</td><td>${linkedCount}</td><td>${escapeHtml(item.sellerName || '—')}</td><td>${escapeHtml(item.pixKey || '—')}</td><td class="small muted">${escapeHtml(normalizePaymentMethods(item.paymentMethods).join(', ') || '—')}</td></tr>`; }).join('')}</tbody></table>`;
+  }
+  if (tab === 'inputs') {
+    return `<table><thead><tr><th>Input</th><th>Tipo</th><th>Canal</th><th>Fornecedor</th><th>Data</th><th>Valor</th><th>Procedência</th></tr></thead><tbody>${visibleRecords('inputs').map(item => `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.title)}</strong><div class="small muted">${escapeHtml(item.documentNumber || item.fileLabel || '')}</div></td><td>${inputTypeLabel(item.inputType)}</td><td>${inputChannelLabel(item.sourceChannel)}</td><td>${escapeHtml(byId('suppliers', item.supplierId)?.name || item.supplierName || '—')}</td><td>${escapeHtml(item.date || '—')}</td><td>${item.totalAmount ? brl(item.totalAmount) : '—'}</td><td>${evidenceTag(item)}</td></tr>`).join('')}</tbody></table>`;
   }
   if (tab === 'fixedCosts') {
     return `<table><thead><tr><th>Custo fixo</th><th>Escopo</th><th>Valor mensal</th><th>Observação</th></tr></thead><tbody>${visibleRecords('fixedCosts').map(item => `<tr data-resource-id="${item.id}" class="${state.selectedResourceId===item.id?'active':''}"><td><strong>${escapeHtml(item.name)}</strong></td><td>${scopeTag(item.scope || legacyScopeForRecord('fixedCosts', item))}</td><td>${brl(item.amount)}</td><td class="small muted">${escapeHtml(item.notes||'')}</td></tr>`).join('')}</tbody></table>`;
@@ -929,13 +1215,15 @@ function renderResourceTable(tab) {
 }
 
 function renderResources() {
-  const tabs = [['ingredients','Ingredientes'],['recipes','Preparos'],['packaging','Embalagens'],['fixedCosts','Custos fixos'],['settings','Parâmetros']];
+  const tabs = [['ingredients','Ingredientes'],['recipes','Preparos'],['packaging','Embalagens'],['suppliers','Fornecedores'],['inputs','Inputs'],['fixedCosts','Custos fixos'],['settings','Parâmetros']];
   const list = state.resourceTab === 'settings' ? [] : visibleRecords(state.resourceTab, state.operationView);
   if (state.resourceTab !== 'settings' && (!state.selectedResourceId || !list.find(x => x.id === state.selectedResourceId))) state.selectedResourceId = list[0]?.id || null;
   let detailHtml = '<div class="empty">Selecione um registro.</div>';
   if (state.resourceTab === 'ingredients') detailHtml = state.selectedResourceId ? renderIngredientDetailHtml(byId('ingredients', state.selectedResourceId)) : detailHtml;
   if (state.resourceTab === 'recipes') detailHtml = state.selectedResourceId ? renderRecipeDetailHtml(byId('recipes', state.selectedResourceId)) : detailHtml;
   if (state.resourceTab === 'packaging') detailHtml = state.selectedResourceId ? renderPackagingDetailHtml(byId('packaging', state.selectedResourceId)) : detailHtml;
+  if (state.resourceTab === 'suppliers') detailHtml = state.selectedResourceId ? renderSupplierDetailHtml(byId('suppliers', state.selectedResourceId)) : detailHtml;
+  if (state.resourceTab === 'inputs') detailHtml = state.selectedResourceId ? renderInputDetailHtml(byId('inputs', state.selectedResourceId)) : detailHtml;
   if (state.resourceTab === 'fixedCosts') detailHtml = state.selectedResourceId ? renderFixedCostDetailHtml(byId('fixedCosts', state.selectedResourceId)) : detailHtml;
   if (state.resourceTab === 'settings') detailHtml = renderSettingsHtml();
 
@@ -997,6 +1285,12 @@ function bindSettingsActions() {
 async function deleteRecord(type, id, message, subtitle='') {
   const confirmed = await askConfirm({ title:'Confirmar exclusão', subtitle, message });
   if (!confirmed) return;
+  if (type === 'suppliers') {
+    const orderIds = (db.purchaseOrders || []).filter(item => item.supplierId === id).map(item => item.id);
+    db.purchaseOrders = (db.purchaseOrders || []).filter(item => item.supplierId !== id);
+    db.purchaseItems = (db.purchaseItems || []).filter(item => !orderIds.includes(item.orderId) && item.supplierId !== id);
+    (db.inputs || []).forEach(item => { if (item.supplierId === id) item.supplierId = ''; });
+  }
   db[type] = db[type].filter(x => x.id !== id);
   if (type === 'products' && state.selectedProductId === id) state.selectedProductId = null;
   if (type === state.resourceTab && state.selectedResourceId === id) state.selectedResourceId = null;
@@ -1006,19 +1300,21 @@ async function deleteRecord(type, id, message, subtitle='') {
 
 function defaultRecord(type) {
   const defaultScope = 'gyros';
-  if (type === 'ingredients') return { id:uid('ing'), scope:defaultScope, name:'', baseUnit:'g', purchaseQty:1000, purchaseCost:0, wastePct:0, supplier:'', notes:'' };
+  if (type === 'ingredients') return { id:uid('ing'), scope:defaultScope, name:'', baseUnit:'g', purchaseQty:1000, purchaseCost:0, wastePct:0, supplier:'', supplierMode:'single', sourceType:'documented', sourceReference:'Lista de compras, nota fiscal ou orçamento', notes:'' };
   if (type === 'recipes') return { id:uid('rec'), scope:defaultScope, name:'', yieldQty:1, yieldUnit:'un', storage:'', notes:'', components:[] };
-  if (type === 'packaging') return { id:uid('pkg'), scope:defaultScope, name:'', purchaseQty:100, purchaseCost:0, notes:'' };
+  if (type === 'packaging') return { id:uid('pkg'), scope:defaultScope, name:'', purchaseQty:100, purchaseCost:0, supplier:'', supplierMode:'single', sourceType:'documented', sourceReference:'Lista de compras, nota fiscal ou orçamento', notes:'' };
+  if (type === 'suppliers') return { id:uid('sup'), scope:defaultScope, name:'', legalName:'', cnpj:'', sellerName:'', sellerPhone:'', sellerEmail:'', address:'', cep:'', city:'', state:'', pixKey:'', pixKeyType:'aleatoria', paymentMethods:['PIX'], notes:'', evidenceType:'review', evidenceSource:'Cadastro criado manualmente; revisar com nota, orçamento ou contato do fornecedor' };
+  if (type === 'inputs') return { id:uid('inp'), scope:defaultScope, title:'', inputType:'other', sourceChannel:'other', supplierId:'', supplierName:'', documentNumber:'', date:'', paymentMethod:'', paymentStatus:'pending', totalAmount:0, fileLabel:'', filePath:'', fileUrl:'', notes:'', evidenceType:'review', evidenceSource:'Input criado manualmente; anexar referência ou caminho do arquivo' };
   if (type === 'fixedCosts') return { id:uid('fix'), scope:defaultScope, name:'', amount:0, notes:'' };
   if (type === 'products') return { id:uid('prd'), scope:defaultScope, name:'', categoryId:db.categories.find(c=>c.active!==false)?.id || '', type:'menu', pricingMode:'auto', salePrice:0, active:true, includeInCatalogCount:true, notes:'', components:[], addons:[] };
   return { id:uid('row') };
 }
 
 function modalEntityName(type) {
-  return { ingredients:'ingrediente', recipes:'preparo', packaging:'embalagem', fixedCosts:'custo fixo', products:'item / combo' }[type] || 'cadastro';
+  return { ingredients:'ingrediente', recipes:'preparo', packaging:'embalagem', suppliers:'fornecedor', inputs:'input', fixedCosts:'custo fixo', products:'item / combo' }[type] || 'cadastro';
 }
 function modalSubtitle(type) {
-  return { ingredients:'Defina custo de compra, unidade-base e perdas.', recipes:'Cadastre rendimento e componentes do preparo.', packaging:'Toda embalagem que entra no custo final.', fixedCosts:'Valores mensais que serão rateados.', products:'Item final, extra, bebida, base interna ou combo. O preco pode seguir a regra automatica ou ser manual.' }[type] || '';
+  return { ingredients:'Defina custo de compra, unidade-base, fornecedor e procedência.', recipes:'Cadastre rendimento e componentes do preparo.', packaging:'Toda embalagem que entra no custo final, com fornecedor e procedência.', suppliers:'Dados do fornecedor, vendedor, PIX e formas de pagamento.', inputs:'Cadastre notas, prints, listas, pedidos, comprovantes e referências do custo.', fixedCosts:'Valores mensais que serão rateados.', products:'Item final, extra, bebida, base interna ou combo. O preco pode seguir a regra automatica ou ser manual.' }[type] || '';
 }
 
 function scopeSelectOptions(selectedScope = 'gyros', fixedCost = false) {
@@ -1099,8 +1395,10 @@ function modalComplexForm(data, isProduct) {
 }
 
 function modalBodyHtml(type, data) {
-  if (type === 'ingredients') return `<div class="form-grid"><div class="field"><label>Nome</label><input data-field="name" value="${escapeHtml(data.name)}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope)}</select></div><div class="field"><label>Fornecedor</label><input data-field="supplier" value="${escapeHtml(data.supplier||'')}"></div><div class="field"><label>Unidade-base</label><select data-field="baseUnit">${['g','ml','un'].map(u => `<option value="${u}" ${data.baseUnit===u?'selected':''}>${u}</option>`).join('')}</select></div><div class="field"><label>Quantidade do pacote</label><input type="number" step="0.01" data-field="purchaseQty" value="${data.purchaseQty}"></div><div class="field"><label>Preço de compra</label><input type="number" step="0.01" data-field="purchaseCost" value="${data.purchaseCost}"></div><div class="field"><label>Perda (%)</label><input type="number" step="0.01" data-field="wastePct" value="${data.wastePct}"></div><div class="field" style="grid-column:1/-1"><label>Notas</label><textarea data-field="notes">${escapeHtml(data.notes||'')}</textarea></div></div>`;
-  if (type === 'packaging') return `<div class="form-grid"><div class="field"><label>Nome</label><input data-field="name" value="${escapeHtml(data.name)}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope)}</select></div><div class="field"><label>Quantidade do pacote</label><input type="number" step="1" data-field="purchaseQty" value="${data.purchaseQty}"></div><div class="field"><label>Preço do pacote</label><input type="number" step="0.01" data-field="purchaseCost" value="${data.purchaseCost}"></div><div class="field" style="grid-column:1/-1"><label>Notas</label><textarea data-field="notes">${escapeHtml(data.notes||'')}</textarea></div></div>`;
+  if (type === 'ingredients') return `<div class="form-grid"><div class="field"><label>Nome</label><input data-field="name" value="${escapeHtml(data.name)}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope)}</select></div><div class="field"><label>Fornecedor</label><input data-field="supplier" value="${escapeHtml(data.supplier||'')}"></div><div class="field"><label>Modelo de fornecedor</label><select data-field="supplierMode"><option value="single" ${data.supplierMode !== 'multiple' ? 'selected' : ''}>Fornecedor único</option><option value="multiple" ${data.supplierMode === 'multiple' ? 'selected' : ''}>Múltiplos fornecedores</option></select></div><div class="field"><label>Unidade-base</label><select data-field="baseUnit">${['g','ml','un'].map(u => `<option value="${u}" ${data.baseUnit===u?'selected':''}>${u}</option>`).join('')}</select></div><div class="field"><label>Quantidade do pacote</label><input type="number" step="0.01" data-field="purchaseQty" value="${data.purchaseQty}"></div><div class="field"><label>Preço de compra</label><input type="number" step="0.01" data-field="purchaseCost" value="${data.purchaseCost}"></div><div class="field"><label>Perda (%)</label><input type="number" step="0.01" data-field="wastePct" value="${data.wastePct}"></div><div class="field"><label>Procedência do custo</label><select data-field="sourceType"><option value="documented" ${data.sourceType === 'documented' ? 'selected' : ''}>Fonte real / comprovada</option><option value="manual" ${data.sourceType === 'manual' ? 'selected' : ''}>Manual / revisar</option><option value="estimated" ${data.sourceType === 'estimated' ? 'selected' : ''}>Pesquisado / estimado</option></select></div><div class="field" style="grid-column:1/-1"><label>Fonte / referência</label><input data-field="sourceReference" value="${escapeHtml(data.sourceReference || '')}" placeholder="Ex.: Nota fiscal 123, lista de compras, orçamento, informação manual"></div><div class="field" style="grid-column:1/-1"><label>Notas</label><textarea data-field="notes">${escapeHtml(data.notes||'')}</textarea></div></div>`;
+  if (type === 'packaging') return `<div class="form-grid"><div class="field"><label>Nome</label><input data-field="name" value="${escapeHtml(data.name)}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope)}</select></div><div class="field"><label>Fornecedor</label><input data-field="supplier" value="${escapeHtml(data.supplier||'')}"></div><div class="field"><label>Modelo de fornecedor</label><select data-field="supplierMode"><option value="single" ${data.supplierMode !== 'multiple' ? 'selected' : ''}>Fornecedor único</option><option value="multiple" ${data.supplierMode === 'multiple' ? 'selected' : ''}>Múltiplos fornecedores</option></select></div><div class="field"><label>Quantidade do pacote</label><input type="number" step="1" data-field="purchaseQty" value="${data.purchaseQty}"></div><div class="field"><label>Preço do pacote</label><input type="number" step="0.01" data-field="purchaseCost" value="${data.purchaseCost}"></div><div class="field"><label>Procedência do custo</label><select data-field="sourceType"><option value="documented" ${data.sourceType === 'documented' ? 'selected' : ''}>Fonte real / comprovada</option><option value="manual" ${data.sourceType === 'manual' ? 'selected' : ''}>Manual / revisar</option><option value="estimated" ${data.sourceType === 'estimated' ? 'selected' : ''}>Pesquisado / estimado</option></select></div><div class="field" style="grid-column:1/-1"><label>Fonte / referência</label><input data-field="sourceReference" value="${escapeHtml(data.sourceReference || '')}" placeholder="Ex.: Nota fiscal 123, lista de compras, orçamento, informação manual"></div><div class="field" style="grid-column:1/-1"><label>Notas</label><textarea data-field="notes">${escapeHtml(data.notes||'')}</textarea></div></div>`;
+  if (type === 'suppliers') return `<div class="form-grid"><div class="field"><label>Nome fantasia</label><input data-field="name" value="${escapeHtml(data.name)}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope)}</select></div><div class="field"><label>Razão social</label><input data-field="legalName" value="${escapeHtml(data.legalName || '')}"></div><div class="field"><label>CNPJ</label><input data-field="cnpj" value="${escapeHtml(data.cnpj || '')}"></div><div class="field"><label>Nome do vendedor</label><input data-field="sellerName" value="${escapeHtml(data.sellerName || '')}"></div><div class="field"><label>Telefone / WhatsApp</label><input data-field="sellerPhone" value="${escapeHtml(data.sellerPhone || '')}"></div><div class="field"><label>E-mail</label><input data-field="sellerEmail" value="${escapeHtml(data.sellerEmail || '')}"></div><div class="field"><label>Endereço</label><input data-field="address" value="${escapeHtml(data.address || '')}"></div><div class="field"><label>CEP</label><input data-field="cep" value="${escapeHtml(data.cep || '')}"></div><div class="field"><label>Cidade</label><input data-field="city" value="${escapeHtml(data.city || '')}"></div><div class="field"><label>UF</label><input data-field="state" value="${escapeHtml(data.state || '')}"></div><div class="field"><label>Chave PIX</label><input data-field="pixKey" value="${escapeHtml(data.pixKey || '')}"></div><div class="field"><label>Tipo da chave PIX</label><select data-field="pixKeyType">${['aleatoria','cnpj','cpf','email','telefone'].map(v => `<option value="${v}" ${data.pixKeyType===v?'selected':''}>${v}</option>`).join('')}</select></div><div class="field"><label>Formas de pagamento</label><input data-field="paymentMethods" value="${escapeHtml(normalizePaymentMethods(data.paymentMethods).join(', '))}" placeholder="PIX, Boleto, Cartão de crédito"></div><div class="field"><label>Procedência do cadastro</label><select data-field="evidenceType"><option value="documented" ${data.evidenceType === 'documented' ? 'selected' : ''}>Fonte real / comprovada</option><option value="review" ${data.evidenceType === 'review' ? 'selected' : ''}>Manual / revisar</option><option value="estimated" ${data.evidenceType === 'estimated' ? 'selected' : ''}>Pesquisado / estimado</option></select></div><div class="field"><label>Fonte / referência</label><input data-field="evidenceSource" value="${escapeHtml(data.evidenceSource || '')}" placeholder="Ex.: nota fiscal, orçamento, contato do vendedor"></div><div class="field" style="grid-column:1/-1"><label>Observações</label><textarea data-field="notes">${escapeHtml(data.notes||'')}</textarea></div></div><div class="note">Use <strong>Formas de pagamento</strong> para registrar PIX, boleto e cartão de crédito. O status do pagamento fica no histórico do pedido, como <strong>agendado</strong> ou <strong>pago</strong>.</div>`;
+  if (type === 'inputs') return `<div class="form-grid"><div class="field"><label>Título</label><input data-field="title" value="${escapeHtml(data.title || '')}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope)}</select></div><div class="field"><label>Tipo do input</label><select data-field="inputType">${[['invoice','Nota fiscal'],['purchase_list','Lista de compras'],['quote','Orçamento'],['payment_receipt','Comprovante'],['order','Pedido'],['screenshot','Captura / print'],['other','Outro']].map(([v,l]) => `<option value="${v}" ${data.inputType===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="field"><label>Canal</label><select data-field="sourceChannel">${[['online','Online'],['physical_store','Loja física'],['whatsapp','WhatsApp'],['email','E-mail'],['phone','Telefone'],['other','Outro']].map(([v,l]) => `<option value="${v}" ${data.sourceChannel===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="field"><label>Fornecedor vinculado</label><select data-field="supplierId"><option value="">Sem vínculo</option>${visibleRecords('suppliers').map(item => `<option value="${item.id}" ${data.supplierId===item.id?'selected':''}>${escapeHtml(item.name)}</option>`).join('')}</select></div><div class="field"><label>Nome livre do fornecedor</label><input data-field="supplierName" value="${escapeHtml(data.supplierName || '')}" placeholder="Use quando ainda não houver cadastro do fornecedor"></div><div class="field"><label>Número do documento</label><input data-field="documentNumber" value="${escapeHtml(data.documentNumber || '')}"></div><div class="field"><label>Data</label><input data-field="date" value="${escapeHtml(data.date || '')}" placeholder="YYYY-MM-DD"></div><div class="field"><label>Forma de pagamento</label><input data-field="paymentMethod" value="${escapeHtml(data.paymentMethod || '')}" placeholder="PIX, boleto, cartão..."></div><div class="field"><label>Status do pagamento</label><select data-field="paymentStatus">${[['pending','Pendente'],['scheduled','Agendado'],['paid','Pago']].map(([v,l]) => `<option value="${v}" ${data.paymentStatus===v?'selected':''}>${l}</option>`).join('')}</select></div><div class="field"><label>Valor total</label><input type="number" step="0.01" data-field="totalAmount" value="${num(data.totalAmount)}"></div><div class="field"><label>Nome do arquivo</label><input data-field="fileLabel" value="${escapeHtml(data.fileLabel || '')}" placeholder="Ex.: PV 10002.pdf"></div><div class="field"><label>Caminho do arquivo</label><input data-field="filePath" value="${escapeHtml(data.filePath || '')}" placeholder="/caminho/ou/pasta/do/arquivo"></div><div class="field"><label>URL / referência</label><input data-field="fileUrl" value="${escapeHtml(data.fileUrl || '')}" placeholder="Link do site, drive ou sistema"></div><div class="field"><label>Procedência</label><select data-field="evidenceType"><option value="documented" ${data.evidenceType === 'documented' ? 'selected' : ''}>Fonte real / comprovada</option><option value="review" ${data.evidenceType === 'review' ? 'selected' : ''}>Manual / revisar</option><option value="estimated" ${data.evidenceType === 'estimated' ? 'selected' : ''}>Pesquisado / estimado</option></select></div><div class="field" style="grid-column:1/-1"><label>Fonte / referência</label><input data-field="evidenceSource" value="${escapeHtml(data.evidenceSource || '')}" placeholder="Ex.: print do site, nota fiscal, orçamento, comprovante PIX"></div><div class="field" style="grid-column:1/-1"><label>Observações</label><textarea data-field="notes">${escapeHtml(data.notes || '')}</textarea></div></div><div class="note">Use esta aba para guardar o rastro do custo: nota fiscal, pedido online, print, orçamento, lista de compras ou comprovante.</div>`;
   if (type === 'fixedCosts') return `<div class="form-grid"><div class="field"><label>Nome</label><input data-field="name" value="${escapeHtml(data.name)}"></div><div class="field"><label>Escopo</label><select data-field="scope">${scopeSelectOptions(data.scope, true)}</select></div><div class="field"><label>Valor mensal</label><input type="number" step="0.01" data-field="amount" value="${data.amount}"></div><div class="field" style="grid-column:1/-1"><label>Notas</label><textarea data-field="notes">${escapeHtml(data.notes||'')}</textarea></div></div>`;
   if (type === 'recipes') return modalComplexForm(data, false);
   if (type === 'products') return modalComplexForm(data, true);
@@ -1120,7 +1418,7 @@ function bindModalFields() {
   qsa('[data-field]', qs('#modalBody')).forEach(el => el.oninput = el.onchange = () => {
     const key = el.dataset.field;
     let value = el.value;
-    if (['purchaseQty','purchaseCost','wastePct','amount','yieldQty','salePrice'].includes(key)) value = num(value);
+    if (['purchaseQty','purchaseCost','wastePct','amount','yieldQty','salePrice','totalAmount'].includes(key)) value = num(value);
     if (['active','includeInCatalogCount'].includes(key)) value = value === 'true';
     state.modal.data[key] = value;
     if (key === 'pricingMode') renderModal();
@@ -1227,13 +1525,17 @@ function bindModalFields() {
 function saveModal() {
   if (!state.modal) return;
   const {type, data} = state.modal;
-  if (!String(data.name || '').trim()) { showToast('Nome obrigatório', 'Preencha o nome antes de salvar.', 'error'); return; }
+  const mainLabel = type === 'inputs' ? data.title : data.name;
+  if (!String(mainLabel || '').trim()) { showToast('Nome obrigatório', 'Preencha o nome antes de salvar.', 'error'); return; }
   if (type === 'products') {
     data.components = (data.components || []).map(comp => ({
       ...comp,
       qty: num(comp.qty),
       pricingMode: componentPricingMode(comp.pricingMode)
     })).filter(comp => comp.refId && comp.qty > 0);
+  }
+  if (type === 'suppliers') {
+    data.paymentMethods = normalizePaymentMethods(data.paymentMethods);
   }
   const list = db[type];
   const idx = list.findIndex(x => x.id === data.id);
@@ -1255,15 +1557,292 @@ function renderAll() {
   renderConfirmDialog();
 }
 
-qs('#btnExport').onclick = () => {
-  const blob = new Blob([JSON.stringify(db, null, 2)], {type:'application/json'});
+function exportFile(content, filename, mimeType = 'application/json') {
+  const blob = new Blob([content], {type: mimeType});
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'gyros-custos-cardapio.json';
+  a.download = filename;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+function resourceTypeLabel(type) {
+  return {
+    ingredients: 'Ingrediente',
+    packaging: 'Embalagem',
+    recipes: 'Preparo',
+    products: 'Produto'
+  }[type] || type;
+}
+
+function buildErpExport() {
+  const exportedAt = new Date().toISOString();
+  const operation = state.operationView || 'gyros';
+
+  const supplierRows = (db.suppliers || []).map(supplier => {
+    const linkedIngredients = (db.ingredients || []).filter(item => item.supplier === supplier.name).length;
+    const linkedPackaging = (db.packaging || []).filter(item => item.supplier === supplier.name).length;
+    const linkedInputs = (db.inputs || []).filter(item => item.supplierId === supplier.id || item.supplierName === supplier.name).length;
+    const linkedOrders = (db.purchaseOrders || []).filter(item => item.supplierId === supplier.id).length;
+    return {
+      id: supplier.id,
+      scope: supplier.scope || 'gyros',
+      nome: supplier.name || '',
+      razao_social: supplier.legalName || '',
+      cnpj: supplier.cnpj || '',
+      vendedor: supplier.sellerName || '',
+      telefone: supplier.sellerPhone || '',
+      email: supplier.sellerEmail || '',
+      endereco: supplier.address || '',
+      cep: supplier.cep || '',
+      cidade: supplier.city || '',
+      estado: supplier.state || '',
+      chave_pix: supplier.pixKey || '',
+      tipo_chave_pix: supplier.pixKeyType || '',
+      formas_pagamento: normalizePaymentMethods(supplier.paymentMethods).join(' | '),
+      procedencia: procurementEvidenceLabel(procurementEvidenceType(supplier)),
+      observacoes: supplier.notes || '',
+      evidencia: supplier.evidenceSource || '',
+      registros_vinculados: linkedIngredients + linkedPackaging,
+      pedidos_vinculados: linkedOrders,
+      inputs_vinculados: linkedInputs
+    };
+  });
+
+  const ingredientRows = (db.ingredients || []).map(item => ({
+    id: item.id,
+    nome: item.name || '',
+    escopo: item.scope || 'gyros',
+    categoria: item.category || '',
+    unidade_base: item.baseUnit || '',
+    quantidade_compra: num(item.purchaseQty),
+    custo_compra: num(item.purchaseCost),
+    custo_unitario_real: ingredientUnitCost(item),
+    perda_pct: num(item.wastePct),
+    fornecedor_principal: item.supplier || '',
+    modelo_fornecedor: supplierModeLabel(item.supplierMode),
+    procedencia: procurementEvidenceLabel(procurementEvidenceType(item)),
+    referencia_preco: item.sourceReference || '',
+    observacoes: item.notes || ''
+  }));
+
+  const packagingRows = (db.packaging || []).map(item => ({
+    id: item.id,
+    nome: item.name || '',
+    escopo: item.scope || 'gyros',
+    unidade_base: item.baseUnit || 'embalagem',
+    quantidade_compra: num(item.purchaseQty),
+    custo_compra: num(item.purchaseCost),
+    custo_unitario_real: packagingUnitCost(item),
+    fornecedor_principal: item.supplier || '',
+    modelo_fornecedor: supplierModeLabel(item.supplierMode),
+    procedencia: procurementEvidenceLabel(procurementEvidenceType(item)),
+    referencia_preco: item.sourceReference || '',
+    observacoes: item.notes || ''
+  }));
+
+  const recipeRows = (db.recipes || []).map(recipe => {
+    const nodes = resolveComponentList(recipe.components || [], [`recipe_export:${recipe.id}`]);
+    const batchCost = nodes.reduce((sum, node) => sum + node.cost, 0);
+    const unitCost = batchCost / Math.max(1, num(recipe.yieldQty));
+    return {
+      id: recipe.id,
+      nome: recipe.name || '',
+      escopo: recipe.scope || 'gyros',
+      rendimento_qtd: num(recipe.yieldQty),
+      rendimento_unidade: recipe.yieldUnit || '',
+      custo_lote: batchCost,
+      custo_por_unidade: unitCost,
+      armazenamento: recipe.storage || '',
+      observacoes: recipe.notes || ''
+    };
+  });
+
+  const productRows = (db.products || []).map(product => {
+    const computed = computeProduct(product.id, operation);
+    return {
+      id: product.id,
+      nome: product.name || '',
+      escopo: product.scope || 'gyros',
+      categoria: categoryName(product.categoryId),
+      tipo: product.type || '',
+      ativo: product.active !== false,
+      conta_no_catalogo: product.includeInCatalogCount !== false,
+      modo_preco: productPricingMode(product),
+      custo_direto: computed?.directCost || 0,
+      custo_repassado: computed?.passThroughCost || 0,
+      base_markup: computed?.markupBaseCost || 0,
+      preco_venda: computed?.salePrice || 0,
+      preco_ifood: computed?.ifoodSalePrice || 0,
+      preco_com_rateio_referencia: computed?.autoSalePriceWithFixed || 0,
+      rateio_fixo: computed?.fixedCost || 0,
+      custo_total_referencia: computed?.totalCost || 0,
+      margem_sem_rateio_pct: computed?.marginPct || 0,
+      markup_atual_x: computed?.markup || 0,
+      regra_preco: pricingRuleLabel(product),
+      observacoes: product.notes || ''
+    };
+  });
+
+  const fichaTecnicaRows = [];
+  (db.products || []).forEach(product => {
+    (product.components || []).forEach((component, index) => {
+      const node = resolveNode(component.refType, component.refId, num(component.qty), [`product_export:${product.id}:${index}`]);
+      fichaTecnicaRows.push({
+        produto_id: product.id,
+        produto: product.name || '',
+        ordem: index + 1,
+        componente_tipo: componentTypeLabel(component.refType),
+        componente_id: component.refId || '',
+        componente: node.title || component.refId || '',
+        quantidade: num(component.qty),
+        custo_total_componente: node.cost || 0,
+        modo_precificacao: componentPricingModeLabel(component.pricingMode),
+        entra_no_markup: componentPricingMode(component.pricingMode) === 'markup'
+      });
+    });
+  });
+
+  const addonRows = [];
+  (db.products || []).forEach(product => {
+    const computed = computeProduct(product.id, operation);
+    (computed?.addons || []).forEach((addon, index) => {
+      addonRows.push({
+        produto_id: product.id,
+        produto: product.name || '',
+        adicional_id: addon.id || `${product.id}_addon_${index + 1}`,
+        adicional: addon.name || `Adicional ${index + 1}`,
+        contexto: product.categoryId === 'cat_almoco' ? 'almoco' : 'lanche',
+        modo_cobranca: addonChargeModeLabel(addon.chargeMode),
+        custo_direto: addon.directCost || 0,
+        venda_base: addon.effectiveSalePrice || 0,
+        venda_ifood: addon.ifoodSalePrice || 0,
+        venda_configurada: addon.configuredSalePrice || 0,
+        venda_sugerida: addon.suggestedSalePrice || 0
+      });
+      (addon.components || []).forEach((component, componentIndex) => {
+        const node = resolveNode(component.refType, component.refId, num(component.qty), [`addon_export:${product.id}:${addon.id || index}:${componentIndex}`]);
+        fichaTecnicaRows.push({
+          produto_id: product.id,
+          produto: `${product.name || ''} > ${addon.name || `Adicional ${index + 1}`}`,
+          ordem: componentIndex + 1,
+          componente_tipo: componentTypeLabel(component.refType),
+          componente_id: component.refId || '',
+          componente: node.title || component.refId || '',
+          quantidade: num(component.qty),
+          custo_total_componente: node.cost || 0,
+          modo_precificacao: 'adicional',
+          entra_no_markup: addon.chargeMode !== 'included'
+        });
+      });
+    });
+  });
+
+  const supplierItemRows = [];
+  ['ingredients', 'packaging'].forEach(type => {
+    (db[type] || []).forEach(item => {
+      supplierItemRows.push({
+        recurso_tipo: resourceTypeLabel(type),
+        recurso_id: item.id,
+        recurso: item.name || '',
+        fornecedor: item.supplier || '',
+        modelo_fornecedor: supplierModeLabel(item.supplierMode),
+        procedencia: procurementEvidenceLabel(procurementEvidenceType(item)),
+        referencia_preco: item.sourceReference || ''
+      });
+    });
+  });
+
+  const purchaseOrderRows = (db.purchaseOrders || []).map(order => {
+    const supplier = byId('suppliers', order.supplierId);
+    return {
+      id: order.id,
+      fornecedor_id: order.supplierId || '',
+      fornecedor: supplier?.name || order.supplierName || '',
+      data: order.date || '',
+      documento: order.invoiceNumber || '',
+      meio_pagamento: order.paymentMethod || '',
+      status_pagamento: order.paymentStatus || '',
+      valor_total: num(order.totalAmount),
+      observacoes: order.notes || ''
+    };
+  });
+
+  const purchaseItemRows = (db.purchaseItems || []).map(item => {
+    const order = (db.purchaseOrders || []).find(orderRow => orderRow.id === item.orderId);
+    const supplier = order ? byId('suppliers', order.supplierId) : null;
+    return {
+      id: item.id,
+      pedido_id: item.orderId || '',
+      fornecedor: supplier?.name || '',
+      descricao: item.description || '',
+      recurso_tipo: item.resourceType || '',
+      recurso_id: item.resourceId || '',
+      quantidade: num(item.qty),
+      unidade: item.unit || '',
+      preco_unitario: num(item.unitPrice),
+      valor_total: num(item.totalPrice),
+      status: item.status || '',
+      data_pedido: order?.date || ''
+    };
+  });
+
+  const inputRows = (db.inputs || []).map(item => {
+    const supplier = byId('suppliers', item.supplierId);
+    return {
+      id: item.id,
+      titulo: item.title || '',
+      tipo: inputTypeLabel(item.inputType || ''),
+      canal: inputChannelLabel(item.sourceChannel || ''),
+      fornecedor: supplier?.name || item.supplierName || '',
+      numero_documento: item.documentNumber || '',
+      data: item.date || '',
+      meio_pagamento: item.paymentMethod || '',
+      status_pagamento: item.paymentStatus || '',
+      valor_total: num(item.totalAmount),
+      arquivo_rotulo: item.fileLabel || '',
+      arquivo_caminho: item.filePath || '',
+      arquivo_url: item.fileUrl || '',
+      procedencia: procurementEvidenceLabel(procurementEvidenceType(item)),
+      evidencia: item.evidenceSource || '',
+      observacoes: item.notes || ''
+    };
+  });
+
+  return {
+    meta: {
+      exportedAt,
+      sourceApp: 'PWA de Custos do Cardapio',
+      sourceFormat: 'erp-normalized-json',
+      operationView: operation,
+      currency: 'BRL',
+      markupPct: defaultMarkupPct(),
+      ifoodMultiplier: ifoodMultiplier()
+    },
+    suppliers: supplierRows,
+    ingredients: ingredientRows,
+    packaging: packagingRows,
+    recipes: recipeRows,
+    products: productRows,
+    product_components: fichaTecnicaRows,
+    product_addons: addonRows,
+    supplier_items: supplierItemRows,
+    purchase_orders: purchaseOrderRows,
+    purchase_items: purchaseItemRows,
+    inputs: inputRows
+  };
+}
+
+qs('#btnExport').onclick = () => {
+  exportFile(JSON.stringify(db, null, 2), 'gyros-custos-cardapio.json');
   showToast('JSON exportado', 'Leve esse arquivo como backup da etapa atual.', 'success');
+};
+
+qs('#btnExportErp').onclick = () => {
+  const erpPayload = buildErpExport();
+  exportFile(JSON.stringify(erpPayload, null, 2), 'gyros-custos-erp-export.json');
+  showToast('ERP exportado', 'Arquivo estruturado por tabelas para integrar com ERP ou planilhas.', 'success');
 };
 
 qs('#importFile').onchange = async (e) => {

@@ -97,9 +97,26 @@
       "purchaseQty": 30,
       "purchaseCost": 24,
       "wastePct": 0,
-      "supplier": "Padaria",
-      "notes": "Custo por caixa/pacote",
-      "scope": "gyros"
+      "supplier": "Padaria Versailles",
+      "supplierMode": "single",
+      "notes": "Pão francês simples, cerca de 50g a 60g, comprado pronto na Padaria Versailles",
+      "scope": "gyros",
+      "sourceType": "manual",
+      "sourceReference": "Fornecedor confirmado manualmente pela operação; revisar com nota quando houver"
+    },
+    {
+      "id": "ing_pao_parmesao_pronto",
+      "name": "Pão com parmesão",
+      "baseUnit": "un",
+      "purchaseQty": 1,
+      "purchaseCost": 2.5,
+      "wastePct": 0,
+      "supplier": "Padaria Versailles",
+      "supplierMode": "single",
+      "notes": "Pão com parmesão pronto, cerca de 90g, comprado na Padaria Versailles",
+      "scope": "gyros",
+      "sourceType": "manual",
+      "sourceReference": "Fornecedor confirmado manualmente pela operação; revisar com nota quando houver"
     },
     {
       "id": "ing_parmesao",
@@ -110,7 +127,9 @@
       "wastePct": 1,
       "supplier": "Laticínio",
       "notes": "Usado no pão",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_fraldinha",
@@ -121,7 +140,9 @@
       "wastePct": 8,
       "supplier": "Açougue",
       "notes": "Peso já cozido/preparado. Atualizado para R$ 51,00/kg.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_frango",
@@ -132,7 +153,9 @@
       "wastePct": 5,
       "supplier": "Distribuidor",
       "notes": "Peito e sobrecoxa",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_linguica",
@@ -143,7 +166,9 @@
       "wastePct": 6,
       "supplier": "Açougue",
       "notes": "Já pronta para montagem",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_mucarela",
@@ -154,7 +179,9 @@
       "wastePct": 2,
       "supplier": "Laticínio",
       "notes": "Fatiada ou ralada",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_catupiry",
@@ -165,7 +192,9 @@
       "wastePct": 1,
       "supplier": "Laticínio",
       "notes": "Bisnaga Catupiry 1,5kg",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_cheddar",
@@ -176,7 +205,9 @@
       "wastePct": 1,
       "supplier": "Laticínio",
       "notes": "Molho/creme",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_4queijos",
@@ -187,7 +218,9 @@
       "wastePct": 1,
       "supplier": "Laticínio",
       "notes": "Base para gratinados",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_batata",
@@ -196,9 +229,12 @@
       "purchaseQty": 14000,
       "purchaseCost": 99.99,
       "wastePct": 3,
-      "supplier": "Congelados",
+      "supplier": "PMG Comércio de Frios e Laticínios",
       "notes": "Caixa com 7 pacotes de 2kg",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_tempero",
@@ -209,7 +245,9 @@
       "wastePct": 0,
       "supplier": "Secos",
       "notes": "Sal base para batata e cozinha; estimativa simples.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_arroz",
@@ -220,7 +258,9 @@
       "wastePct": 2,
       "supplier": "Cozinha",
       "notes": "Custo por kg pronto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_feijao",
@@ -231,7 +271,9 @@
       "wastePct": 2,
       "supplier": "Cozinha",
       "notes": "Custo por kg pronto",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_salada",
@@ -242,7 +284,9 @@
       "wastePct": 8,
       "supplier": "Hortifruti",
       "notes": "Mantida so para historico. Os pratos agora usam vinagrete.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_tomate",
@@ -253,7 +297,9 @@
       "wastePct": 6,
       "supplier": "Hortifruti",
       "notes": "Para vinagrete",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_cebola",
@@ -264,7 +310,9 @@
       "wastePct": 8,
       "supplier": "Hortifruti",
       "notes": "Para vinagrete",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_pimentao",
@@ -275,7 +323,9 @@
       "wastePct": 12,
       "supplier": "Hortifruti",
       "notes": "Para vinagrete",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_cheiro_verde",
@@ -286,7 +336,9 @@
       "wastePct": 10,
       "supplier": "Hortifruti",
       "notes": "Para vinagrete e maionese",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_oleo_vinagre",
@@ -295,9 +347,12 @@
       "purchaseQty": 2000,
       "purchaseCost": 130,
       "wastePct": 0,
-      "supplier": "Mercearia",
+      "supplier": "PMG Comércio de Frios e Laticínios",
       "notes": "Galao 2L de azeite de oliva extra virgem",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_maionese_ind",
@@ -306,9 +361,12 @@
       "purchaseQty": 3000,
       "purchaseCost": 24,
       "wastePct": 0,
-      "supplier": "Mercearia",
+      "supplier": "PMG Comércio de Frios e Laticínios",
       "notes": "Maionese Grande Quero 3kg.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_alho",
@@ -319,7 +377,9 @@
       "wastePct": 5,
       "supplier": "Hortifruti",
       "notes": "Para maionese",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_limao",
@@ -330,7 +390,9 @@
       "wastePct": 10,
       "supplier": "Hortifruti",
       "notes": "Base em ml para receitas e molhos",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_bbq",
@@ -339,9 +401,12 @@
       "purchaseQty": 2000,
       "purchaseCost": 27.8,
       "wastePct": 0,
-      "supplier": "Mercearia",
+      "supplier": "PMG Comércio de Frios e Laticínios",
       "notes": "Base pronta usada na receita do barbecue da casa.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_saches_mix",
@@ -350,53 +415,26 @@
       "purchaseQty": 866,
       "purchaseCost": 104.51,
       "wastePct": 0,
-      "supplier": "Descartáveis",
+      "supplier": "PMG Comércio de Frios e Laticínios",
       "notes": "Mix medio comprado; revisar conforme a composicao real.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_massa_churros",
-      "name": "Massa/base de churros",
+      "name": "Mini churros congelado (doce de leite)",
       "baseUnit": "g",
       "purchaseQty": 1000,
       "purchaseCost": 29.9,
       "wastePct": 2,
-      "supplier": "Congelados",
-      "notes": "Churros congelado comprado pronto em pacote de 1kg. Assumido: cerca de 20g por unidade.",
-      "scope": "gyros"
-    },
-    {
-      "id": "ing_rech_dl",
-      "name": "Doce de leite",
-      "baseUnit": "g",
-      "purchaseQty": 1000,
-      "purchaseCost": 21,
-      "wastePct": 0,
-      "supplier": "Doçaria",
-      "notes": "Recheio",
-      "scope": "gyros"
-    },
-    {
-      "id": "ing_rech_choc",
-      "name": "Chocolate",
-      "baseUnit": "g",
-      "purchaseQty": 1000,
-      "purchaseCost": 19,
-      "wastePct": 0,
-      "supplier": "Doçaria",
-      "notes": "Recheio",
-      "scope": "gyros"
-    },
-    {
-      "id": "ing_rech_goi",
-      "name": "Goiabada",
-      "baseUnit": "g",
-      "purchaseQty": 1000,
-      "purchaseCost": 14,
-      "wastePct": 0,
-      "supplier": "Doçaria",
-      "notes": "Recheio",
-      "scope": "gyros"
+      "supplier": "Meus Congelados",
+      "notes": "Mini churros congelado ja recheado com doce de leite. Pacote de 1kg. Unidade aproximada de 20g.",
+      "scope": "gyros",
+      "sourceType": "manual",
+      "sourceReference": "Fornecedor informado pela operacao: Meus Congelados",
+      "lossPct": 2
     },
     {
       "id": "ing_refri_350",
@@ -407,7 +445,9 @@
       "wastePct": 0,
       "supplier": "Bebidas",
       "notes": "Media de Coca, Coca Zero, Fanta e Guarana em lata 350ml",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_garrafa_450",
@@ -418,7 +458,9 @@
       "wastePct": 0,
       "supplier": "Bebidas",
       "notes": "Ice Tea 450ml nos sabores limao e pessego",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_suco_natural",
@@ -429,7 +471,9 @@
       "wastePct": 0,
       "supplier": "Produção",
       "notes": "Custo médio por garrafinha",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_manteiga",
@@ -440,7 +484,9 @@
       "purchaseCost": 32.5,
       "wastePct": 0,
       "supplier": "Mercado",
-      "notes": "Referencia de mercado: manteiga com sal 500g; revisar depois."
+      "notes": "Referencia de mercado: manteiga com sal 500g; revisar depois.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_mel",
@@ -451,7 +497,9 @@
       "purchaseCost": 20,
       "wastePct": 0,
       "supplier": "Mercearia",
-      "notes": "Valor informado pelo usuario."
+      "notes": "Valor informado pelo usuario.",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_fumaca_po",
@@ -461,8 +509,11 @@
       "purchaseQty": 1000,
       "purchaseCost": 19.43,
       "wastePct": 0,
-      "supplier": "Zona Cerealista",
-      "notes": "Compra inicial Zona Cerealista."
+      "supplier": "Armazém São Vito",
+      "notes": "Compra inicial Zona Cerealista.",
+      "sourceType": "manual",
+      "sourceReference": "Pedido online Armazém São Vito nº 9678784; existe compra adicional em outro fornecedor",
+      "supplierMode": "multiple"
     },
     {
       "id": "ing_mostarda_amarela",
@@ -473,7 +524,9 @@
       "purchaseCost": 12.99,
       "wastePct": 0,
       "supplier": "Mercado",
-      "notes": "Referencia de mercado: mostarda amarela squeeze 200g; revisar depois."
+      "notes": "Referencia de mercado: mostarda amarela squeeze 200g; revisar depois.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_lemon_pepper",
@@ -484,7 +537,10 @@
       "purchaseCost": 15,
       "wastePct": 0,
       "supplier": "Zona Cerealista",
-      "notes": "Compra inicial Zona Cerealista."
+      "notes": "Compra inicial Zona Cerealista.",
+      "sourceType": "documented",
+      "sourceReference": "Compra física na Zona Cerealista",
+      "supplierMode": "single"
     },
     {
       "id": "ing_paprica_doce",
@@ -495,7 +551,10 @@
       "purchaseCost": 10,
       "wastePct": 0,
       "supplier": "Zona Cerealista",
-      "notes": "Compra inicial Zona Cerealista."
+      "notes": "Compra inicial Zona Cerealista.",
+      "sourceType": "documented",
+      "sourceReference": "Compra física na Zona Cerealista",
+      "supplierMode": "single"
     },
     {
       "id": "ing_farofa_pronta",
@@ -506,7 +565,9 @@
       "purchaseCost": 8.99,
       "wastePct": 0,
       "supplier": "Mercearia",
-      "notes": "Referencia de mercado: farofa temperada 500g; revisar depois."
+      "notes": "Referencia de mercado: farofa temperada 500g; revisar depois.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_ketchup",
@@ -517,7 +578,9 @@
       "purchaseCost": 19.98,
       "wastePct": 0,
       "supplier": "Mercearia",
-      "notes": "Referencia de mercado: ketchup 1kg; revisar depois."
+      "notes": "Referencia de mercado: ketchup 1kg; revisar depois.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_agua_510",
@@ -528,7 +591,9 @@
       "purchaseCost": 15.05,
       "wastePct": 0,
       "supplier": "Bebidas",
-      "notes": "Pacote com 12 unidades sem gás"
+      "notes": "Pacote com 12 unidades sem gás",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_agua_gas_510",
@@ -539,7 +604,9 @@
       "purchaseCost": 19.75,
       "wastePct": 0,
       "supplier": "Bebidas",
-      "notes": "Pacote com 12 unidades com gás"
+      "notes": "Pacote com 12 unidades com gás",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_cerveja_bud_330",
@@ -549,8 +616,11 @@
       "purchaseQty": 24,
       "purchaseCost": 143,
       "wastePct": 0,
-      "supplier": "Bebidas",
-      "notes": "Pacote com 24 unidades"
+      "supplier": "PMG Comércio de Frios e Laticínios",
+      "notes": "Pacote com 24 unidades",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_cerveja_heineken_330",
@@ -560,8 +630,11 @@
       "purchaseQty": 24,
       "purchaseCost": 166,
       "wastePct": 0,
-      "supplier": "Bebidas",
-      "notes": "Pacote com 24 unidades"
+      "supplier": "PMG Comércio de Frios e Laticínios",
+      "notes": "Pacote com 24 unidades",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_coca_2l",
@@ -571,8 +644,11 @@
       "purchaseQty": 6,
       "purchaseCost": 65.72,
       "wastePct": 0,
-      "supplier": "Bebidas",
-      "notes": "Pacote com 6 unidades"
+      "supplier": "PMG Comércio de Frios e Laticínios",
+      "notes": "Pacote com 6 unidades",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_h2o_500",
@@ -582,8 +658,11 @@
       "purchaseQty": 12,
       "purchaseCost": 56.1,
       "wastePct": 0,
-      "supplier": "Bebidas",
-      "notes": "Pacote com 12 unidades"
+      "supplier": "PMG Comércio de Frios e Laticínios",
+      "notes": "Pacote com 12 unidades",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_limoneto_500",
@@ -593,8 +672,11 @@
       "purchaseQty": 12,
       "purchaseCost": 56.1,
       "wastePct": 0,
-      "supplier": "Bebidas",
-      "notes": "Pacote com 12 unidades"
+      "supplier": "PMG Comércio de Frios e Laticínios",
+      "notes": "Pacote com 12 unidades",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_schweppes_350",
@@ -605,7 +687,9 @@
       "purchaseCost": 23.19,
       "wastePct": 0,
       "supplier": "Bebidas",
-      "notes": "Pacote com 6 unidades"
+      "notes": "Pacote com 6 unidades",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_sprite_350",
@@ -616,7 +700,9 @@
       "purchaseCost": 21.96,
       "wastePct": 0,
       "supplier": "Bebidas",
-      "notes": "Pacote com 6 unidades"
+      "notes": "Pacote com 6 unidades",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_delvalle_uva_290",
@@ -627,7 +713,9 @@
       "purchaseCost": 22.01,
       "wastePct": 0,
       "supplier": "Bebidas",
-      "notes": "Pacote com 6 unidades"
+      "notes": "Pacote com 6 unidades",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_bacon_cubos",
@@ -637,8 +725,11 @@
       "purchaseQty": 2000,
       "purchaseCost": 50.94,
       "wastePct": 0,
-      "supplier": "Açougue",
-      "notes": "2 pacotes de 1kg"
+      "supplier": "PMG Comércio de Frios e Laticínios",
+      "notes": "2 pacotes de 1kg",
+      "sourceType": "documented",
+      "sourceReference": "Venda PMG nº 8997086",
+      "supplierMode": "single"
     },
     {
       "id": "ing_oleo_algodao",
@@ -649,7 +740,9 @@
       "purchaseCost": 36.16,
       "wastePct": 0,
       "supplier": "Mercearia",
-      "notes": "4 frascos de 900ml"
+      "notes": "4 frascos de 900ml",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_sal_sache",
@@ -660,7 +753,9 @@
       "purchaseCost": 13.3,
       "wastePct": 0,
       "supplier": "Descartáveis",
-      "notes": "Caixa com 1000 sachês"
+      "notes": "Caixa com 1000 sachês",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_chimichurri",
@@ -670,8 +765,11 @@
       "purchaseQty": 500,
       "purchaseCost": 19.42,
       "wastePct": 0,
-      "supplier": "Zona Cerealista",
-      "notes": "Compra inicial informada pelo projeto: pacote com 500g"
+      "supplier": "Armazém São Vito",
+      "notes": "Compra inicial informada pelo projeto: pacote com 500g",
+      "sourceType": "manual",
+      "sourceReference": "Pedido online Armazém São Vito nº 9678784",
+      "supplierMode": "single"
     },
     {
       "id": "ing_pimenta_reino",
@@ -682,7 +780,9 @@
       "purchaseCost": 55,
       "wastePct": 0,
       "supplier": "Mercado / referência web",
-      "notes": "Valor de referência para completar a base; revisar depois com a compra real"
+      "notes": "Valor de referência para completar a base; revisar depois com a compra real",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_acucar_canela",
@@ -691,9 +791,11 @@
       "purchaseQty": 1000,
       "purchaseCost": 12,
       "wastePct": 0,
-      "supplier": "Mercearia / referencia web",
+      "supplier": "Mercearia / referência web",
       "notes": "Mistura simples para polvilhar o churros. Custo de referencia; revisar depois.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_berinjela",
@@ -704,7 +806,9 @@
       "purchaseCost": 7.98,
       "wastePct": 18,
       "supplier": "Hortifruti / referência web",
-      "notes": "Valor estimado por kg para montar o antipasto de berinjela; revisar depois."
+      "notes": "Valor estimado por kg para montar o antipasto de berinjela; revisar depois.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_vinagre",
@@ -715,7 +819,9 @@
       "purchaseCost": 3.99,
       "wastePct": 0,
       "supplier": "Mercearia / referência web",
-      "notes": "Usado só para o descanso da berinjela."
+      "notes": "Usado só para o descanso da berinjela.",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_pimentao_vermelho",
@@ -726,7 +832,9 @@
       "purchaseCost": 29.49,
       "wastePct": 15,
       "supplier": "Hortifruti / referência web",
-      "notes": "Estimativa de mercado para o antipasto de berinjela."
+      "notes": "Estimativa de mercado para o antipasto de berinjela.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_pimentao_amarelo",
@@ -737,7 +845,9 @@
       "purchaseCost": 29.49,
       "wastePct": 15,
       "supplier": "Hortifruti / referência web",
-      "notes": "Estimativa de mercado para o antipasto de berinjela."
+      "notes": "Estimativa de mercado para o antipasto de berinjela.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_cebola_roxa",
@@ -748,7 +858,9 @@
       "purchaseCost": 13.5,
       "wastePct": 10,
       "supplier": "Hortifruti / referência web",
-      "notes": "Estimativa de mercado para o antipasto de berinjela."
+      "notes": "Estimativa de mercado para o antipasto de berinjela.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_tomate_seco",
@@ -759,7 +871,9 @@
       "purchaseCost": 49.9,
       "wastePct": 0,
       "supplier": "Mercearia / referência web",
-      "notes": "Estimativa intermediária para tomate seco; revisar depois."
+      "notes": "Estimativa intermediária para tomate seco; revisar depois.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_shoyu",
@@ -770,7 +884,9 @@
       "purchaseCost": 14.99,
       "wastePct": 0,
       "supplier": "Mercearia / referência web",
-      "notes": "Estimativa para molho shoyu tradicional 500ml."
+      "notes": "Estimativa para molho shoyu tradicional 500ml.",
+      "sourceType": "estimated",
+      "sourceReference": "Pesquisa web / estimativa"
     },
     {
       "id": "ing_manjericao",
@@ -781,7 +897,9 @@
       "purchaseCost": 4.99,
       "wastePct": 10,
       "supplier": "Hortifruti / referência web",
-      "notes": "Maço pequeno."
+      "notes": "Maço pequeno.",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_louro",
@@ -792,7 +910,9 @@
       "purchaseCost": 5.49,
       "wastePct": 0,
       "supplier": "Mercearia / referência web",
-      "notes": "Folhas secas."
+      "notes": "Folhas secas.",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_oregano",
@@ -803,7 +923,9 @@
       "purchaseCost": 4.99,
       "wastePct": 0,
       "supplier": "Mercearia / referência web",
-      "notes": "Tempero seco."
+      "notes": "Tempero seco.",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_pimenta_calabresa",
@@ -814,7 +936,9 @@
       "purchaseCost": 6.99,
       "wastePct": 0,
       "supplier": "Mercearia / referência web",
-      "notes": "Tempero seco."
+      "notes": "Tempero seco.",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     },
     {
       "id": "ing_coca_zero_2l",
@@ -825,7 +949,9 @@
       "purchaseCost": 65.72,
       "wastePct": 0,
       "supplier": "Bebidas",
-      "notes": "Sem compra específica ainda; custo espelhado provisoriamente na Coca-Cola 2L."
+      "notes": "Sem compra específica ainda; custo espelhado provisoriamente na Coca-Cola 2L.",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento"
     }
   ],
   "packaging": [
@@ -835,7 +961,11 @@
       "purchaseQty": 400,
       "purchaseCost": 27,
       "notes": "Involucro de cada lanche do Gyros.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_bat_p",
@@ -843,7 +973,11 @@
       "purchaseQty": 100,
       "purchaseCost": 5.95,
       "notes": "Batata M (200g) e churros.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_bat_m",
@@ -851,7 +985,11 @@
       "purchaseQty": 100,
       "purchaseCost": 7.5,
       "notes": "Historico: antiga embalagem intermediaria.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_bat_g",
@@ -859,7 +997,11 @@
       "purchaseQty": 100,
       "purchaseCost": 7.5,
       "notes": "Batata G (400g).",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_almoco",
@@ -867,7 +1009,10 @@
       "purchaseQty": 150,
       "purchaseCost": 426.09,
       "notes": "Estoque atual do Gyros; custo historico por unidade R$ 2,84.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento",
+      "supplier": ""
     },
     {
       "id": "pkg_potinho_30",
@@ -875,7 +1020,11 @@
       "purchaseQty": 25,
       "purchaseCost": 5.9,
       "notes": "Mantido como alias temporario do pote 60ml; revisar se seguira em uso.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_potinho_60",
@@ -883,7 +1032,11 @@
       "purchaseQty": 25,
       "purchaseCost": 5.9,
       "notes": "Assumido pacote com 25 unidades; revisar quantidade real do fornecedor.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_sobremesa",
@@ -891,7 +1044,11 @@
       "purchaseQty": 100,
       "purchaseCost": 5.95,
       "notes": "Saquinho para churros.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_sacola_delivery",
@@ -899,7 +1056,11 @@
       "purchaseQty": 400,
       "purchaseCost": 335,
       "notes": "Samppael, incluindo frete rateado.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Pedido de venda Samppel nº 10002",
+      "supplier": "Samppel",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_guardanapo",
@@ -907,7 +1068,11 @@
       "purchaseQty": 250,
       "purchaseCost": 38.5,
       "notes": "Usado no almoco; lanches podem migrar depois se desejado.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_combo_familia",
@@ -915,7 +1080,10 @@
       "purchaseQty": 50,
       "purchaseCost": 69,
       "notes": "Sem alteracao nesta rodada.",
-      "scope": "gyros"
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Lista de compras, nota fiscal ou orçamento",
+      "supplier": ""
     },
     {
       "id": "pkg_talher_kit",
@@ -923,7 +1091,11 @@
       "name": "Kit talheres",
       "purchaseQty": 50,
       "purchaseCost": 24.5,
-      "notes": "Para pratos de almoco do Gyros."
+      "notes": "Para pratos de almoco do Gyros.",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_potinho_feijao",
@@ -931,7 +1103,11 @@
       "name": "Pote redondo 145ml com sobretampa",
       "purchaseQty": 24,
       "purchaseCost": 8.2,
-      "notes": "Para feijao do almoco."
+      "notes": "Para feijao do almoco.",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_bandeja_m90",
@@ -939,7 +1115,11 @@
       "name": "Bandeja aluminio M90 220ml",
       "purchaseQty": 100,
       "purchaseCost": 46.9,
-      "notes": "Porcao de 220ml para 200g de batata ou proteina gratinada."
+      "notes": "Porcao de 220ml para 200g de batata ou proteina gratinada.",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     },
     {
       "id": "pkg_bandeja_m120",
@@ -947,7 +1127,11 @@
       "name": "Bandeja aluminio M120 500ml",
       "purchaseQty": 100,
       "purchaseCost": 66.9,
-      "notes": "Porcao de 500ml para 400g de batata ou proteina gratinada."
+      "notes": "Porcao de 500ml para 400g de batata ou proteina gratinada.",
+      "sourceType": "documented",
+      "sourceReference": "Orçamento Bom Clima nº 343",
+      "supplier": "Bom Clima Embalagens",
+      "supplierMode": "single"
     }
   ],
   "recipes": [
@@ -957,17 +1141,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Produção do lanche",
-      "notes": "Semiacabado do pao. A manteiga com alho entra na hora de finalizar o lanche.",
+      "notes": "Pão com parmesão pronto do fornecedor. A manteiga com alho entra na hora de finalizar o lanche.",
       "components": [
         {
           "refType": "ingredient",
-          "refId": "ing_pao_frances",
+          "refId": "ing_pao_parmesao_pronto",
           "qty": 1
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_parmesao",
-          "qty": 29
         }
       ],
       "scope": "gyros"
@@ -1270,69 +1449,6 @@
           "refType": "ingredient",
           "refId": "ing_linguica",
           "qty": 150
-        }
-      ],
-      "scope": "gyros"
-    },
-    {
-      "id": "rec_churros_dl",
-      "name": "Churros recheado — doce de leite",
-      "yieldQty": 1,
-      "yieldUnit": "un",
-      "storage": "Fritadeira / sobremesa",
-      "notes": "Unidade de churros. Massa estimada em 20g por unidade.",
-      "components": [
-        {
-          "refType": "ingredient",
-          "refId": "ing_massa_churros",
-          "qty": 20
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_rech_dl",
-          "qty": 35
-        }
-      ],
-      "scope": "gyros"
-    },
-    {
-      "id": "rec_churros_choc",
-      "name": "Churros recheado — chocolate",
-      "yieldQty": 1,
-      "yieldUnit": "un",
-      "storage": "Fritadeira / sobremesa",
-      "notes": "Unidade de churros. Massa estimada em 20g por unidade.",
-      "components": [
-        {
-          "refType": "ingredient",
-          "refId": "ing_massa_churros",
-          "qty": 20
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_rech_choc",
-          "qty": 35
-        }
-      ],
-      "scope": "gyros"
-    },
-    {
-      "id": "rec_churros_goi",
-      "name": "Churros recheado — goiabada",
-      "yieldQty": 1,
-      "yieldUnit": "un",
-      "storage": "Fritadeira / sobremesa",
-      "notes": "Unidade de churros. Massa estimada em 20g por unidade.",
-      "components": [
-        {
-          "refType": "ingredient",
-          "refId": "ing_massa_churros",
-          "qty": 20
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_rech_goi",
-          "qty": 35
         }
       ],
       "scope": "gyros"
@@ -4295,7 +4411,7 @@
       "name": "Carne Gyros Gratinada (500ml / 400g)",
       "categoryId": "cat_gratinados",
       "type": "menu",
-      "salePrice": 61.0,
+      "salePrice": 61,
       "active": true,
       "includeInCatalogCount": true,
       "notes": "Porcao gratinada em bandeja de 500ml com 400g de proteina. Modelo atual com frango + muçarela.",
@@ -5763,13 +5879,13 @@
     },
     {
       "id": "prd_churros",
-      "name": "Churros (porção com 6 unidades)",
+      "name": "Mini Churros - 6un (doce de leite)",
       "categoryId": "cat_sobremesas",
       "type": "menu",
       "salePrice": 11.45,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Porcao padrao com 6 unidades de churros congelado pronto, polvilhado com acucar e canela.",
+      "notes": "Porcao padrao com 6 mini churros congelados ja recheados com doce de leite, polvilhados com acucar e canela.",
       "components": [
         {
           "refType": "ingredient",
@@ -7073,66 +7189,6 @@
         }
       ],
       "addons": []
-    },
-    {
-      "id": "prd_mini_churros_dl",
-      "scope": "gyros",
-      "name": "Mini Churros Doce de Leite",
-      "categoryId": "cat_sobremesas",
-      "type": "menu",
-      "pricingMode": "auto",
-      "salePrice": 11.45,
-      "active": true,
-      "includeInCatalogCount": true,
-      "notes": "Mesmo custo do churros base congelado. O sabor no iFood não altera o custo oficial atual.",
-      "components": [
-        {
-          "refType": "ingredient",
-          "refId": "ing_massa_churros",
-          "qty": 120
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_acucar_canela",
-          "qty": 8
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_sobremesa",
-          "qty": 1
-        }
-      ],
-      "addons": []
-    },
-    {
-      "id": "prd_mini_churros_goi",
-      "scope": "gyros",
-      "name": "Mini Churros Goiabada",
-      "categoryId": "cat_sobremesas",
-      "type": "menu",
-      "pricingMode": "auto",
-      "salePrice": 11.45,
-      "active": true,
-      "includeInCatalogCount": true,
-      "notes": "Mesmo custo do churros base congelado. O sabor no iFood não altera o custo oficial atual.",
-      "components": [
-        {
-          "refType": "ingredient",
-          "refId": "ing_massa_churros",
-          "qty": 120
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_acucar_canela",
-          "qty": 8
-        },
-        {
-          "refType": "packaging",
-          "refId": "pkg_sobremesa",
-          "qty": 1
-        }
-      ],
-      "addons": []
     }
   ],
   "fixedCosts": [
@@ -7170,6 +7226,2116 @@
       "amount": 900,
       "notes": "Contabilidade, manutenção, internet etc.",
       "scope": "gyros"
+    }
+  ],
+  "suppliers": [
+    {
+      "id": "sup_padaria",
+      "scope": "gyros",
+      "name": "Padaria Versailles",
+      "legalName": "Padaria Versailles",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "(11) 2451-9022",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "",
+      "paymentMethods": [],
+      "notes": "Fornecedor atual dos pães do Gyros",
+      "address": "Av. Dr. Timóteo Penteado, 2312 - Picanço",
+      "cep": "07094-000",
+      "city": "Guarulhos",
+      "state": "SP",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor informado manualmente pela operação; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_laticinio",
+      "scope": "gyros",
+      "name": "Laticínio",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_acougue",
+      "scope": "gyros",
+      "name": "Açougue",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_distribuidor",
+      "scope": "gyros",
+      "name": "Distribuidor",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_congelados",
+      "scope": "gyros",
+      "name": "Meus Congelados",
+      "legalName": "Meus Congelados",
+      "cnpj": "",
+      "sellerName": "Carol",
+      "sellerPhone": "(11) 94036-9300",
+      "sellerEmail": "contato@meuscongelados.com.br",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "Fornecedor atual do mini churros congelado recheado com doce de leite.",
+      "evidenceType": "review",
+      "evidenceSource": "Contato e referencia operacional do fornecedor; confirmar com pedido, nota ou comprovante",
+      "address": "Avenida Marechal Argolo Ferrao, 51 - Vila Sabrina",
+      "city": "Sao Paulo",
+      "state": "SP",
+      "cep": ""
+    },
+    {
+      "id": "sup_secos",
+      "scope": "gyros",
+      "name": "Secos",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "estimated",
+      "evidenceSource": "Fornecedor ligado a custos pesquisados / estimados"
+    },
+    {
+      "id": "sup_cozinha",
+      "scope": "gyros",
+      "name": "Cozinha",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_hortifruti",
+      "scope": "gyros",
+      "name": "Hortifruti",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_mercearia",
+      "scope": "gyros",
+      "name": "Mercearia",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_descartaveis",
+      "scope": "gyros",
+      "name": "Descartáveis",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_docaria",
+      "scope": "gyros",
+      "name": "Doçaria",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_bebidas",
+      "scope": "gyros",
+      "name": "Bebidas",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_producao",
+      "scope": "gyros",
+      "name": "Produção",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor inferido a partir da base atual; revisar com nota, orçamento ou contato"
+    },
+    {
+      "id": "sup_mercado",
+      "scope": "gyros",
+      "name": "Mercado",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "estimated",
+      "evidenceSource": "Fornecedor ligado a custos pesquisados / estimados"
+    },
+    {
+      "id": "sup_zona_cerealista",
+      "scope": "gyros",
+      "name": "Zona Cerealista",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "documented",
+      "evidenceSource": "Fornecedor identificado em nota, lista de compras ou orçamento"
+    },
+    {
+      "id": "sup_mercado_referencia_web",
+      "scope": "gyros",
+      "name": "Mercado / referência web",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "estimated",
+      "evidenceSource": "Fornecedor ligado a custos pesquisados / estimados"
+    },
+    {
+      "id": "sup_mercearia_referencia_web",
+      "scope": "gyros",
+      "name": "Mercearia / referência web",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "estimated",
+      "evidenceSource": "Fornecedor ligado a custos pesquisados / estimados"
+    },
+    {
+      "id": "sup_hortifruti_referencia_web",
+      "scope": "gyros",
+      "name": "Hortifruti / referência web",
+      "legalName": "",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "estimated",
+      "evidenceSource": "Fornecedor ligado a custos pesquisados / estimados"
+    },
+    {
+      "id": "sup_samppael",
+      "scope": "gyros",
+      "name": "Samppel",
+      "legalName": "Samppel Comércio de Embalagens Ltda",
+      "cnpj": "00.018.403/0001-68",
+      "sellerName": "Carla Patricia Lima Costa da Silva",
+      "sellerPhone": "(11) 3931-0750",
+      "sellerEmail": "contato@samppel.com.br",
+      "pixKey": "",
+      "pixKeyType": "aleatoria",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "",
+      "evidenceType": "documented",
+      "evidenceSource": "Pedido de venda PV 10002 / documento do fornecedor",
+      "address": "Rua Antônio Carlos de Paiva Camelo, 401 - Polvilho",
+      "cep": "07793-870",
+      "city": "Cajamar",
+      "state": "SP"
+    },
+    {
+      "id": "sup_pmg",
+      "scope": "gyros",
+      "name": "PMG Comércio de Frios e Laticínios",
+      "legalName": "PMG Comércio de Frios e Laticínios",
+      "cnpj": "",
+      "sellerName": "PMG",
+      "sellerPhone": "(11) 5645-0000",
+      "sellerEmail": "",
+      "pixKey": "",
+      "pixKeyType": "",
+      "paymentMethods": [
+        "Cartão de crédito"
+      ],
+      "notes": "Fornecedor comprovado por venda nº 8997086",
+      "evidenceType": "documented",
+      "evidenceSource": "Nota/lista oficial PMG - Venda nº 8997086"
+    },
+    {
+      "id": "sup_bom_clima",
+      "scope": "gyros",
+      "name": "Bom Clima Embalagens",
+      "legalName": "Bom Clima Embalagens LTDA",
+      "cnpj": "55.912.329/0001-10",
+      "sellerName": "João Victor",
+      "sellerPhone": "(11) 93357-8279 / (11) 99651-4848",
+      "sellerEmail": "bomclima@bomclimaembalagens.com",
+      "pixKey": "",
+      "pixKeyType": "",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "Fornecedor comprovado por orçamento nº 343",
+      "address": "Avenida João Bernardo Medeiros, 369 - Jardim Bom Clima",
+      "cep": "07197-010",
+      "city": "Guarulhos",
+      "state": "SP",
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento 343 / Bom Clima Embalagens"
+    },
+    {
+      "id": "sup_armazem_sao_vito",
+      "scope": "gyros",
+      "name": "Armazém São Vito",
+      "legalName": "Armazém São Vito",
+      "cnpj": "",
+      "sellerName": "",
+      "sellerPhone": "",
+      "sellerEmail": "",
+      "address": "",
+      "cep": "",
+      "city": "",
+      "state": "",
+      "pixKey": "",
+      "pixKeyType": "",
+      "paymentMethods": [
+        "PIX"
+      ],
+      "notes": "Canal online de compra de secos na região da Zona Cerealista.",
+      "evidenceType": "review",
+      "evidenceSource": "Pedido online visualizado pela operação; anexar comprovante ou nota para validar"
+    }
+  ],
+  "purchaseOrders": [
+    {
+      "id": "ord_import_sup_padaria",
+      "scope": "gyros",
+      "supplierId": "sup_padaria",
+      "label": "Base manual da operação",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 26.5,
+      "notes": "Histórico manual inicial dos pães informados pela operação.",
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor e preços confirmados manualmente pela operação; revisar com nota quando houver"
+    },
+    {
+      "id": "ord_import_sup_laticinio",
+      "scope": "gyros",
+      "supplierId": "sup_laticinio",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 214.32,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_acougue",
+      "scope": "gyros",
+      "supplierId": "sup_acougue",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 130.94,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_distribuidor",
+      "scope": "gyros",
+      "supplierId": "sup_distribuidor",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 31,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_congelados",
+      "scope": "gyros",
+      "supplierId": "sup_congelados",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 129.89,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_cozinha",
+      "scope": "gyros",
+      "supplierId": "sup_cozinha",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 21.5,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_hortifruti",
+      "scope": "gyros",
+      "supplierId": "sup_hortifruti",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 82.5,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_mercearia",
+      "scope": "gyros",
+      "supplierId": "sup_mercearia",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 237.96,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_descartaveis",
+      "scope": "gyros",
+      "supplierId": "sup_descartaveis",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 13.3,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_docaria",
+      "scope": "gyros",
+      "supplierId": "sup_docaria",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 54,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_bebidas",
+      "scope": "gyros",
+      "supplierId": "sup_bebidas",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 956.3400000000001,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_producao",
+      "scope": "gyros",
+      "supplierId": "sup_producao",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 42,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_zona_cerealista",
+      "scope": "gyros",
+      "supplierId": "sup_zona_cerealista",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 63.85,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_hortifruti_referencia_web",
+      "scope": "gyros",
+      "supplierId": "sup_hortifruti_referencia_web",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 4.99,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_mercearia_referencia_web",
+      "scope": "gyros",
+      "supplierId": "sup_mercearia_referencia_web",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 21.46,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_import_sup_samppael",
+      "scope": "gyros",
+      "supplierId": "sup_samppael",
+      "label": "Base importada do PWA",
+      "date": "",
+      "documentNumber": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 335,
+      "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
+    },
+    {
+      "id": "ord_pmg_8997086",
+      "scope": "gyros",
+      "supplierId": "sup_pmg",
+      "label": "Compra PMG",
+      "date": "2026-03-12",
+      "documentNumber": "8997086",
+      "paymentMethod": "Cartão de crédito",
+      "paymentStatus": "paid",
+      "totalAmount": 1298.9,
+      "notes": "Venda PMG Comércio de Frios e Laticínios",
+      "evidenceType": "documented",
+      "evidenceSource": "Venda nº 8997086 / PMG"
+    },
+    {
+      "id": "ord_bom_clima_343",
+      "scope": "gyros",
+      "supplierId": "sup_bom_clima",
+      "label": "Orçamento Bom Clima",
+      "date": "2026-03-02",
+      "documentNumber": "343",
+      "paymentMethod": "PIX",
+      "paymentStatus": "pending",
+      "totalAmount": 399.35,
+      "notes": "Orçamento Bom Clima Embalagens",
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento nº 343 / Bom Clima Embalagens"
+    },
+    {
+      "id": "ord_samppel_10002",
+      "scope": "gyros",
+      "supplierId": "sup_samppael",
+      "label": "Pedido Samppel",
+      "date": "2026-03-04",
+      "documentNumber": "PV 10002",
+      "paymentMethod": "PIX",
+      "paymentStatus": "scheduled",
+      "totalAmount": 335,
+      "notes": "Pedido de venda Samppel",
+      "evidenceType": "documented",
+      "evidenceSource": "Pedido de venda nº 10002 / Samppel"
+    },
+    {
+      "id": "ord_armazem_sao_vito_9678784",
+      "scope": "gyros",
+      "supplierId": "sup_armazem_sao_vito",
+      "label": "Pedido online Armazém São Vito",
+      "date": "2026-02-25",
+      "documentNumber": "9678784",
+      "paymentMethod": "PIX",
+      "paymentStatus": "scheduled",
+      "totalAmount": 129.89,
+      "notes": "Pedido online visualizado no portal do fornecedor; parte dos itens ainda não foi cadastrada como ingrediente.",
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    }
+  ],
+  "purchaseItems": [
+    {
+      "id": "pit_ing_pao_frances",
+      "orderId": "ord_import_sup_padaria",
+      "supplierId": "sup_padaria",
+      "resourceType": "ingredient",
+      "resourceId": "ing_pao_frances",
+      "description": "Pão francês",
+      "qty": 30,
+      "unit": "un",
+      "unitPrice": 0.8,
+      "totalPrice": 24,
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor e preço confirmados manualmente pela operação; revisar com nota quando houver"
+    },
+    {
+      "id": "pit_ing_parmesao",
+      "orderId": "ord_import_sup_laticinio",
+      "supplierId": "sup_laticinio",
+      "resourceType": "ingredient",
+      "resourceId": "ing_parmesao",
+      "description": "Parmesão ralado",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.058,
+      "totalPrice": 58,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_mucarela",
+      "orderId": "ord_import_sup_laticinio",
+      "supplierId": "sup_laticinio",
+      "resourceType": "ingredient",
+      "resourceId": "ing_mucarela",
+      "description": "Muçarela",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.036,
+      "totalPrice": 36,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_catupiry",
+      "orderId": "ord_import_sup_laticinio",
+      "supplierId": "sup_laticinio",
+      "resourceType": "ingredient",
+      "resourceId": "ing_catupiry",
+      "description": "Catupiry",
+      "qty": 1500,
+      "unit": "g",
+      "unitPrice": 0.04021333333333333,
+      "totalPrice": 60.32,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_cheddar",
+      "orderId": "ord_import_sup_laticinio",
+      "supplierId": "sup_laticinio",
+      "resourceType": "ingredient",
+      "resourceId": "ing_cheddar",
+      "description": "Cheddar",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.027,
+      "totalPrice": 27,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_4queijos",
+      "orderId": "ord_import_sup_laticinio",
+      "supplierId": "sup_laticinio",
+      "resourceType": "ingredient",
+      "resourceId": "ing_4queijos",
+      "description": "Catupiry Sabor 4 queijos",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.033,
+      "totalPrice": 33,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_fraldinha",
+      "orderId": "ord_import_sup_acougue",
+      "supplierId": "sup_acougue",
+      "resourceType": "ingredient",
+      "resourceId": "ing_fraldinha",
+      "description": "Fraldinha preparada",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.051,
+      "totalPrice": 51,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_linguica",
+      "orderId": "ord_import_sup_acougue",
+      "supplierId": "sup_acougue",
+      "resourceType": "ingredient",
+      "resourceId": "ing_linguica",
+      "description": "Linguiça toscana preparada",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.029,
+      "totalPrice": 29,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_bacon_cubos",
+      "orderId": "ord_import_sup_acougue",
+      "supplierId": "sup_acougue",
+      "resourceType": "ingredient",
+      "resourceId": "ing_bacon_cubos",
+      "description": "Bacon em cubos",
+      "qty": 2000,
+      "unit": "g",
+      "unitPrice": 0.02547,
+      "totalPrice": 50.94,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_frango",
+      "orderId": "ord_import_sup_distribuidor",
+      "supplierId": "sup_distribuidor",
+      "resourceType": "ingredient",
+      "resourceId": "ing_frango",
+      "description": "Frango preparado",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.031,
+      "totalPrice": 31,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_batata",
+      "orderId": "ord_import_sup_congelados",
+      "supplierId": "sup_congelados",
+      "resourceType": "ingredient",
+      "resourceId": "ing_batata",
+      "description": "Batata pré-frita",
+      "qty": 14000,
+      "unit": "g",
+      "unitPrice": 0.0071421428571428565,
+      "totalPrice": 99.99,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_massa_churros",
+      "orderId": "ord_import_sup_congelados",
+      "supplierId": "sup_congelados",
+      "resourceType": "ingredient",
+      "resourceId": "ing_massa_churros",
+      "description": "Mini churros congelado (doce de leite)",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.0299,
+      "totalPrice": 29.9,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_arroz",
+      "orderId": "ord_import_sup_cozinha",
+      "supplierId": "sup_cozinha",
+      "resourceType": "ingredient",
+      "resourceId": "ing_arroz",
+      "description": "Arroz cozido",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.0095,
+      "totalPrice": 9.5,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_feijao",
+      "orderId": "ord_import_sup_cozinha",
+      "supplierId": "sup_cozinha",
+      "resourceType": "ingredient",
+      "resourceId": "ing_feijao",
+      "description": "Feijão cozido",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.012,
+      "totalPrice": 12,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_salada",
+      "orderId": "ord_import_sup_hortifruti",
+      "supplierId": "sup_hortifruti",
+      "resourceType": "ingredient",
+      "resourceId": "ing_salada",
+      "description": "Salada antiga / folhas / tomate",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.016,
+      "totalPrice": 16,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_tomate",
+      "orderId": "ord_import_sup_hortifruti",
+      "supplierId": "sup_hortifruti",
+      "resourceType": "ingredient",
+      "resourceId": "ing_tomate",
+      "description": "Tomate",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.009,
+      "totalPrice": 9,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_cebola",
+      "orderId": "ord_import_sup_hortifruti",
+      "supplierId": "sup_hortifruti",
+      "resourceType": "ingredient",
+      "resourceId": "ing_cebola",
+      "description": "Cebola",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.0055,
+      "totalPrice": 5.5,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_pimentao",
+      "orderId": "ord_import_sup_hortifruti",
+      "supplierId": "sup_hortifruti",
+      "resourceType": "ingredient",
+      "resourceId": "ing_pimentao",
+      "description": "Pimentão",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.012,
+      "totalPrice": 12,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_cheiro_verde",
+      "orderId": "ord_import_sup_hortifruti",
+      "supplierId": "sup_hortifruti",
+      "resourceType": "ingredient",
+      "resourceId": "ing_cheiro_verde",
+      "description": "Cheiro-verde",
+      "qty": 300,
+      "unit": "g",
+      "unitPrice": 0.02,
+      "totalPrice": 6,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_alho",
+      "orderId": "ord_import_sup_hortifruti",
+      "supplierId": "sup_hortifruti",
+      "resourceType": "ingredient",
+      "resourceId": "ing_alho",
+      "description": "Alho",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.024,
+      "totalPrice": 24,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_limao",
+      "orderId": "ord_import_sup_hortifruti",
+      "supplierId": "sup_hortifruti",
+      "resourceType": "ingredient",
+      "resourceId": "ing_limao",
+      "description": "Limao (suco)",
+      "qty": 1000,
+      "unit": "ml",
+      "unitPrice": 0.01,
+      "totalPrice": 10,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_oleo_vinagre",
+      "orderId": "ord_import_sup_mercearia",
+      "supplierId": "sup_mercearia",
+      "resourceType": "ingredient",
+      "resourceId": "ing_oleo_vinagre",
+      "description": "Azeite de oliva",
+      "qty": 2000,
+      "unit": "ml",
+      "unitPrice": 0.065,
+      "totalPrice": 130,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_maionese_ind",
+      "orderId": "ord_import_sup_mercearia",
+      "supplierId": "sup_mercearia",
+      "resourceType": "ingredient",
+      "resourceId": "ing_maionese_ind",
+      "description": "Base de maionese Quero",
+      "qty": 3000,
+      "unit": "g",
+      "unitPrice": 0.008,
+      "totalPrice": 24,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_bbq",
+      "orderId": "ord_import_sup_mercearia",
+      "supplierId": "sup_mercearia",
+      "resourceType": "ingredient",
+      "resourceId": "ing_bbq",
+      "description": "Molho barbecue pronto",
+      "qty": 2000,
+      "unit": "ml",
+      "unitPrice": 0.013900000000000001,
+      "totalPrice": 27.8,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_mel",
+      "orderId": "ord_import_sup_mercearia",
+      "supplierId": "sup_mercearia",
+      "resourceType": "ingredient",
+      "resourceId": "ing_mel",
+      "description": "Mel",
+      "qty": 500,
+      "unit": "g",
+      "unitPrice": 0.04,
+      "totalPrice": 20,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_oleo_algodao",
+      "orderId": "ord_import_sup_mercearia",
+      "supplierId": "sup_mercearia",
+      "resourceType": "ingredient",
+      "resourceId": "ing_oleo_algodao",
+      "description": "Óleo de algodão",
+      "qty": 3600,
+      "unit": "ml",
+      "unitPrice": 0.010044444444444443,
+      "totalPrice": 36.16,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_sal_sache",
+      "orderId": "ord_import_sup_descartaveis",
+      "supplierId": "sup_descartaveis",
+      "resourceType": "ingredient",
+      "resourceId": "ing_sal_sache",
+      "description": "Sal sachê refinado 0,8g",
+      "qty": 1000,
+      "unit": "un",
+      "unitPrice": 0.013300000000000001,
+      "totalPrice": 13.3,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_rech_dl",
+      "orderId": "ord_import_sup_docaria",
+      "supplierId": "sup_docaria",
+      "resourceType": "ingredient",
+      "resourceId": "ing_rech_dl",
+      "description": "Doce de leite",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.021,
+      "totalPrice": 21,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_rech_choc",
+      "orderId": "ord_import_sup_docaria",
+      "supplierId": "sup_docaria",
+      "resourceType": "ingredient",
+      "resourceId": "ing_rech_choc",
+      "description": "Chocolate",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.019,
+      "totalPrice": 19,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_rech_goi",
+      "orderId": "ord_import_sup_docaria",
+      "supplierId": "sup_docaria",
+      "resourceType": "ingredient",
+      "resourceId": "ing_rech_goi",
+      "description": "Goiabada",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.014,
+      "totalPrice": 14,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_refri_350",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_refri_350",
+      "description": "Refrigerante lata 350ml",
+      "qty": 72,
+      "unit": "un",
+      "unitPrice": 3.4741666666666666,
+      "totalPrice": 250.14,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_garrafa_450",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_garrafa_450",
+      "description": "Garrafa 450ml",
+      "qty": 12,
+      "unit": "un",
+      "unitPrice": 4.3,
+      "totalPrice": 51.6,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_agua_510",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_agua_510",
+      "description": "Água mineral 510ml",
+      "qty": 12,
+      "unit": "un",
+      "unitPrice": 1.2541666666666667,
+      "totalPrice": 15.05,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_agua_gas_510",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_agua_gas_510",
+      "description": "Água com gás 510ml",
+      "qty": 12,
+      "unit": "un",
+      "unitPrice": 1.6458333333333333,
+      "totalPrice": 19.75,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_cerveja_bud_330",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_cerveja_bud_330",
+      "description": "Budweiser long neck 330ml",
+      "qty": 24,
+      "unit": "un",
+      "unitPrice": 5.958333333333333,
+      "totalPrice": 143,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_cerveja_heineken_330",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_cerveja_heineken_330",
+      "description": "Heineken long neck 330ml",
+      "qty": 24,
+      "unit": "un",
+      "unitPrice": 6.916666666666667,
+      "totalPrice": 166,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_coca_2l",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_coca_2l",
+      "description": "Coca-Cola 2L",
+      "qty": 6,
+      "unit": "un",
+      "unitPrice": 10.953333333333333,
+      "totalPrice": 65.72,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_h2o_500",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_h2o_500",
+      "description": "H2O limão 500ml",
+      "qty": 12,
+      "unit": "un",
+      "unitPrice": 4.675,
+      "totalPrice": 56.1,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_limoneto_500",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_limoneto_500",
+      "description": "Limoneto sem açúcar 500ml",
+      "qty": 12,
+      "unit": "un",
+      "unitPrice": 4.675,
+      "totalPrice": 56.1,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_schweppes_350",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_schweppes_350",
+      "description": "Schweppes Citrus 350ml",
+      "qty": 6,
+      "unit": "un",
+      "unitPrice": 3.865,
+      "totalPrice": 23.19,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_sprite_350",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_sprite_350",
+      "description": "Sprite 350ml",
+      "qty": 6,
+      "unit": "un",
+      "unitPrice": 3.66,
+      "totalPrice": 21.96,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_delvalle_uva_290",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_delvalle_uva_290",
+      "description": "Del Valle Uva 290ml",
+      "qty": 6,
+      "unit": "un",
+      "unitPrice": 3.6683333333333334,
+      "totalPrice": 22.01,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_coca_zero_2l",
+      "orderId": "ord_import_sup_bebidas",
+      "supplierId": "sup_bebidas",
+      "resourceType": "ingredient",
+      "resourceId": "ing_coca_zero_2l",
+      "description": "Coca-Cola Zero 2L",
+      "qty": 6,
+      "unit": "un",
+      "unitPrice": 10.953333333333333,
+      "totalPrice": 65.72,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_suco_natural",
+      "orderId": "ord_import_sup_producao",
+      "supplierId": "sup_producao",
+      "resourceType": "ingredient",
+      "resourceId": "ing_suco_natural",
+      "description": "Suco natural (garrafinha)",
+      "qty": 10,
+      "unit": "un",
+      "unitPrice": 4.2,
+      "totalPrice": 42,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_fumaca_po",
+      "orderId": "ord_import_sup_zona_cerealista",
+      "supplierId": "sup_zona_cerealista",
+      "resourceType": "ingredient",
+      "resourceId": "ing_fumaca_po",
+      "description": "Fumaca em po",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.01943,
+      "totalPrice": 19.43,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_lemon_pepper",
+      "orderId": "ord_import_sup_zona_cerealista",
+      "supplierId": "sup_zona_cerealista",
+      "resourceType": "ingredient",
+      "resourceId": "ing_lemon_pepper",
+      "description": "Lemon pepper",
+      "qty": 500,
+      "unit": "g",
+      "unitPrice": 0.03,
+      "totalPrice": 15,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_paprica_doce",
+      "orderId": "ord_import_sup_zona_cerealista",
+      "supplierId": "sup_zona_cerealista",
+      "resourceType": "ingredient",
+      "resourceId": "ing_paprica_doce",
+      "description": "Paprica doce",
+      "qty": 500,
+      "unit": "g",
+      "unitPrice": 0.02,
+      "totalPrice": 10,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_chimichurri",
+      "orderId": "ord_import_sup_zona_cerealista",
+      "supplierId": "sup_zona_cerealista",
+      "resourceType": "ingredient",
+      "resourceId": "ing_chimichurri",
+      "description": "Chimichurri",
+      "qty": 500,
+      "unit": "g",
+      "unitPrice": 0.038840000000000006,
+      "totalPrice": 19.42,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_manjericao",
+      "orderId": "ord_import_sup_hortifruti_referencia_web",
+      "supplierId": "sup_hortifruti_referencia_web",
+      "resourceType": "ingredient",
+      "resourceId": "ing_manjericao",
+      "description": "Manjericão",
+      "qty": 20,
+      "unit": "g",
+      "unitPrice": 0.2495,
+      "totalPrice": 4.99,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_vinagre",
+      "orderId": "ord_import_sup_mercearia_referencia_web",
+      "supplierId": "sup_mercearia_referencia_web",
+      "resourceType": "ingredient",
+      "resourceId": "ing_vinagre",
+      "description": "Vinagre",
+      "qty": 750,
+      "unit": "ml",
+      "unitPrice": 0.00532,
+      "totalPrice": 3.99,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_louro",
+      "orderId": "ord_import_sup_mercearia_referencia_web",
+      "supplierId": "sup_mercearia_referencia_web",
+      "resourceType": "ingredient",
+      "resourceId": "ing_louro",
+      "description": "Louro",
+      "qty": 20,
+      "unit": "g",
+      "unitPrice": 0.2745,
+      "totalPrice": 5.49,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_oregano",
+      "orderId": "ord_import_sup_mercearia_referencia_web",
+      "supplierId": "sup_mercearia_referencia_web",
+      "resourceType": "ingredient",
+      "resourceId": "ing_oregano",
+      "description": "Orégano",
+      "qty": 20,
+      "unit": "g",
+      "unitPrice": 0.2495,
+      "totalPrice": 4.99,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_ing_pimenta_calabresa",
+      "orderId": "ord_import_sup_mercearia_referencia_web",
+      "supplierId": "sup_mercearia_referencia_web",
+      "resourceType": "ingredient",
+      "resourceId": "ing_pimenta_calabresa",
+      "description": "Pimenta calabresa",
+      "qty": 50,
+      "unit": "g",
+      "unitPrice": 0.1398,
+      "totalPrice": 6.99,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_pkg_sacola_delivery",
+      "orderId": "ord_import_sup_samppael",
+      "supplierId": "sup_samppael",
+      "resourceType": "packaging",
+      "resourceId": "pkg_sacola_delivery",
+      "description": "Saco liso branco medio",
+      "qty": 400,
+      "unit": "un",
+      "unitPrice": 0.8375,
+      "totalPrice": 335,
+      "evidenceType": "documented",
+      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
+    },
+    {
+      "id": "pit_pmg_batata",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_batata",
+      "description": "Batata pré-frita",
+      "qty": 14000,
+      "unit": "g",
+      "unitPrice": 0.0071421428571428565,
+      "totalPrice": 99.99,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_azeite",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_oleo_vinagre",
+      "description": "Azeite de oliva",
+      "qty": 2000,
+      "unit": "ml",
+      "unitPrice": 0.065,
+      "totalPrice": 130,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_bacon",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_bacon_cubos",
+      "description": "Bacon em cubos",
+      "qty": 2000,
+      "unit": "g",
+      "unitPrice": 0.02547,
+      "totalPrice": 50.94,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_maionese",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_maionese_ind",
+      "description": "Base de maionese Quero",
+      "qty": 9000,
+      "unit": "g",
+      "unitPrice": 0.008,
+      "totalPrice": 72,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_bbq",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_bbq",
+      "description": "Molho barbecue pronto",
+      "qty": 3500,
+      "unit": "ml",
+      "unitPrice": 0.007942857142857144,
+      "totalPrice": 27.8,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_saches",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_saches_mix",
+      "description": "Saches (ketchup/maionese/mostarda/pimenta)",
+      "qty": 428,
+      "unit": "un",
+      "unitPrice": 0.1610514018691589,
+      "totalPrice": 68.93,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_bud",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_cerveja_bud_330",
+      "description": "Budweiser long neck 330ml",
+      "qty": 24,
+      "unit": "un",
+      "unitPrice": 5.958333333333333,
+      "totalPrice": 143,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_hei",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_cerveja_heineken_330",
+      "description": "Heineken long neck 330ml",
+      "qty": 24,
+      "unit": "un",
+      "unitPrice": 6.916666666666667,
+      "totalPrice": 166,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_ice_limao",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_ice_limao_450",
+      "description": "Chá Ice Tea Leão Limão 450ml",
+      "qty": 6,
+      "unit": "un",
+      "unitPrice": 4.3,
+      "totalPrice": 25.8,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_ice_pessego",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_ice_pessego_450",
+      "description": "Chá Ice Tea Leão Pêssego 450ml",
+      "qty": 6,
+      "unit": "un",
+      "unitPrice": 4.3,
+      "totalPrice": 25.8,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_coca350",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_coca_350",
+      "description": "Coca-Cola 350ml",
+      "qty": 24,
+      "unit": "un",
+      "unitPrice": 3.4341666666666666,
+      "totalPrice": 82.42,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_coca2l",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_coca_2l",
+      "description": "Coca-Cola 2L",
+      "qty": 6,
+      "unit": "un",
+      "unitPrice": 10.953333333333333,
+      "totalPrice": 65.72,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_cocazero350",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_coca_zero_350",
+      "description": "Coca-Cola Zero 350ml",
+      "qty": 24,
+      "unit": "un",
+      "unitPrice": 3.4491666666666667,
+      "totalPrice": 82.78,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_fanta350",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_fanta_350",
+      "description": "Fanta 350ml",
+      "qty": 12,
+      "unit": "un",
+      "unitPrice": 3.5558333333333336,
+      "totalPrice": 42.67,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_guarana350",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_guarana_350",
+      "description": "Guaraná Antarctica 350ml",
+      "qty": 24,
+      "unit": "un",
+      "unitPrice": 3.4858333333333333,
+      "totalPrice": 83.66,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_h2o",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_h2o_500",
+      "description": "H2O limão 500ml",
+      "qty": 12,
+      "unit": "un",
+      "unitPrice": 4.675,
+      "totalPrice": 56.1,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_pmg_limoneto",
+      "orderId": "ord_pmg_8997086",
+      "supplierId": "sup_pmg",
+      "resourceType": "ingredient",
+      "resourceId": "ing_limoneto_500",
+      "description": "Limoneto sem açúcar 500ml",
+      "qty": 12,
+      "unit": "un",
+      "unitPrice": 4.675,
+      "totalPrice": 56.1,
+      "evidenceType": "documented",
+      "evidenceSource": "Venda PMG nº 8997086"
+    },
+    {
+      "id": "pit_bomclima_pote60",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_potinho_30",
+      "description": "Pote 60ml branco G697",
+      "qty": 25,
+      "unit": "un",
+      "unitPrice": 0.23600000000000002,
+      "totalPrice": 5.9,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_guard_sache",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_guardanapo",
+      "description": "Guardanapo sache 28x20,5 liso",
+      "qty": 250,
+      "unit": "un",
+      "unitPrice": 0.154,
+      "totalPrice": 38.5,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_talher",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_talher_kit",
+      "description": "Kit talheres",
+      "qty": 50,
+      "unit": "un",
+      "unitPrice": 0.49,
+      "totalPrice": 24.5,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_pote145",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_potinho_feijao",
+      "description": "Pote redondo 145ml com sobretampa",
+      "qty": 24,
+      "unit": "un",
+      "unitPrice": 0.3416666666666666,
+      "totalPrice": 8.2,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_m90",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_bandeja_m90",
+      "description": "Bandeja aluminio M90 220ml",
+      "qty": 100,
+      "unit": "un",
+      "unitPrice": 0.469,
+      "totalPrice": 46.9,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_m120",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_bandeja_m120",
+      "description": "Bandeja aluminio M120 500ml",
+      "qty": 100,
+      "unit": "un",
+      "unitPrice": 0.669,
+      "totalPrice": 66.9,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_bat_p",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_bat_p",
+      "description": "Saco de papel hamburgao plastificado",
+      "qty": 100,
+      "unit": "un",
+      "unitPrice": 0.059500000000000004,
+      "totalPrice": 5.95,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_bat_m",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_bat_m",
+      "description": "Saco de papel mono 1/2 kg plastificado",
+      "qty": 100,
+      "unit": "un",
+      "unitPrice": 0.075,
+      "totalPrice": 7.5,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_bat_g",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_bat_g",
+      "description": "Saco de papel mono 1/2 kg plastificado",
+      "qty": 100,
+      "unit": "un",
+      "unitPrice": 0.075,
+      "totalPrice": 7.5,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_sobremesa",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_sobremesa",
+      "description": "Saco de papel hamburgao plastificado",
+      "qty": 100,
+      "unit": "un",
+      "unitPrice": 0.059500000000000004,
+      "totalPrice": 5.95,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_bomclima_lanche",
+      "orderId": "ord_bom_clima_343",
+      "supplierId": "sup_bom_clima",
+      "resourceType": "packaging",
+      "resourceId": "pkg_lanche",
+      "description": "Papel acoplado mono frios 30x38",
+      "qty": 400,
+      "unit": "un",
+      "unitPrice": 0.0675,
+      "totalPrice": 27,
+      "evidenceType": "documented",
+      "evidenceSource": "Orçamento Bom Clima nº 343"
+    },
+    {
+      "id": "pit_samppel_sacola",
+      "orderId": "ord_samppel_10002",
+      "supplierId": "sup_samppael",
+      "resourceType": "packaging",
+      "resourceId": "pkg_sacola_delivery",
+      "description": "Saco liso branco medio",
+      "qty": 400,
+      "unit": "un",
+      "unitPrice": 0.75,
+      "totalPrice": 300,
+      "evidenceType": "documented",
+      "evidenceSource": "Pedido de venda Samppel nº 10002"
+    },
+    {
+      "id": "pit_samppel_frete",
+      "orderId": "ord_samppel_10002",
+      "supplierId": "sup_samppael",
+      "resourceType": "packaging",
+      "resourceId": "",
+      "description": "Frete",
+      "qty": 1,
+      "unit": "un",
+      "unitPrice": 35,
+      "totalPrice": 35,
+      "evidenceType": "documented",
+      "evidenceSource": "Pedido de venda Samppel nº 10002"
+    },
+    {
+      "id": "pit_ing_pao_parmesao_pronto",
+      "orderId": "ord_import_sup_padaria",
+      "supplierId": "sup_padaria",
+      "resourceType": "ingredient",
+      "resourceId": "ing_pao_parmesao_pronto",
+      "description": "Pão com parmesão",
+      "qty": 1,
+      "unit": "un",
+      "unitPrice": 2.5,
+      "totalPrice": 2.5,
+      "evidenceType": "review",
+      "evidenceSource": "Fornecedor e preço confirmados manualmente pela operação; revisar com nota quando houver"
+    },
+    {
+      "id": "pit_saovito_chimichurri",
+      "orderId": "ord_armazem_sao_vito_9678784",
+      "supplierId": "sup_armazem_sao_vito",
+      "resourceType": "ingredient",
+      "resourceId": "ing_chimichurri",
+      "description": "Chimichurri 500g",
+      "qty": 500,
+      "unit": "g",
+      "unitPrice": 0.038840000000000006,
+      "totalPrice": 19.42,
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    },
+    {
+      "id": "pit_saovito_fumaca",
+      "orderId": "ord_armazem_sao_vito_9678784",
+      "supplierId": "sup_armazem_sao_vito",
+      "resourceType": "ingredient",
+      "resourceId": "ing_fumaca_po",
+      "description": "Fumaça em pó 1kg",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.01943,
+      "totalPrice": 19.43,
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    },
+    {
+      "id": "pit_saovito_alho_po",
+      "orderId": "ord_armazem_sao_vito_9678784",
+      "supplierId": "sup_armazem_sao_vito",
+      "resourceType": "ingredient",
+      "resourceId": "",
+      "description": "Alho em pó 500g",
+      "qty": 500,
+      "unit": "g",
+      "unitPrice": 0.0237,
+      "totalPrice": 11.85,
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    },
+    {
+      "id": "pit_saovito_cebola_po",
+      "orderId": "ord_armazem_sao_vito_9678784",
+      "supplierId": "sup_armazem_sao_vito",
+      "resourceType": "ingredient",
+      "resourceId": "",
+      "description": "Cebola em pó 500g",
+      "qty": 500,
+      "unit": "g",
+      "unitPrice": 0.02984,
+      "totalPrice": 14.92,
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    },
+    {
+      "id": "pit_saovito_caldo_galinha",
+      "orderId": "ord_armazem_sao_vito_9678784",
+      "supplierId": "sup_armazem_sao_vito",
+      "resourceType": "ingredient",
+      "resourceId": "",
+      "description": "Caldo de galinha 1kg",
+      "qty": 1000,
+      "unit": "g",
+      "unitPrice": 0.01509,
+      "totalPrice": 15.09,
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    },
+    {
+      "id": "pit_saovito_pimenta_reino",
+      "orderId": "ord_armazem_sao_vito_9678784",
+      "supplierId": "sup_armazem_sao_vito",
+      "resourceType": "ingredient",
+      "resourceId": "",
+      "description": "Pimenta do reino em grão 500g",
+      "qty": 500,
+      "unit": "g",
+      "unitPrice": 0.06968,
+      "totalPrice": 34.84,
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    },
+    {
+      "id": "pit_saovito_canela",
+      "orderId": "ord_armazem_sao_vito_9678784",
+      "supplierId": "sup_armazem_sao_vito",
+      "resourceType": "ingredient",
+      "resourceId": "",
+      "description": "Canela moída 200g",
+      "qty": 200,
+      "unit": "g",
+      "unitPrice": 0.02595,
+      "totalPrice": 5.19,
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    }
+  ],
+  "inputs": [
+    {
+      "id": "inp_pmg_8997086",
+      "scope": "gyros",
+      "title": "Compra PMG nº 8997086",
+      "inputType": "invoice",
+      "sourceChannel": "other",
+      "supplierId": "sup_pmg",
+      "supplierName": "PMG Comércio de Frios e Laticínios",
+      "documentNumber": "8997086",
+      "date": "2026-03-12",
+      "paymentMethod": "Cartão de crédito",
+      "paymentStatus": "paid",
+      "totalAmount": 1298.9,
+      "fileLabel": "CANTINHO DO BOM RETIRO 1.pdf",
+      "filePath": "docs/inputs/CANTINHO_DO_BOM_RETIRO_1.pdf",
+      "fileUrl": "",
+      "notes": "Compra grande de bebidas, batata, maionese, barbecue e outros itens.",
+      "evidenceType": "documented",
+      "evidenceSource": "PDF oficial do fornecedor"
+    },
+    {
+      "id": "inp_bom_clima_343",
+      "scope": "gyros",
+      "title": "Orçamento Bom Clima nº 343",
+      "inputType": "quote",
+      "sourceChannel": "other",
+      "supplierId": "sup_bom_clima",
+      "supplierName": "Bom Clima Embalagens",
+      "documentNumber": "343",
+      "date": "2026-03-02",
+      "paymentMethod": "PIX",
+      "paymentStatus": "pending",
+      "totalAmount": 399.35,
+      "fileLabel": "Orcamento_343_T_D_SANTANA_RESTAURANTE.pdf",
+      "filePath": "docs/inputs/Orcamento_343_T_D_SANTANA_RESTAURANTE.pdf",
+      "fileUrl": "",
+      "notes": "Orçamento de embalagens e descartáveis.",
+      "evidenceType": "documented",
+      "evidenceSource": "PDF oficial do fornecedor"
+    },
+    {
+      "id": "inp_samppel_10002",
+      "scope": "gyros",
+      "title": "Pedido Samppel PV 10002",
+      "inputType": "order",
+      "sourceChannel": "other",
+      "supplierId": "sup_samppael",
+      "supplierName": "Samppel",
+      "documentNumber": "PV 10002",
+      "date": "2026-03-04",
+      "paymentMethod": "PIX",
+      "paymentStatus": "scheduled",
+      "totalAmount": 335,
+      "fileLabel": "PV 10002.pdf",
+      "filePath": "docs/inputs/PV_10002.pdf",
+      "fileUrl": "",
+      "notes": "Pedido de sacola delivery e frete.",
+      "evidenceType": "documented",
+      "evidenceSource": "PDF oficial do fornecedor"
+    },
+    {
+      "id": "inp_sao_vito_9678784",
+      "scope": "gyros",
+      "title": "Pedido online Armazém São Vito",
+      "inputType": "screenshot",
+      "sourceChannel": "online",
+      "supplierId": "sup_armazem_sao_vito",
+      "supplierName": "Armazém São Vito",
+      "documentNumber": "9678784",
+      "date": "2026-02-25",
+      "paymentMethod": "PIX",
+      "paymentStatus": "scheduled",
+      "totalAmount": 129.89,
+      "fileLabel": "Print do pedido online 9678784",
+      "filePath": "",
+      "fileUrl": "https://checkout.saovito.com/MinhaConta/Pedido/",
+      "notes": "Pedido online visualizado pela operação. Alguns itens ainda serão cadastrados depois.",
+      "evidenceType": "review",
+      "evidenceSource": "Captura de tela do pedido online"
+    },
+    {
+      "id": "inp_padaria_versailles_manual",
+      "scope": "gyros",
+      "title": "Confirmação manual Padaria Versailles",
+      "inputType": "other",
+      "sourceChannel": "physical_store",
+      "supplierId": "sup_padaria",
+      "supplierName": "Padaria Versailles",
+      "documentNumber": "",
+      "date": "",
+      "paymentMethod": "",
+      "paymentStatus": "pending",
+      "totalAmount": 26.5,
+      "fileLabel": "Informação manual da operação",
+      "filePath": "",
+      "fileUrl": "",
+      "notes": "Pão francês a R$ 0,80 e pão com parmesão a R$ 2,50 confirmados pela operação.",
+      "evidenceType": "review",
+      "evidenceSource": "Informação manual da operação; revisar com nota quando houver"
+    },
+    {
+      "id": "inp_meus_congelados_site",
+      "scope": "gyros",
+      "title": "Site Meus Congelados - Mini Churros Doce de Leite 1kg",
+      "inputType": "screenshot",
+      "sourceChannel": "online",
+      "supplierId": "sup_congelados",
+      "supplierName": "Meus Congelados",
+      "documentNumber": "",
+      "date": "",
+      "paymentMethod": "PIX",
+      "paymentStatus": "pending",
+      "totalAmount": 29.9,
+      "fileLabel": "Referencia visual do site do fornecedor",
+      "filePath": "",
+      "fileUrl": "",
+      "notes": "Produto congelado ja recheado com doce de leite. Unidade operacional aproximada de 20g.",
+      "evidenceType": "review",
+      "evidenceSource": "Print/site informado pela operacao; confirmar pedido formal quando houver"
     }
   ]
 }

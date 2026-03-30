@@ -603,36 +603,14 @@ Observações:
 
 ### Sobremesas
 
-#### Churros (porção com 6 unidades)
+#### Mini Churros - 6un (doce de leite)
 - Tipo: `menu`
 - Custo direto atual: `R$ 3,82`
 - Preço base pela regra: `R$ 11,45`
 - Preço iFood: `R$ 14,54`
-- Observação: Porcao padrao com 6 unidades de churros congelado pronto, polvilhado com acucar e canela.
+- Observação: Porcao padrao com 6 mini churros congelados ja recheados com doce de leite, polvilhados com acucar e canela.
 - Composição:
-  - Massa/base de churros (120) - R$ 3,66
-  - Acucar com canela (8) - R$ 0,10
-  - Saco de papel hamburgao plastificado (1) - R$ 0,06
-
-#### Mini Churros Doce de Leite
-- Tipo: `menu`
-- Custo direto atual: `R$ 3,82`
-- Preço base pela regra: `R$ 11,45`
-- Preço iFood: `R$ 14,54`
-- Observação: Mesmo custo do churros base congelado. O sabor no iFood não altera o custo oficial atual.
-- Composição:
-  - Massa/base de churros (120) - R$ 3,66
-  - Acucar com canela (8) - R$ 0,10
-  - Saco de papel hamburgao plastificado (1) - R$ 0,06
-
-#### Mini Churros Goiabada
-- Tipo: `menu`
-- Custo direto atual: `R$ 3,82`
-- Preço base pela regra: `R$ 11,45`
-- Preço iFood: `R$ 14,54`
-- Observação: Mesmo custo do churros base congelado. O sabor no iFood não altera o custo oficial atual.
-- Composição:
-  - Massa/base de churros (120) - R$ 3,66
+  - Mini churros congelado (doce de leite) (120) - R$ 3,66
   - Acucar com canela (8) - R$ 0,10
   - Saco de papel hamburgao plastificado (1) - R$ 0,06
 
@@ -898,6 +876,6 @@ Observações:
 
 ## Pendências abertas
 
-- O iFood antigo mostra `Mini Churros Doce de Leite` e `Mini Churros Goiabada`; na base oficial atual, os dois sabores usam o mesmo custo do churros congelado base.
+- O churros oficial atual ficou consolidado em `Mini Churros - 6un (doce de leite)`, comprado congelado ja recheado do fornecedor Meus Congelados.
 - As gramaturas dos adicionais de lanche e almoço foram assumidas tecnicamente para separar o custo: lanche com bacon 30g e queijos 40g; almoço com bacon 50g e queijos 60g.
 - A receita do antepasto de berinjela foi cadastrada com preços estimados de internet onde faltava compra real.
