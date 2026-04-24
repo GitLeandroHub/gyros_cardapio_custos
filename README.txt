@@ -4,6 +4,9 @@ O que este projeto já faz:
 - Cadastro de ingredientes com preço de compra, quantidade-base e perda.
 - Cadastro de preparos/fichas técnicas com rendimento (BOM em camadas).
 - Cadastro de embalagens no custo final.
+- Cadastro de fornecedores, compras com itens/volumes/preço unitário e gastos operacionais datados.
+- Aba de lançamentos com leitura por data/período, total gasto, status de pagamento e evidências vinculadas.
+- Dentro de `Lançamentos`, visão `Mapa de compras` orientada pelo cardápio e pelas receitas: agrupa a mesma família de compra ao longo do histórico, separa por categoria, mostra datas, fornecedores, packs/apresentações, preço comparável, valor pago e links reais dos comprovantes em `inputs`, com tabela ampla e abertura em nova aba.
 - Cadastro de itens finais e combos que podem puxar outros itens como base.
 - Rateio de aluguel e outros custos fixos pelo total de itens ativos do cardápio.
 - Dashboard com margem, custo total e preço sugerido por meta.
@@ -13,6 +16,7 @@ O que este projeto já faz:
 Observações:
 - O arquivo já vem com uma base inspirada no seu cardápio enviado.
 - Alguns combos usam “bases internas médias” para acelerar o começo. Ajuste quando quiser para refletir a sua operação real.
+- Use `Inputs` para guardar PDFs, comprovantes, prints e caminhos em `docs/inputs`; depois vincule esses registros em `Compras` e `Gastos`.
 - Para o PWA funcionar completo, abra a pasta em um servidor estático simples. Exemplo:
   python -m http.server 8080
   Depois acesse http://localhost:8080
