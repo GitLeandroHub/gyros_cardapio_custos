@@ -169,8 +169,7 @@ function resourceLink(description = '') {
   const normalized = slugify(description);
   const other = key => ({ resourceType: 'other', resourceId: key || `itm_${normalized}` });
   if (!normalized) return other('');
-  if (/baguete-parm|pao-com-parmes|pao-de-q-coquetel|parm-mus/.test(normalized)) return { resourceType: 'ingredient', resourceId: 'ing_pao_parmesao_pronto' };
-  if (/pao-frances/.test(normalized)) return { resourceType: 'ingredient', resourceId: 'ing_pao_frances' };
+  if (/baguete-parm|pao-com-parmes|pao-de-q-coquetel|parm-mus|pao-frances/.test(normalized)) return { resourceType: 'ingredient', resourceId: 'ing_pao_parmesao_pronto' };
   if (/tomate/.test(normalized)) return { resourceType: 'ingredient', resourceId: 'ing_tomate' };
   if (/salsa|cebolinha|cheiro/.test(normalized)) return { resourceType: 'ingredient', resourceId: 'ing_cheiro_verde' };
   if (/cebola/.test(normalized)) return { resourceType: 'ingredient', resourceId: 'ing_cebola' };
@@ -285,9 +284,9 @@ const organizedEntries = [
     inputType: 'invoice',
     sourceChannel: 'physical_store',
     docType: 'nfce',
-    label: 'Pão com parmesão',
-    items: [item('Pão com parmesão', 150, 'un', 2.50, { totalPrice: 375, resourceType: 'ingredient', resourceId: 'ing_pao_parmesao_pronto' })],
-    notes: 'Primeira compra documentada do pão com parmesão pronto na Padaria Versailles: 150 unidades a R$ 2,50 por unidade.',
+    label: 'Pão Francês com Parmesão',
+    items: [item('Pão Francês com Parmesão', 150, 'un', 2.50, { totalPrice: 375, resourceType: 'ingredient', resourceId: 'ing_pao_parmesao_pronto' })],
+    notes: 'Primeira compra documentada do Pão Francês com Parmesão pronto na Padaria Versailles: 150 unidades a R$ 2,50 por unidade.',
     files: ['organizado_comprovantes/imagens/2982D523-9BA2-4A05-B431-15615C0C884C.jpeg']
   },
   {
@@ -468,9 +467,9 @@ const organizedEntries = [
     inputType: 'invoice',
     sourceChannel: 'physical_store',
     docType: 'nfce',
-    label: 'Pão com parmesão',
-    items: [item('Pão com parmesão (~90g)', 100, 'un', 1.8966, { totalPrice: 189.66, resourceType: 'ingredient', resourceId: 'ing_pao_parmesao_pronto' })],
-    notes: 'Compra reajustada do pão com parmesão pronto na Padaria Versailles: 100 unidades por R$ 189,66 no total, equivalente a R$ 1,8966 por unidade.',
+    label: 'Pão Francês com Parmesão',
+    items: [item('Pão Francês com Parmesão (~90g)', 100, 'un', 1.8966, { totalPrice: 189.66, resourceType: 'ingredient', resourceId: 'ing_pao_parmesao_pronto' })],
+    notes: 'Compra reajustada do Pão Francês com Parmesão pronto na Padaria Versailles: 100 unidades por R$ 189,66 no total, equivalente a R$ 1,8966 por unidade.',
     files: ['organizado_comprovantes/imagens/2D5892ED-FF87-4B1E-A3C4-01C90C26C00F.jpeg']
   },
   {
@@ -1541,71 +1540,47 @@ function postImportCleanup(db) {
   reassignSupplierId(db.purchaseItems, 'sup_padaria-versailles-24-horas', 'sup_padaria');
   reassignSupplierId(db.inputs, 'sup_padaria-versailles-24-horas', 'sup_padaria', 'Padaria Versailles');
   db.suppliers = removeRecordById(db.suppliers, 'sup_padaria-versailles-24-horas');
+  db.ingredients = removeRecordsByPredicate(
+    db.ingredients,
+    item => item.id === 'ing_pao_frances' || item.id === 'ing_parmesao'
+  );
 
   const padariaSupplier = db.suppliers.find(item => item.id === 'sup_padaria');
   if (padariaSupplier) {
     padariaSupplier.name = 'Padaria Versailles';
     padariaSupplier.legalName = padariaSupplier.legalName || 'Padaria Versailles';
-    padariaSupplier.notes = 'Fornecedor principal dos pães prontos do Gyros, com histórico confirmado de pão francês e pão com parmesão.';
+    padariaSupplier.notes = 'Fornecedor principal dos pães prontos do Gyros, com histórico confirmado de Pão Francês com Parmesão.';
     padariaSupplier.evidenceType = 'documented';
     padariaSupplier.evidenceSource = 'Fornecedor confirmado por histórico operacional e comprovantes importados em docs/inputs/2026';
   }
 
-  const manualPadariaOrder = db.purchaseOrders.find(item => item.id === 'ord_import_sup_padaria');
-  if (manualPadariaOrder) {
-    manualPadariaOrder.label = 'Base manual do pão francês';
-    manualPadariaOrder.paymentStatus = 'paid';
-    manualPadariaOrder.totalAmount = 24;
-    manualPadariaOrder.notes = 'Base manual inicial mantida apenas para o pão francês simples da Padaria Versailles.';
-    manualPadariaOrder.supplierId = 'sup_padaria';
-    manualPadariaOrder.supplierName = 'Padaria Versailles';
-  }
+  db.purchaseOrders = removeRecordById(db.purchaseOrders, 'ord_import_sup_padaria');
   db.purchaseItems = removeRecordsByPredicate(
     db.purchaseItems,
-    item => item.orderId === 'ord_import_sup_padaria' && item.resourceId === 'ing_pao_parmesao_pronto'
+    item => item.orderId === 'ord_import_sup_padaria' || item.resourceId === 'ing_pao_frances' || item.resourceId === 'ing_parmesao'
   );
-  const manualPaoFrances = db.purchaseItems.find(item => item.id === 'pit_ing_pao_frances');
-  if (manualPaoFrances) {
-    manualPaoFrances.supplierId = 'sup_padaria';
-    manualPaoFrances.description = 'Pão francês';
-    manualPaoFrances.qty = 30;
-    manualPaoFrances.unit = 'un';
-    manualPaoFrances.unitPrice = 0.8;
-    manualPaoFrances.totalPrice = 24;
-    manualPaoFrances.evidenceType = 'review';
-    manualPaoFrances.evidenceSource = 'Preço manual inicial do pão francês informado pela operação';
-  }
-  const manualPadariaInput = db.inputs.find(item => item.id === 'inp_padaria_versailles_manual');
-  if (manualPadariaInput) {
-    manualPadariaInput.title = 'Confirmação manual do pão francês';
-    manualPadariaInput.supplierId = 'sup_padaria';
-    manualPadariaInput.supplierName = 'Padaria Versailles';
-    manualPadariaInput.paymentStatus = 'paid';
-    manualPadariaInput.totalAmount = 24;
-    manualPadariaInput.notes = 'Histórico manual inicial apenas do pão francês simples: 30 unidades a R$ 0,80.';
-    manualPadariaInput.description = 'Pão francês a R$ 0,80 confirmado manualmente pela operação.';
-  }
+  db.inputs = removeRecordById(db.inputs, 'inp_padaria_versailles_manual');
 
   const padariaOrderMarch = db.purchaseOrders.find(item => item.id === 'ord_2026-03-31-padaria-versailles-375-00');
   if (padariaOrderMarch) {
     padariaOrderMarch.supplierId = 'sup_padaria';
     padariaOrderMarch.supplierName = 'Padaria Versailles';
-    padariaOrderMarch.label = 'Pão com parmesão';
+    padariaOrderMarch.label = 'Pão Francês com Parmesão';
     padariaOrderMarch.paymentStatus = 'paid';
-    padariaOrderMarch.notes = 'Primeira compra documentada do pão com parmesão pronto: 150 unidades a R$ 2,50 por unidade.';
+    padariaOrderMarch.notes = 'Primeira compra documentada do Pão Francês com Parmesão pronto: 150 unidades a R$ 2,50 por unidade.';
   }
   const padariaOrderApril = db.purchaseOrders.find(item => item.id === 'ord_2026-04-11-padaria-versailles-189-66');
   if (padariaOrderApril) {
     padariaOrderApril.supplierId = 'sup_padaria';
     padariaOrderApril.supplierName = 'Padaria Versailles';
-    padariaOrderApril.label = 'Pão com parmesão';
+    padariaOrderApril.label = 'Pão Francês com Parmesão';
     padariaOrderApril.paymentStatus = 'paid';
-    padariaOrderApril.notes = 'Compra reajustada do pão com parmesão pronto: 100 unidades por R$ 189,66, equivalente a R$ 1,8966 por unidade.';
+    padariaOrderApril.notes = 'Compra reajustada do Pão Francês com Parmesão pronto: 100 unidades por R$ 189,66, equivalente a R$ 1,8966 por unidade.';
   }
   db.purchaseItems.forEach(item => {
     if (item.orderId === 'ord_2026-03-31-padaria-versailles-375-00') {
       item.supplierId = 'sup_padaria';
-      item.description = 'Pão com parmesão';
+      item.description = 'Pão Francês com Parmesão';
       item.resourceType = 'ingredient';
       item.resourceId = 'ing_pao_parmesao_pronto';
       item.unit = 'un';
@@ -1615,7 +1590,7 @@ function postImportCleanup(db) {
     }
     if (item.orderId === 'ord_2026-04-11-padaria-versailles-189-66') {
       item.supplierId = 'sup_padaria';
-      item.description = 'Pão com parmesão (~90g)';
+      item.description = 'Pão Francês com Parmesão (~90g)';
       item.resourceType = 'ingredient';
       item.resourceId = 'ing_pao_parmesao_pronto';
       item.unit = 'un';
@@ -1628,15 +1603,15 @@ function postImportCleanup(db) {
     if (item.id === 'inp_2026-03-31-padaria-versailles-375-00') {
       item.supplierId = 'sup_padaria';
       item.supplierName = 'Padaria Versailles';
-      item.title = 'Nota fiscal Pão com parmesão';
-      item.description = 'Pão com parmesão';
+      item.title = 'Nota fiscal Pão Francês com Parmesão';
+      item.description = 'Pão Francês com Parmesão';
       item.paymentStatus = 'paid';
     }
     if (item.id === 'inp_2026-04-11-padaria-versailles-189-66') {
       item.supplierId = 'sup_padaria';
       item.supplierName = 'Padaria Versailles';
-      item.title = 'Nota fiscal Pão com parmesão';
-      item.description = 'Pão com parmesão';
+      item.title = 'Nota fiscal Pão Francês com Parmesão';
+      item.description = 'Pão Francês com Parmesão';
       item.paymentStatus = 'paid';
     }
   });
@@ -1648,8 +1623,14 @@ function postImportCleanup(db) {
     paoParmesao.supplier = 'Padaria Versailles';
     paoParmesao.sourceType = 'documented';
     paoParmesao.sourceReference = 'Padaria Versailles: compra documentada em 31/03/2026 a R$ 2,50/un e compra reajustada em 11/04/2026 a R$ 1,8966/un';
-    paoParmesao.notes = 'Pão com parmesão pronto, cerca de 90g, comprado direto pronto da Padaria Versailles.';
-    paoParmesao.description = 'Pão com parmesão pronto, cerca de 90g, comprado direto pronto da Padaria Versailles.';
+    paoParmesao.name = 'Pão Francês com Parmesão';
+    paoParmesao.notes = 'Pão francês com parmesão pronto, cerca de 90g, comprado direto pronto da Padaria Versailles.';
+    paoParmesao.description = 'Pão francês com parmesão pronto, cerca de 90g, comprado direto pronto da Padaria Versailles.';
+  }
+  const receitaPaoParmesao = db.recipes.find(item => item.id === 'rec_pao_parmesao');
+  if (receitaPaoParmesao) {
+    receitaPaoParmesao.name = 'Pão Francês com Parmesão';
+    receitaPaoParmesao.components = [{ refType: 'ingredient', refId: 'ing_pao_parmesao_pronto', qty: 1 }];
   }
 
   ensureIngredientRecord(db, {

@@ -124,54 +124,21 @@
   ],
   "ingredients": [
     {
-      "id": "ing_pao_frances",
-      "name": "Pão francês",
-      "baseUnit": "un",
-      "purchaseQty": 30,
-      "purchaseCost": 24,
-      "wastePct": 0,
-      "supplier": "Padaria Versailles",
-      "supplierMode": "single",
-      "notes": "Pão francês simples, cerca de 50g a 60g, comprado pronto na Padaria Versailles",
-      "scope": "gyros",
-      "sourceType": "manual",
-      "sourceReference": "Fornecedor confirmado manualmente pela operação; revisar com nota quando houver",
-      "code": "ING_PAO_FRANCES",
-      "description": "Pão francês simples, cerca de 50g a 60g, comprado pronto na Padaria Versailles",
-      "erpUnit": "UN"
-    },
-    {
       "id": "ing_pao_parmesao_pronto",
-      "name": "Pão com parmesão",
+      "name": "Pão Francês com Parmesão",
       "baseUnit": "un",
       "purchaseQty": 1,
       "purchaseCost": 1.8966,
       "wastePct": 0,
       "supplier": "Padaria Versailles",
       "supplierMode": "single",
-      "notes": "Pão com parmesão pronto, cerca de 90g, comprado direto pronto da Padaria Versailles.",
+      "notes": "Pão francês com parmesão pronto, cerca de 90g, comprado direto pronto da Padaria Versailles.",
       "scope": "gyros",
       "sourceType": "documented",
       "sourceReference": "Padaria Versailles: compra documentada em 31/03/2026 a R$ 2,50/un e compra reajustada em 11/04/2026 a R$ 1,8966/un",
       "code": "ING_PAO_PARMESAO_PRONTO",
-      "description": "Pão com parmesão pronto, cerca de 90g, comprado direto pronto da Padaria Versailles.",
+      "description": "Pão francês com parmesão pronto, cerca de 90g, comprado direto pronto da Padaria Versailles.",
       "erpUnit": "UN"
-    },
-    {
-      "id": "ing_parmesao",
-      "name": "Parmesão ralado",
-      "baseUnit": "g",
-      "purchaseQty": 1000,
-      "purchaseCost": 58,
-      "wastePct": 1,
-      "supplier": "Laticínio",
-      "notes": "Usado no pão",
-      "scope": "gyros",
-      "sourceType": "documented",
-      "sourceReference": "Lista de compras, nota fiscal ou orçamento",
-      "code": "ING_PARMESAO",
-      "description": "Usado no pão",
-      "erpUnit": "G"
     },
     {
       "id": "ing_fraldinha",
@@ -1525,11 +1492,11 @@
   "recipes": [
     {
       "id": "rec_pao_parmesao",
-      "name": "Pão com parmesão",
+      "name": "Pão Francês com Parmesão",
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Produção do lanche",
-      "notes": "Pão com parmesão pronto do fornecedor. A manteiga com alho entra na hora de finalizar o lanche.",
+      "notes": "Pão francês com parmesão pronto do fornecedor. A manteiga com alho entra na hora de finalizar o lanche.",
       "components": [
         {
           "refType": "ingredient",
@@ -1539,7 +1506,7 @@
       ],
       "scope": "gyros",
       "code": "REC_PAO_PARMESAO",
-      "description": "Pão com parmesão pronto do fornecedor. A manteiga com alho entra na hora de finalizar o lanche."
+      "description": "Pão francês com parmesão pronto do fornecedor. A manteiga com alho entra na hora de finalizar o lanche."
     },
     {
       "id": "rec_vinagrete",
@@ -2675,7 +2642,7 @@
         }
       ],
       "code": "GYR-LAN-ALPHA",
-      "description": "Pão com parmesão, fraldinha, vinagrete, muçarela gratinada e maionese da casa.",
+      "description": "Pão Francês com Parmesão, fraldinha, vinagrete, muçarela gratinada e maionese da casa.",
       "erpUnit": "UN",
       "productCondition": "new",
       "erpProductType": "custom",
@@ -3073,7 +3040,7 @@
         }
       ],
       "code": "GYR-LAN-BETA",
-      "description": "Pão com parmesão, frango, vinagrete, catupiry gratinado e maionese da casa.",
+      "description": "Pão Francês com Parmesão, frango, vinagrete, catupiry gratinado e maionese da casa.",
       "erpUnit": "UN",
       "productCondition": "new",
       "erpProductType": "custom",
@@ -3471,7 +3438,7 @@
         }
       ],
       "code": "GYR-LAN-GAMMA",
-      "description": "Pão com parmesão, linguiça toscana, vinagrete, catupiry 4 queijos gratinado e maionese da casa.",
+      "description": "Pão Francês com Parmesão, linguiça toscana, vinagrete, catupiry 4 queijos gratinado e maionese da casa.",
       "erpUnit": "UN",
       "productCondition": "new",
       "erpProductType": "custom",
@@ -3491,7 +3458,7 @@
       "salePrice": 49.92,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Pão com parmesão, antepasto de berinjela, vinagrete, muçarela gratinada e maionese grill.",
+      "notes": "Pão Francês com Parmesão, antepasto de berinjela, vinagrete, muçarela gratinada e maionese grill.",
       "components": [
         {
           "refType": "recipe",
@@ -3844,7 +3811,7 @@
         }
       ],
       "code": "GYR-LAN-VEG",
-      "description": "Pão com parmesão, antepasto de berinjela, vinagrete, muçarela gratinada e maionese da casa.",
+      "description": "Pão Francês com Parmesão, antepasto de berinjela, vinagrete, muçarela gratinada e maionese da casa.",
       "erpUnit": "UN",
       "productCondition": "new",
       "erpProductType": "custom",
@@ -9868,7 +9835,7 @@
       "paymentMethods": [
         "Cartao De Debito"
       ],
-      "notes": "Fornecedor principal dos pães prontos do Gyros, com histórico confirmado de pão francês e pão com parmesão.",
+      "notes": "Fornecedor principal dos pães prontos do Gyros, com histórico confirmado de Pão Francês com Parmesão.",
       "address": "Av. Dr. Timóteo Penteado, 2312 - Picanço",
       "cep": "07094-000",
       "city": "Guarulhos",
@@ -11030,21 +10997,6 @@
   ],
   "purchaseOrders": [
     {
-      "id": "ord_import_sup_padaria",
-      "scope": "gyros",
-      "supplierId": "sup_padaria",
-      "label": "Base manual do pão francês",
-      "date": "",
-      "documentNumber": "",
-      "paymentMethod": "",
-      "paymentStatus": "paid",
-      "totalAmount": 24,
-      "notes": "Base manual inicial mantida apenas para o pão francês simples da Padaria Versailles.",
-      "evidenceType": "review",
-      "evidenceSource": "Fornecedor e preços confirmados manualmente pela operação; revisar com nota quando houver",
-      "supplierName": "Padaria Versailles"
-    },
-    {
       "id": "ord_import_sup_laticinio",
       "scope": "gyros",
       "supplierId": "sup_laticinio",
@@ -11053,7 +11005,7 @@
       "documentNumber": "",
       "paymentMethod": "",
       "paymentStatus": "paid",
-      "totalAmount": 214.32,
+      "totalAmount": 156.32,
       "notes": "Histórico inicial gerado a partir dos custos oficiais já cadastrados no PWA.",
       "evidenceType": "documented",
       "evidenceSource": "Lista de compras, notas e custos oficiais já incorporados na base"
@@ -11341,7 +11293,7 @@
       "scope": "gyros",
       "supplierId": "sup_padaria",
       "supplierName": "Padaria Versailles",
-      "label": "Pão com parmesão",
+      "label": "Pão Francês com Parmesão",
       "date": "2026-03-31",
       "documentNumber": "",
       "paymentMethod": "Cartão de débito",
@@ -11350,7 +11302,7 @@
       "inputIds": [
         "inp_2026-03-31-padaria-versailles-375-00"
       ],
-      "notes": "Primeira compra documentada do pão com parmesão pronto: 150 unidades a R$ 2,50 por unidade.",
+      "notes": "Primeira compra documentada do Pão Francês com Parmesão pronto: 150 unidades a R$ 2,50 por unidade.",
       "evidenceType": "documented",
       "evidenceSource": "Compra importada com vínculo direto ao arquivo salvo em docs/inputs/2026"
     },
@@ -11550,7 +11502,7 @@
       "scope": "gyros",
       "supplierId": "sup_padaria",
       "supplierName": "Padaria Versailles",
-      "label": "Pão com parmesão",
+      "label": "Pão Francês com Parmesão",
       "date": "2026-04-11",
       "documentNumber": "",
       "paymentMethod": "Cartão de débito",
@@ -11559,7 +11511,7 @@
       "inputIds": [
         "inp_2026-04-11-padaria-versailles-189-66"
       ],
-      "notes": "Compra reajustada do pão com parmesão pronto: 100 unidades por R$ 189,66, equivalente a R$ 1,8966 por unidade.",
+      "notes": "Compra reajustada do Pão Francês com Parmesão pronto: 100 unidades por R$ 189,66, equivalente a R$ 1,8966 por unidade.",
       "evidenceType": "documented",
       "evidenceSource": "Compra importada com vínculo direto ao arquivo salvo em docs/inputs/2026"
     },
@@ -12135,34 +12087,6 @@
     }
   ],
   "purchaseItems": [
-    {
-      "id": "pit_ing_pao_frances",
-      "orderId": "ord_import_sup_padaria",
-      "supplierId": "sup_padaria",
-      "resourceType": "ingredient",
-      "resourceId": "ing_pao_frances",
-      "description": "Pão francês",
-      "qty": 30,
-      "unit": "un",
-      "unitPrice": 0.8,
-      "totalPrice": 24,
-      "evidenceType": "review",
-      "evidenceSource": "Preço manual inicial do pão francês informado pela operação"
-    },
-    {
-      "id": "pit_ing_parmesao",
-      "orderId": "ord_import_sup_laticinio",
-      "supplierId": "sup_laticinio",
-      "resourceType": "ingredient",
-      "resourceId": "ing_parmesao",
-      "description": "Parmesão ralado",
-      "qty": 1000,
-      "unit": "g",
-      "unitPrice": 0.058,
-      "totalPrice": 58,
-      "evidenceType": "documented",
-      "evidenceSource": "Lista de compras, nota fiscal ou orçamento"
-    },
     {
       "id": "pit_ing_mucarela",
       "orderId": "ord_import_sup_laticinio",
@@ -13643,7 +13567,7 @@
       "scope": "gyros",
       "resourceType": "ingredient",
       "resourceId": "ing_pao_parmesao_pronto",
-      "description": "Pão com parmesão",
+      "description": "Pão Francês com Parmesão",
       "qty": 150,
       "unit": "un",
       "unitPrice": 2.5,
@@ -14333,7 +14257,7 @@
       "scope": "gyros",
       "resourceType": "ingredient",
       "resourceId": "ing_pao_parmesao_pronto",
-      "description": "Pão com parmesão (~90g)",
+      "description": "Pão Francês com Parmesão (~90g)",
       "qty": 100,
       "unit": "un",
       "unitPrice": 1.8966,
@@ -16157,28 +16081,6 @@
       "description": "Pedido online visualizado pela operação. Alguns itens ainda serão cadastrados depois."
     },
     {
-      "id": "inp_padaria_versailles_manual",
-      "scope": "gyros",
-      "title": "Confirmação manual do pão francês",
-      "inputType": "other",
-      "sourceChannel": "physical_store",
-      "supplierId": "sup_padaria",
-      "supplierName": "Padaria Versailles",
-      "documentNumber": "",
-      "date": "",
-      "paymentMethod": "",
-      "paymentStatus": "paid",
-      "totalAmount": 24,
-      "fileLabel": "Informação manual da operação",
-      "filePath": "",
-      "fileUrl": "",
-      "notes": "Histórico manual inicial apenas do pão francês simples: 30 unidades a R$ 0,80.",
-      "evidenceType": "review",
-      "evidenceSource": "Informação manual da operação; revisar com nota quando houver",
-      "code": "INP_PADARIA_VERSAILLES_MANUAL",
-      "description": "Pão francês a R$ 0,80 confirmado manualmente pela operação."
-    },
-    {
       "id": "inp_meus_congelados_site",
       "scope": "gyros",
       "title": "Site Meus Congelados - Mini Churros Doce de Leite 1kg",
@@ -16253,7 +16155,7 @@
     {
       "id": "inp_2026-03-31-padaria-versailles-375-00",
       "scope": "gyros",
-      "title": "Nota fiscal Pão com parmesão",
+      "title": "Nota fiscal Pão Francês com Parmesão",
       "inputType": "invoice",
       "sourceChannel": "physical_store",
       "supplierId": "sup_padaria",
@@ -16269,11 +16171,11 @@
         "docs/inputs/2026/2026-03/2026-03-31-padaria-versailles-375-00.jpeg"
       ],
       "fileUrl": "",
-      "notes": "Primeira compra documentada do pão com parmesão pronto na Padaria Versailles: 150 unidades a R$ 2,50 por unidade.",
+      "notes": "Primeira compra documentada do Pão Francês com Parmesão pronto na Padaria Versailles: 150 unidades a R$ 2,50 por unidade.",
       "evidenceType": "documented",
       "evidenceSource": "Arquivo importado de NFs-Comprovantes-OrçamentosConcluidos para docs/inputs/2026",
       "code": "INP_2026_03_31_PADARIA_VERSAILLES_375_00",
-      "description": "Pão com parmesão"
+      "description": "Pão Francês com Parmesão"
     },
     {
       "id": "inp_2026-03-31-mercado-fonte-nova-37-59",
@@ -16529,7 +16431,7 @@
     {
       "id": "inp_2026-04-11-padaria-versailles-189-66",
       "scope": "gyros",
-      "title": "Nota fiscal Pão com parmesão",
+      "title": "Nota fiscal Pão Francês com Parmesão",
       "inputType": "invoice",
       "sourceChannel": "physical_store",
       "supplierId": "sup_padaria",
@@ -16545,11 +16447,11 @@
         "docs/inputs/2026/2026-04/2026-04-11-padaria-versailles-189-66.jpeg"
       ],
       "fileUrl": "",
-      "notes": "Compra reajustada do pão com parmesão pronto na Padaria Versailles: 100 unidades por R$ 189,66 no total, equivalente a R$ 1,8966 por unidade.",
+      "notes": "Compra reajustada do Pão Francês com Parmesão pronto na Padaria Versailles: 100 unidades por R$ 189,66 no total, equivalente a R$ 1,8966 por unidade.",
       "evidenceType": "documented",
       "evidenceSource": "Arquivo importado de NFs-Comprovantes-OrçamentosConcluidos para docs/inputs/2026",
       "code": "INP_2026_04_11_PADARIA_VERSAILLES_189_66",
-      "description": "Pão com parmesão"
+      "description": "Pão Francês com Parmesão"
     },
     {
       "id": "inp_2026-04-11-mercado-leonice-10-79",
