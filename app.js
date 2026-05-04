@@ -33,7 +33,8 @@ const state = {
   ledgerSupplierId: 'all',
   ledgerPaymentStatus: 'all',
   ledgerItemSearch: '',
-  ledgerItemResourceType: 'all'
+  ledgerItemResourceType: 'all',
+  catalogDetailTab: 'resumo'
 };
 
 const OPERATIONS = [
@@ -149,6 +150,30 @@ function applyPurchaseUpdates(target) {
 
 applyPurchaseUpdates(SEED_DATA);
 
+function applyOperationalPortionUpdates(target) {
+  if (!target) return target;
+  [
+    ['rec_grat_muc_p', 'ing_mucarela'],
+    ['rec_grat_cat_p', 'ing_catupiry'],
+    ['rec_grat_4q_p', 'ing_4queijos'],
+    ['rec_grat_cheddar_p', 'ing_cheddar']
+  ].forEach(([recipeId, ingredientId]) => {
+    const recipe = patchRecord(target.recipes, recipeId, {
+      yieldQty: 1,
+      yieldUnit: 'un'
+    });
+    if (!recipe) return;
+    recipe.components = [{ refType: 'ingredient', refId: ingredientId, qty: 60 }];
+    const note = 'Cobertura operacional pequena ajustada para 60g de queijo.';
+    if (!String(recipe.notes || '').includes(note)) {
+      recipe.notes = `${recipe.notes || ''}${recipe.notes ? ' ' : ''}${note}`.trim();
+    }
+  });
+  return target;
+}
+
+applyOperationalPortionUpdates(SEED_DATA);
+
 function applyPricingRules(target) {
   if (!target) return target;
   target.settings = target.settings || {};
@@ -234,7 +259,7 @@ function decimal(v) {
 }
 
 function normalizeDb(target) {
-  return ensureCanonicalFields(normalizeFinancialData(normalizeSupplierData(applyMultiOperationRules(applyPricingRules(applyPurchaseUpdates(target))))));
+  return ensureCanonicalFields(normalizeFinancialData(normalizeSupplierData(applyMultiOperationRules(applyPricingRules(applyOperationalPortionUpdates(applyPurchaseUpdates(target)))))));
 }
 
 function procurementEvidenceType(record = {}) {
@@ -404,6 +429,102 @@ const PRODUCT_VIEW_META = {
   prd_limoneto_500: { subgroupId: 'sg_beb_outros', sortOrder: 6, catalogItemId: 'i_beb_h2o_zero' },
   prd_delvalle_uva_290: { subgroupId: 'sg_beb_outros', sortOrder: 7, catalogItemId: 'i_beb_suco_uva' },
   prd_coca_2l: { subgroupId: 'sg_beb_outros', sortOrder: 8, catalogItemId: 'i_beb_coca_2l' }
+};
+
+const CATEGORY_IMAGE_OVERRIDES = {
+  cat_gyros: 'assets/cardapio/categories/gyros-da-casa.png',
+  cat_combos: 'assets/cardapio/categories/capa-categoria-combos.png',
+  cat_batatas: 'assets/cardapio/categories/batatas-fritas.png',
+  cat_gratinados: 'assets/cardapio/categories/gratinados.png',
+  cat_almoco: 'assets/cardapio/categories/almoco-executivo.png',
+  cat_molhos: 'assets/cardapio/categories/molhos-e-vinagrete-a-parte.png',
+  cat_sobremesas: 'assets/cardapio/categories/sobremesas.png',
+  cat_bebidas: 'assets/cardapio/categories/bebidas.png'
+};
+
+const PRODUCT_IMAGE_OVERRIDES = {
+  prd_alpha: 'assets/cardapio/products/gyr-lan-alpha.png',
+  prd_beta: 'assets/cardapio/products/gyr-lan-beta.png',
+  prd_gamma: 'assets/cardapio/products/gyr-lan-gamma.png',
+  prd_vegetariano: 'assets/cardapio/products/gyr-lan-veg.png',
+  prd_combo1: 'assets/cardapio/products/gyr-cmb3-alpha.png',
+  prd_combo2: 'assets/cardapio/products/gyr-cmb3-beta.png',
+  prd_combo3: 'assets/cardapio/products/gyr-cmb3-gamma.png',
+  prd_bat_p: 'assets/cardapio/products/gyr-bat-frt-m200.png',
+  prd_bat_g: 'assets/cardapio/products/gyr-bat-frt-g400.png',
+  prd_prot_grat_m: 'assets/cardapio/products/gyr-grt-prot-m.png',
+  prd_carne_grat: 'assets/cardapio/products/gyr-grt-prot-g.png',
+  prd_bat_grat_p: 'assets/cardapio/products/gyr-bat-grt-m100.png',
+  prd_bat_grat_g: 'assets/cardapio/products/gyr-bat-grt-g220.png',
+  prd_prato_alpha: 'assets/cardapio/products/gyr-alm-alpha.png',
+  prd_prato_beta: 'assets/cardapio/products/gyr-alm-beta.png',
+  prd_prato_gamma: 'assets/cardapio/products/gyr-alm-gamma.png',
+  prd_prato_veg: 'assets/cardapio/products/gyr-alm-veg.png',
+  prd_molho_extra: 'assets/cardapio/products/gyr-mol-maigrl-60.png',
+  prd_maionese_verde_extra: 'assets/cardapio/products/gyr-mol-maivrd-60.png',
+  prd_maionese_chimichurri_extra: 'assets/cardapio/products/gyr-mol-maichm-60.png',
+  prd_barbecue_extra: 'assets/cardapio/products/gyr-mol-bbq-60.png',
+  prd_vinagrete_extra: 'assets/cardapio/products/gyr-mol-vin-60.png',
+  prd_churros: 'assets/cardapio/products/gyr-sob-chu-6un.png',
+  prd_agua_gas_510: 'assets/cardapio/products/gyr-beb-aguagas-510.webp',
+  prd_agua_510: 'assets/cardapio/products/gyr-beb-agua-510.webp',
+  prd_coca: 'assets/cardapio/products/gyr-beb-coca-350.jpg',
+  prd_coca_zero: 'assets/cardapio/products/gyr-beb-cocaz-350.webp',
+  prd_guarana_350: 'assets/cardapio/products/gyr-beb-guar-350.jpg',
+  prd_fanta: 'assets/cardapio/products/gyr-beb-fanta-350.webp',
+  prd_schweppes_350: 'assets/cardapio/products/gyr-beb-schw-350.webp',
+  prd_sprite_350: 'assets/cardapio/products/gyr-beb-spr-350.png',
+  prd_ice_tea_limao_450: 'assets/cardapio/products/gyr-beb-itea-lim-450.jpg',
+  prd_ice_tea_pessego_450: 'assets/cardapio/products/gyr-beb-itea-pes-450.jpg',
+  prd_bud_330: 'assets/cardapio/products/gyr-beb-bud-330.jpg',
+  prd_heineken_330: 'assets/cardapio/products/gyr-beb-hei-330.webp',
+  prd_h2o_500: 'assets/cardapio/products/gyr-beb-h2o-500.jpg',
+  prd_limoneto_500: 'assets/cardapio/products/gyr-beb-limo-500.webp',
+  prd_delvalle_uva_290: 'assets/cardapio/products/gyr-beb-dvuva-290.webp',
+  prd_coca_2l: 'assets/cardapio/products/gyr-beb-coca-2000.webp'
+};
+
+const RESOURCE_IMAGE_OVERRIDES = {
+  'ingredient:ing_fraldinha': 'assets/cardapio/products/gyr-add-fraldinha.png',
+  'ingredient:ing_frango': 'assets/cardapio/products/gyr-add-frango.png',
+  'ingredient:ing_linguica': 'assets/cardapio/products/gyr-add-linguica.png',
+  'recipe:rec_berinjela_antepasto': 'assets/cardapio/products/gyr-add-berinjela.png',
+  'ingredient:ing_bacon_cubos': 'assets/cardapio/products/gyr-add-bacon.png',
+  'ingredient:ing_mucarela': 'assets/cardapio/products/gyr-add-mucarela-gratinada.png',
+  'recipe:rec_grat_muc': 'assets/cardapio/products/gyr-add-mucarela-gratinada.png',
+  'recipe:rec_grat_muc_p': 'assets/cardapio/products/gyr-add-mucarela-gratinada.png',
+  'recipe:rec_grat_muc_g': 'assets/cardapio/products/gyr-add-mucarela-gratinada.png',
+  'ingredient:ing_catupiry': 'assets/cardapio/products/gyr-add-catupiry-original.png',
+  'recipe:rec_grat_cat': 'assets/cardapio/products/gyr-add-catupiry-original.png',
+  'recipe:rec_grat_cat_p': 'assets/cardapio/products/gyr-add-catupiry-original.png',
+  'recipe:rec_grat_cat_g': 'assets/cardapio/products/gyr-add-catupiry-original.png',
+  'ingredient:ing_4queijos': 'assets/cardapio/products/gyr-add-catupiry-4q.png',
+  'recipe:rec_grat_4q': 'assets/cardapio/products/gyr-add-catupiry-4q.png',
+  'recipe:rec_grat_4q_p': 'assets/cardapio/products/gyr-add-catupiry-4q.png',
+  'recipe:rec_grat_4q_g': 'assets/cardapio/products/gyr-add-catupiry-4q.png',
+  'ingredient:ing_cheddar': 'assets/cardapio/products/gyr-add-cheddar-polenghi.png',
+  'recipe:rec_grat_cheddar': 'assets/cardapio/products/gyr-add-cheddar-polenghi.png',
+  'recipe:rec_grat_cheddar_p': 'assets/cardapio/products/gyr-add-cheddar-polenghi.png',
+  'recipe:rec_grat_cheddar_g': 'assets/cardapio/products/gyr-add-cheddar-polenghi.png',
+  'ingredient:ing_saches_mix': 'assets/cardapio/products/gyr-mol-saches-5un.png',
+  'product:prd_sache5': 'assets/cardapio/products/gyr-mol-saches-5un.png'
+};
+
+const ADDON_IMAGE_OVERRIDES = {
+  bacon: 'assets/cardapio/products/gyr-add-bacon.png',
+  mucarela: 'assets/cardapio/products/gyr-add-mucarela-gratinada.png',
+  muçarela: 'assets/cardapio/products/gyr-add-mucarela-gratinada.png',
+  catupiry_4q: 'assets/cardapio/products/gyr-add-catupiry-4q.png',
+  '4_queijos': 'assets/cardapio/products/gyr-add-catupiry-4q.png',
+  catupiry: 'assets/cardapio/products/gyr-add-catupiry-original.png',
+  cheddar: 'assets/cardapio/products/gyr-add-cheddar-polenghi.png',
+  fraldinha: 'assets/cardapio/products/gyr-add-fraldinha.png',
+  frango: 'assets/cardapio/products/gyr-add-frango.png',
+  linguica: 'assets/cardapio/products/gyr-add-linguica.png',
+  linguiça: 'assets/cardapio/products/gyr-add-linguica.png',
+  berinjela: 'assets/cardapio/products/gyr-add-berinjela.png',
+  saches: 'assets/cardapio/products/gyr-mol-saches-5un.png',
+  sachês: 'assets/cardapio/products/gyr-mol-saches-5un.png'
 };
 
 function isLegacySku(code = '', kind = 'default') {
@@ -1179,6 +1300,37 @@ function catalogPathLabel(product = {}) {
   return `${categoryName(product.categoryId)} / ${subgroupNameForProduct(product)}`;
 }
 
+function categoryImageSrc(categoryId = '') {
+  return CATEGORY_IMAGE_OVERRIDES[categoryId] || '';
+}
+
+function productImageSrc(product = {}) {
+  return PRODUCT_IMAGE_OVERRIDES[product.id] || categoryImageSrc(product.categoryId);
+}
+
+function resourceImageSrc(refType = '', refId = '') {
+  return RESOURCE_IMAGE_OVERRIDES[`${refType}:${refId}`] || '';
+}
+
+function addonImageSrc(addon = {}) {
+  const nodes = flattenNodes(addon.nodes || []);
+  const fromNode = nodes.map(node => resourceImageSrc(node.refType, node.refId)).find(Boolean);
+  if (fromNode) return fromNode;
+  const text = `${addon.id || ''} ${addon.name || ''}`.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const key = Object.keys(ADDON_IMAGE_OVERRIDES).find(token => text.includes(token.normalize('NFD').replace(/[\u0300-\u036f]/g, '')));
+  return key ? ADDON_IMAGE_OVERRIDES[key] : '';
+}
+
+function visualPlaceholderLabel(product = {}) {
+  return String(product.name || categoryName(product.categoryId) || 'GYR').split(/\s+/).slice(0, 2).map(word => word[0]).join('').toUpperCase();
+}
+
+function renderProductImage(product = {}, className = 'catalog-thumb') {
+  const src = productImageSrc(product);
+  if (!src) return `<div class="${className} image-placeholder">${escapeHtml(visualPlaceholderLabel(product))}</div>`;
+  return `<img class="${className}" src="${escapeHtml(src)}" alt="${escapeHtml(product.name || 'Produto do cardápio')}" loading="lazy">`;
+}
+
 function productSortKey(product = {}) {
   return [
     categoryViewMeta(product.categoryId).sortOrder || 999,
@@ -1915,75 +2067,172 @@ function renderTree(nodes) {
     </div>`).join('')}</div>`;
 }
 
+function nodeIcon(node = {}) {
+  if (node.refType === 'packaging') return 'PKG';
+  if (node.refType === 'recipe') return 'PRE';
+  if (node.refType === 'product') return 'ITM';
+  return 'INS';
+}
+
+function flattenNodes(nodes = []) {
+  return (nodes || []).flatMap(node => [node, ...flattenNodes(node.children || [])]);
+}
+
+function renderVisualNode(node = {}) {
+  const img = resourceImageSrc(node.refType, node.refId);
+  const thumb = img
+    ? `<img class="visual-thumb" src="${escapeHtml(img)}" alt="${escapeHtml(node.title || 'Insumo')}" loading="lazy">`
+    : `<div class="visual-icon">${escapeHtml(nodeIcon(node))}</div>`;
+  return `<div class="visual-node">
+    ${thumb}
+    <div><strong>${escapeHtml(node.title)}</strong><div class="small muted">${escapeHtml(componentTypeLabel(node.refType))} • usa ${escapeHtml(usageLabelForNode(node))}${node.pricingMode ? ` • ${escapeHtml(componentPricingModeLabel(node.pricingMode))}` : ''}</div></div>
+    <div style="text-align:right"><strong>${brl(node.cost)}</strong><div class="small muted">${escapeHtml(node.refType === 'packaging' ? 'embalagem' : node.refType === 'recipe' ? 'preparo' : node.refType === 'product' ? 'item' : 'insumo')}</div></div>
+  </div>`;
+}
+
+function addonSaleLabel(addon = {}) {
+  if (safe(addon.effectiveSalePrice) > 0) return brl(addon.effectiveSalePrice);
+  if (addon.chargeMode === 'included' || addon.priceCalculation === 'free') return 'Incluído';
+  return brl(0);
+}
+
+function renderVisualNodeList(nodes = [], empty = 'Nada mapeado nesta camada.') {
+  return nodes.length ? `<div class="visual-list">${nodes.map(renderVisualNode).join('')}</div>` : `<div class="empty">${escapeHtml(empty)}</div>`;
+}
+
+function productLinkedPurchaseFamilies(product = {}) {
+  const resourceIds = new Set(flattenNodes(resolveComponentList(product.components || [], [`product:${product.id}:purchase-view`]))
+    .filter(node => ['ingredient', 'packaging', 'product'].includes(node.refType))
+    .map(node => node.refId));
+  return buildPurchaseFamilyEntries(ledgerPurchaseOccurrenceEntries().filter(item => resourceIds.has(item.resourceId))).slice(0, 8);
+}
+
+function renderProductDetailTabs(activeTab) {
+  const tabs = [
+    ['resumo', 'Resumo'],
+    ['composicao', 'Composição'],
+    ['adicionais', 'Adicionais'],
+    ['embalagens', 'Embalagens'],
+    ['compras', 'Compras']
+  ];
+  return `<div class="detail-tabs">${tabs.map(([id, label]) => `<button class="${activeTab === id ? 'active' : ''}" data-catalog-tab="${id}">${label}</button>`).join('')}</div>`;
+}
+
+function renderProductSummaryTab(c, basePortions, addonGroups) {
+  const p = c.product;
+  return `<div class="stack">
+    <div class="price-edit-strip">
+      <div class="info-cell"><div class="k">Preço de venda</div><div class="v">${brl(c.salePrice)}</div></div>
+      <div class="info-cell"><div class="k">Custo direto</div><div class="v">${brl(c.directCost)}</div></div>
+      <div class="info-cell"><div class="k">Margem sem rateio</div><div class="v status ${statusClass(c.marginPct)}">${pct(c.marginPct)}</div></div>
+    </div>
+    <div class="info-grid">
+      <div class="info-cell"><div class="k">Preço iFood</div><div class="v">${brl(c.ifoodSalePrice)}</div></div>
+      <div class="info-cell"><div class="k">Preço pela regra atual</div><div class="v">${brl(c.autoSalePrice)}</div></div>
+      <div class="info-cell"><div class="k">Base que entra no markup</div><div class="v">${brl(c.markupBaseCost)}</div></div>
+      <div class="info-cell"><div class="k">Só repassa custo</div><div class="v">${brl(c.passThroughCost)}</div></div>
+      <div class="info-cell"><div class="k">Porções de base</div><div class="v">${basePortions.length}</div></div>
+      <div class="info-cell"><div class="k">Grupos de escolha</div><div class="v">${addonGroups.length}</div></div>
+      <div class="info-cell"><div class="k">Regra de preço</div><div class="v" style="font-size:15px">${escapeHtml(pricingRuleLabel(p))}</div></div>
+      <div class="info-cell"><div class="k">Caminho no cardápio</div><div class="v" style="font-size:15px">${escapeHtml(catalogPathLabel(p))}</div></div>
+    </div>
+    <section><div class="catalog-section-head"><div><h3>Leitura operacional</h3><p>Porções principais para revisar preço sem entrar na árvore técnica.</p></div></div>${renderVisualNodeList(c.nodes || [])}</section>
+  </div>`;
+}
+
+function renderProductCompositionTab(c) {
+  const topNodes = c.nodes || [];
+  const ingredientNodes = flattenNodes(topNodes).filter(node => node.refType === 'ingredient');
+  const recipeNodes = flattenNodes(topNodes).filter(node => node.refType === 'recipe');
+  return `<div class="stack">
+    <section><div class="catalog-section-head"><div><h3>Camadas principais</h3><p>O que entra diretamente no item vendido.</p></div></div>${renderVisualNodeList(topNodes)}</section>
+    <section><div class="catalog-section-head"><div><h3>Preparos usados</h3><p>Receitas internas que transformam insumos em base operacional.</p></div></div>${renderVisualNodeList(recipeNodes, 'Este item não usa preparo interno.')}</section>
+    <section><div class="catalog-section-head"><div><h3>Insumos finais da composição</h3><p>Ingredientes que aparecem por trás dos preparos e porções.</p></div></div>${renderVisualNodeList(ingredientNodes, 'Nenhum ingrediente direto encontrado.')}</section>
+    <section><div class="catalog-section-head"><div><h3>Árvore técnica completa</h3><p>Visão detalhada para auditoria de custo.</p></div></div>${renderTree(topNodes)}</section>
+  </div>`;
+}
+
+function renderProductAddonsTab(c) {
+  const addonGroups = groupComputedAddons(c.addons || []);
+  if (!addonGroups.length) return '<div class="empty">Este item não possui adicionais ou escolhas.</div>';
+  return `<div class="group-stack">${addonGroups.map(group => `
+    <div class="group-card">
+      <div class="group-head">
+        <div><div class="small muted">Grupo do cardápio</div><h4>${escapeHtml(group.name)}</h4><p>${escapeHtml(addonGroupRuleLabel(group))} • ${group.items.length} opção(ões) • ${escapeHtml(addonGroupPriceLabel(group))}</p></div>
+        <div class="legend"><span class="tag">${escapeHtml(group.groupType || 'addon')}</span>${group.required ? '<span class="tag">obrigatório</span>' : '<span class="tag">opcional</span>'}</div>
+      </div>
+      <div class="catalog-grid">${group.items.map(addon => `
+        <div class="library-card">
+          <div class="addon-card-head">
+            ${addonImageSrc(addon) ? `<img class="addon-thumb" src="${escapeHtml(addonImageSrc(addon))}" alt="${escapeHtml(addon.name || 'Adicional')}" loading="lazy">` : `<div class="addon-thumb visual-icon">${escapeHtml(nodeIcon((addon.nodes || [])[0] || {}))}</div>`}
+            <div>
+              <div class="k">${escapeHtml(addon.chargeMode === 'included' ? 'incluído na escolha' : 'adicional')}</div>
+              <div class="v">${escapeHtml(addon.name)}</div>
+            </div>
+          </div>
+          <div class="small muted" style="margin-top:6px;">${escapeHtml(portionSummaryText(topLevelPortions(addon.nodes || [])) || 'Sem porção detalhada')}</div>
+          <div class="price-edit-strip" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+            <div class="info-cell"><div class="k">Custo</div><div class="v">${brl(addon.directCost)}</div></div>
+            <div class="info-cell"><div class="k">Venda</div><div class="v">${escapeHtml(addonSaleLabel(addon))}</div></div>
+          </div>
+          ${addon.nodes?.length ? `<div style="margin-top:10px;">${renderVisualNodeList(addon.nodes)}</div>` : ''}
+        </div>`).join('')}</div>
+    </div>`).join('')}</div>`;
+}
+
+function renderProductPackagingTab(c) {
+  const packagingNodes = flattenNodes(c.nodes || []).filter(node => node.refType === 'packaging');
+  return `<div class="stack">
+    <section><div class="catalog-section-head"><div><h3>Embalagens do item</h3><p>Itens descartáveis que entram no CMV e precisam bater com a operação real.</p></div></div>${renderVisualNodeList(packagingNodes, 'Nenhuma embalagem mapeada neste item.')}</section>
+    <div class="library-grid">${packagingNodes.map(node => {
+      const item = byId('packaging', node.refId) || {};
+      return `<div class="library-card"><div class="k">Embalagem</div><div class="v">${escapeHtml(node.title)}</div><div class="small muted" style="margin-top:6px;">Fornecedor: ${escapeHtml(item.supplier || '—')}</div><div class="small muted">Pacote: ${decimal(item.purchaseQty)} un • custo unitário ${brl(packagingUnitCost(item))}</div></div>`;
+    }).join('')}</div>
+  </div>`;
+}
+
+function renderProductPurchasesTab(c) {
+  const families = productLinkedPurchaseFamilies(c.product);
+  return `<div class="stack">
+    ${renderResourcePurchaseHistory('product', c.product.id, 'Ainda não há compras históricas vinculadas diretamente a este item do cardápio.')}
+    <section><div class="catalog-section-head"><div><h3>Famílias de compra ligadas à composição</h3><p>Insumos e embalagens que sustentam este produto, já agrupados por nome operacional.</p></div></div>
+      ${families.length ? `<div class="library-grid">${families.map(entry => `<div class="library-card"><div class="k">${escapeHtml(entry.categoryName || 'Compra')}</div><div class="v">${escapeHtml(entry.familyName || entry.description || 'Item')}</div><div class="small muted" style="margin-top:6px;">${entry.occurrenceCount || 0} compra(s) • ${escapeHtml(entry.supplierSummary || 'sem fornecedor')}</div><div style="margin-top:10px;"><strong>${escapeHtml(entry.latestComparisonLabel || '—')}</strong></div></div>`).join('')}</div>` : '<div class="empty">Ainda não encontrei compras ligadas às camadas deste item.</div>'}
+    </section>
+  </div>`;
+}
+
 function renderProductDetailHtml(c) {
   const p = c.product;
   const scope = p.scope || legacyScopeForRecord('products', p);
   const addonGroups = groupComputedAddons(c.addons || []);
   const requiredGroups = addonGroups.filter(group => group.required).length;
   const basePortions = topLevelPortions(c.nodes || []);
-  const purchaseHistorySection = renderResourcePurchaseHistory('product', p.id, 'Ainda não há compras históricas vinculadas a este item do cardápio.');
-  const addonSection = addonGroups.length
-    ? `<div style="margin-top:16px;"><h3 style="font-size:15px; margin:0 0 10px;">Grupos do cardápio e impacto no preço</h3>
-        <div class="note" style="margin-bottom:10px;">Aqui a leitura segue o cardápio atual do PDV: cada grupo mostra a regra da escolha, as opções disponíveis e quanto cada uma pesa no custo e no preço.</div>
-        <div class="group-stack">${addonGroups.map(group => `
-        <div class="group-card">
-          <div class="group-head">
-            <div>
-              <div class="small muted">Grupo</div>
-              <h4>${escapeHtml(group.name)}</h4>
-              <p>${escapeHtml(addonGroupRuleLabel(group))} • ${group.items.length} opcao(oes) • ${escapeHtml(addonGroupPriceLabel(group))}</p>
-            </div>
-            <div class="legend"><span class="tag">${escapeHtml(group.groupType || 'addon')}</span>${group.required ? '<span class="tag">obrigatorio</span>' : '<span class="tag">opcional</span>'}</div>
-          </div>
-          <div class="stack">${group.items.map(addon => `
-        <div class="cost-node group-option">
-          <div class="top">
-            <div>
-              <div class="name">${escapeHtml(addon.name)}</div>
-              <div class="meta">${escapeHtml(addon.group || 'opcional')} • ${escapeHtml(addonChargeModeLabel(addon.chargeMode))}${addon.notes ? ` • ${escapeHtml(addon.notes)}` : ''}</div>
-              <div class="small muted" style="margin-top:6px;">${escapeHtml(portionSummaryText(topLevelPortions(addon.nodes || [])) || 'Sem porcionamento detalhado')}</div>
-            </div>
-            <div style="text-align:right">
-              <strong>${brl(addon.directCost)}</strong>
-              <div class="small muted">custo direto</div>
-            </div>
-          </div>
-          <div class="info-grid" style="margin-top:12px;">
-            <div class="info-cell"><div class="k">Custo</div><div class="v">${brl(addon.directCost)}</div></div>
-            <div class="info-cell"><div class="k">Venda base</div><div class="v">${brl(addon.effectiveSalePrice)}</div></div>
-            <div class="info-cell"><div class="k">Venda iFood</div><div class="v">${brl(addon.ifoodSalePrice)}</div></div>
-            <div class="info-cell"><div class="k">Origem do preço</div><div class="v" style="font-size:15px">${addon.configuredSalePrice > 0 ? 'configurado' : 'sugestão pela regra'}</div></div>
-          </div>
-          ${addon.nodes?.length ? `<div class="children">${renderTree(addon.nodes)}</div>` : ''}
-        </div>`).join('')}</div></div>`).join('')}</div></div>`
-    : '';
+  const activeTab = ['resumo', 'composicao', 'adicionais', 'embalagens', 'compras'].includes(state.catalogDetailTab) ? state.catalogDetailTab : 'resumo';
+  const tabHtml = {
+    resumo: renderProductSummaryTab(c, basePortions, addonGroups),
+    composicao: renderProductCompositionTab(c),
+    adicionais: renderProductAddonsTab(c),
+    embalagens: renderProductPackagingTab(c),
+    compras: renderProductPurchasesTab(c)
+  }[activeTab];
   return `
-    <div class="detail-header"><div><div class="legend">${scopeTag(scope)}<span class="tag">${escapeHtml(categoryName(p.categoryId))}</span><span class="tag">${escapeHtml(subgroupNameForProduct(p))}</span><span class="tag">SKU ${escapeHtml(p.code || '—')}</span></div><h3>${escapeHtml(p.name)}</h3><p>${escapeHtml(p.description || p.notes || 'Sem observação cadastrada.')}</p><div class="pill-line"><span class="tag">catalogo atual: ${escapeHtml(catalogPathLabel(p))}</span></div></div><div class="detail-actions"><button class="btn ghost" data-action="duplicate-product" data-id="${p.id}">Duplicar</button><button class="btn ghost" data-action="edit-product" data-id="${p.id}">Editar</button><button class="btn danger" data-action="delete-product" data-id="${p.id}">Excluir</button></div></div>
-    <div class="info-grid">
-      <div class="info-cell"><div class="k">Grupo no catálogo</div><div class="v" style="font-size:15px">${escapeHtml(subgroupNameForProduct(p))}</div></div>
-      <div class="info-cell"><div class="k">Grupos de escolha</div><div class="v">${addonGroups.length}</div></div>
-      <div class="info-cell"><div class="k">Porcionamento base</div><div class="v" style="font-size:15px">${basePortions.length}</div></div>
-      <div class="info-cell"><div class="k">Leitura operacional</div><div class="v" style="font-size:15px">${escapeHtml(portionSummaryText(basePortions) || 'Sem resumo')}</div></div>
-      <div class="info-cell"><div class="k">SKU</div><div class="v" style="font-size:15px">${escapeHtml(p.code || '—')}</div></div>
-      <div class="info-cell"><div class="k">Preço de venda</div><div class="v">${brl(c.salePrice)}</div></div>
-      <div class="info-cell"><div class="k">Margem atual (sem rateio)</div><div class="v status ${statusClass(c.marginPct)}">${pct(c.marginPct)}</div></div>
-      <div class="info-cell"><div class="k">Preço de venda iFood</div><div class="v">${brl(c.ifoodSalePrice)}</div></div>
-      <div class="info-cell"><div class="k">Grupos obrigatórios</div><div class="v">${requiredGroups}</div></div>
-      <div class="info-cell"><div class="k">Opções mapeadas</div><div class="v">${(c.addons || []).length}</div></div>
-      <div class="info-cell"><div class="k">Regra de preço</div><div class="v" style="font-size:15px">${escapeHtml(pricingRuleLabel(p))}</div></div>
-      <div class="info-cell"><div class="k">Preço pela regra atual</div><div class="v">${brl(c.autoSalePrice)}</div></div>
-      <div class="info-cell"><div class="k">Preço com rateio fixo (só referência)</div><div class="v">${brl(c.autoSalePriceWithFixed)}</div></div>
-      <div class="info-cell"><div class="k">Custo direto</div><div class="v">${brl(c.directCost)}</div></div>
-      <div class="info-cell"><div class="k">Custo que só repassa</div><div class="v">${brl(c.passThroughCost)}</div></div>
-      <div class="info-cell"><div class="k">Base que entra no markup</div><div class="v">${brl(c.markupBaseCost)}</div></div>
-      <div class="info-cell"><div class="k">Rateio fixo</div><div class="v">${brl(c.fixedCost)}</div></div>
-      <div class="info-cell"><div class="k">Custo total</div><div class="v">${brl(c.totalCost)}</div></div>
+    <div class="catalog-detail-hero">
+      ${renderProductImage(p, 'catalog-thumb')}
+      <div>
+        <div class="legend">${scopeTag(scope)}<span class="tag">${escapeHtml(categoryName(p.categoryId))}</span><span class="tag">${escapeHtml(subgroupNameForProduct(p))}</span><span class="tag">SKU ${escapeHtml(p.code || '—')}</span></div>
+        <h3 style="margin:10px 0 6px;">${escapeHtml(p.name)}</h3>
+        <p class="muted" style="margin:0;">${escapeHtml(p.description || p.notes || 'Sem observação cadastrada.')}</p>
+        <div class="pill-line">
+          <span class="tag">${escapeHtml(catalogPathLabel(p))}</span>
+          <span class="tag">base: ${basePortions.length} camada(s)</span>
+          <span class="tag">adicionais: ${(c.addons || []).length}</span>
+          <span class="tag">obrigatórios: ${requiredGroups}</span>
+        </div>
+      </div>
     </div>
-    <div class="legend"><span class="tag">markup atual ${safe(c.markup).toFixed(2)}x</span><span class="tag">regra atual em uso: (${brl(c.markupBaseCost)} x ${markupMultiplier().toFixed(2)}) + ${brl(c.passThroughCost)} = ${brl(c.autoSalePrice)}</span><span class="tag">iFood: ${brl(c.ifoodSalePrice)} (${Math.round((ifoodMultiplier() - 1) * 100)}% acima do preço base)</span><span class="tag">com rateio fixo: ${brl(c.autoSalePriceWithFixed)} (só referência)</span><span class="tag">modo: ${escapeHtml(c.pricingMode === 'manual' ? 'manual' : 'automatico')}</span><span class="tag">tipo: ${escapeHtml(p.type)}</span><span class="tag">camadas: ${p.components.length}</span><span class="tag">adicionais: ${(p.addons || []).length}</span></div>
-    <div style="margin-top:16px;"><h3 style="font-size:15px; margin:0 0 10px;">Gramaturas, volumes e porções da base</h3><div class="info-grid">${basePortions.map(item => `<div class="info-cell"><div class="k">${escapeHtml(item.type)}</div><div class="v" style="font-size:15px">${escapeHtml(item.name)}</div><div class="small muted" style="margin-top:6px;">usa ${escapeHtml(item.usage)} • custo ${brl(item.cost)}</div></div>`).join('')}</div></div>
-    <div style="margin-top:16px;"><h3 style="font-size:15px; margin:0 0 10px;">Estrutura de custo / BOM base</h3>${renderTree(c.nodes)}</div>
-    ${purchaseHistorySection}
-    ${addonSection}`;
+    <div class="detail-actions" style="margin-top:14px;"><button class="btn ghost" data-action="duplicate-product" data-id="${p.id}">Duplicar</button><button class="btn primary" data-action="edit-product" data-id="${p.id}">Editar item e preço</button><button class="btn danger" data-action="delete-product" data-id="${p.id}">Excluir</button></div>
+    ${renderProductDetailTabs(activeTab)}
+    ${tabHtml}`;
 }
 
 function renderCatalog() {
@@ -2005,17 +2254,24 @@ function renderCatalog() {
     .join('');
   if (!state.selectedProductId || !products.find(p => p.id === state.selectedProductId)) state.selectedProductId = products[0]?.id || null;
   const selected = state.selectedProductId ? computeProduct(state.selectedProductId, state.operationView) : null;
+  const groupedProducts = [...products.reduce((map, product) => {
+    const key = `${categoryName(product.categoryId)}::${subgroupNameForProduct(product)}`;
+    if (!map.has(key)) map.set(key, { categoryId: product.categoryId, categoryName: categoryName(product.categoryId), groupName: subgroupNameForProduct(product), products: [] });
+    map.get(key).products.push(product);
+    return map;
+  }, new Map()).values()];
 
   qs('#page-catalog').innerHTML = `
     <div class="stack">
       <section class="panel"><div class="panel-head"><div><h3>Espelho do cardápio atual</h3><p>Cada categoria abaixo já aparece com os grupos que vieram do PDV. Isso facilita conferir se custo, preço e montagem estão batendo com o catálogo real.</p></div></div><div class="panel-body"><div class="cat-grid">${categorySummary || '<div class="empty">Nenhum item ativo para resumir.</div>'}</div></div></section>
-      <section class="panel"><div class="panel-head"><div><h3>Itens finais do cardápio</h3><p>O combo pode carregar outro item como base. O custo direto sempre puxa as camadas de baixo. Escopo atual: ${operationLabel()}.</p></div><div class="filter-row"><input class="input" id="catalogSearch" placeholder="Buscar item, grupo, nota, categoria ou escopo" value="${escapeHtml(state.filterText)}"><select class="select" id="catalogCategory"><option value="all">Todas as categorias</option>${categories.sort((a, b) => (categoryViewMeta(a.id).sortOrder || 999) - (categoryViewMeta(b.id).sortOrder || 999)).map(cat => `<option value="${cat.id}" ${state.filterCategory===cat.id?'selected':''}>${escapeHtml(cat.name)}</option>`).join('')}</select><button class="btn primary" id="addProductBtn">Novo item / combo</button></div></div><div class="panel-body"><div class="split"><div class="panel" style="box-shadow:none;"><div class="panel-body" style="padding:0 0 8px 0; overflow:auto;"><table><thead><tr><th>Item</th><th>Escopo</th><th>Categoria</th><th>Grupo</th><th>Venda</th><th>Venda iFood</th><th>Custo total</th><th>Margem s/ rateio</th></tr></thead><tbody>${products.length ? products.map(p => { const c = computeProduct(p.id, state.operationView); return `<tr data-product-id="${p.id}" class="${state.selectedProductId===p.id?'active':''}"><td><strong>${escapeHtml(p.name)}</strong><div class="small muted">${escapeHtml(p.type)} • ${escapeHtml(productViewMeta(p).catalogItemId || p.id)}</div></td><td>${scopeTag(p.scope || legacyScopeForRecord('products', p))}</td><td>${escapeHtml(categoryName(p.categoryId))}</td><td><strong>${escapeHtml(subgroupNameForProduct(p))}</strong><div class="small muted">${escapeHtml(categoryViewMeta(p.categoryId).accent || 'cardápio')}</div></td><td>${brl(c.salePrice)}</td><td>${brl(c.ifoodSalePrice)}</td><td>${brl(c.totalCost)}</td><td class="status ${statusClass(c.marginPct)}">${pct(c.marginPct)}</td></tr>`; }).join('') : `<tr><td colspan="8"><div class="empty">Nenhum item encontrado.</div></td></tr>`}</tbody></table></div></div><div class="panel" style="box-shadow:none;"><div class="panel-body" id="catalogDetail">${selected ? renderProductDetailHtml(selected) : '<div class="empty">Selecione um item para ver o detalhamento.</div>'}</div></div></div></div></section>
+      <section class="panel"><div class="panel-head"><div><h3>Catálogo visual para revisão de preços</h3><p>Produtos, combos e bebidas aparecem com imagem, custo e margem. Clique em um card para ver composição, adicionais, embalagens e compras ligadas.</p></div><div class="filter-row"><input class="input" id="catalogSearch" placeholder="Buscar item, grupo, nota, categoria ou escopo" value="${escapeHtml(state.filterText)}"><select class="select" id="catalogCategory"><option value="all">Todas as categorias</option>${categories.sort((a, b) => (categoryViewMeta(a.id).sortOrder || 999) - (categoryViewMeta(b.id).sortOrder || 999)).map(cat => `<option value="${cat.id}" ${state.filterCategory===cat.id?'selected':''}>${escapeHtml(cat.name)}</option>`).join('')}</select><button class="btn primary" id="addProductBtn">Novo item / combo</button></div></div><div class="panel-body"><div class="catalog-layout"><div class="stack">${groupedProducts.length ? groupedProducts.map(group => `<section><div class="catalog-section-head"><div><h3>${escapeHtml(group.groupName)}</h3><p>${escapeHtml(group.categoryName)} • ${group.products.length} item(ns)</p></div><span class="tag">${escapeHtml(categoryViewMeta(group.categoryId).accent || 'cardápio')}</span></div><div class="catalog-grid">${group.products.map(p => { const c = computeProduct(p.id, state.operationView); return `<article class="catalog-card ${state.selectedProductId===p.id?'active':''}" data-product-id="${p.id}">${renderProductImage(p)}<div><div class="legend" style="margin-bottom:6px;"><span class="tag">${escapeHtml(p.type)}</span><span class="tag">${escapeHtml(productViewMeta(p).catalogItemId || p.id)}</span></div><h4>${escapeHtml(p.name)}</h4><p>${escapeHtml(p.description || p.notes || catalogPathLabel(p))}</p><div class="catalog-price-row"><div><strong>${brl(c.salePrice)}</strong><div class="small muted">iFood ${brl(c.ifoodSalePrice)}</div></div><div style="text-align:right"><div class="small muted">custo ${brl(c.totalCost)}</div><div class="status ${statusClass(c.marginPct)}">${pct(c.marginPct)}</div></div></div></div></article>`; }).join('')}</div></section>`).join('') : '<div class="empty">Nenhum item encontrado.</div>'}</div><div class="panel" style="box-shadow:none;"><div class="panel-body" id="catalogDetail">${selected ? renderProductDetailHtml(selected) : '<div class="empty">Selecione um item para ver o detalhamento.</div>'}</div></div></div></div></section>
     </div>`;
 
   qs('#catalogSearch').oninput = (e) => { state.filterText = e.target.value; renderCatalog(); };
   qs('#catalogCategory').onchange = (e) => { state.filterCategory = e.target.value; renderCatalog(); };
   qs('#addProductBtn').onclick = () => openEntityModal('products');
   qsa('[data-product-id]').forEach(row => row.onclick = () => { state.selectedProductId = row.dataset.productId; renderCatalog(); });
+  qsa('[data-catalog-tab]').forEach(btn => btn.onclick = () => { state.catalogDetailTab = btn.dataset.catalogTab; renderCatalog(); });
   bindDetailActions();
 }
 

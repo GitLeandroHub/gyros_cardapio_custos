@@ -1961,12 +1961,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Cobertura padrao para porcao M; revisar depois se necessario.",
+      "notes": "Cobertura padrao para porcao M; revisar depois se necessario. Cobertura operacional pequena ajustada para 60g de queijo.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_mucarela",
-          "qty": 90
+          "qty": 60
         }
       ],
       "code": "REC_GRAT_MUC_P",
@@ -1979,12 +1979,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Cobertura padrao para porcao M; revisar depois se necessario.",
+      "notes": "Cobertura padrao para porcao M; revisar depois se necessario. Cobertura operacional pequena ajustada para 60g de queijo.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_catupiry",
-          "qty": 90
+          "qty": 60
         }
       ],
       "code": "REC_GRAT_CAT_P",
@@ -1997,12 +1997,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Cobertura padrao para porcao M; revisar depois se necessario.",
+      "notes": "Cobertura padrao para porcao M; revisar depois se necessario. Cobertura operacional pequena ajustada para 60g de queijo.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_4queijos",
-          "qty": 90
+          "qty": 60
         }
       ],
       "code": "REC_GRAT_4Q_P",
@@ -2015,12 +2015,12 @@
       "yieldQty": 1,
       "yieldUnit": "un",
       "storage": "Salamandra",
-      "notes": "Cobertura padrao para porcao M; revisar depois se necessario.",
+      "notes": "Cobertura padrao para porcao M; revisar depois se necessario. Cobertura operacional pequena ajustada para 60g de queijo.",
       "components": [
         {
           "refType": "ingredient",
           "refId": "ing_cheddar",
-          "qty": 90
+          "qty": 60
         }
       ],
       "code": "REC_GRAT_CHEDDAR_P",
