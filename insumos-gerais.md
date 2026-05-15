@@ -50,6 +50,7 @@ Lista refinada para compra e controle interno. Nomes de nota, marca, peso do pac
 - Toalha de papel
 - Toalha umedecida
 - Palha de aço
+- Mangueira
 
 ## Higiene/EPI
 
@@ -89,7 +90,6 @@ Lista refinada para compra e controle interno. Nomes de nota, marca, peso do pac
 - Catupiry Original
 - Catupiry 4 Queijos
 - Cheddar
-- Base de maionese
 - Manteiga com sal
 
 ## Refrigerados/congelados
@@ -152,6 +152,8 @@ Lista refinada para compra e controle interno. Nomes de nota, marca, peso do pac
 - Açúcar
 - Óleo de cozinha
 - Banha
+- Base de maionese Quero
+- Maionese da Casa Junior Grill
 
 ## Sobremesas/confeitaria
 
@@ -165,7 +167,8 @@ Lista refinada para compra e controle interno. Nomes de nota, marca, peso do pac
 
 - Pão francês com parmesão finalizado
 - Vinagrete da casa
-- Maionese Grill
+- Maionese da Casa (Junior Grill pronta)
+- Maionese Defumada
 - Maionese Verde
 - Maionese de Chimichurri
 - Manteiga com alho

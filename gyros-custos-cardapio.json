@@ -1262,6 +1262,23 @@
       "sourceReference": "Pedido online Armazém São Vito nº 9678784",
       "notes": "Pacote de 200g documentado em 25/02/2026.",
       "description": "Canela moída 200g"
+    },
+    {
+      "id": "ing_maionese_junior_grill",
+      "name": "Maionese da Casa Junior Grill",
+      "baseUnit": "g",
+      "purchaseQty": 16500,
+      "purchaseCost": 591,
+      "wastePct": 0,
+      "supplier": "PMG Comércio de Frios e Laticínios",
+      "supplierMode": "single",
+      "notes": "Maionese Grill Junior pronta. Caixa com 15 bags de 1,1kg; compra PMG nº 9096638.",
+      "scope": "gyros",
+      "sourceType": "documented",
+      "sourceReference": "Pedido PMG nº 9096638 em 15/04/2026: 15 bags x R$ 39,40 = R$ 591,00",
+      "code": "ING_MAIONESE_JUNIOR_GRILL",
+      "description": "Maionese da casa comprada pronta Junior Grill; usada nos lanches e no molho da casa.",
+      "erpUnit": "G"
     }
   ],
   "packaging": [
@@ -1278,7 +1295,8 @@
       "supplierMode": "single",
       "code": "PKG_LANCHE",
       "description": "Involucro de cada lanche do Gyros.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_bat_p",
@@ -1293,7 +1311,8 @@
       "supplierMode": "single",
       "code": "PKG_BAT_P",
       "description": "Batata M (200g) e churros.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_bat_m",
@@ -1308,7 +1327,8 @@
       "supplierMode": "single",
       "code": "PKG_BAT_M",
       "description": "Historico: antiga embalagem intermediaria.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_bat_g",
@@ -1323,7 +1343,8 @@
       "supplierMode": "single",
       "code": "PKG_BAT_G",
       "description": "Batata G (400g).",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_almoco",
@@ -1337,7 +1358,8 @@
       "supplier": "",
       "code": "PKG_ALMOCO",
       "description": "Estoque atual do Gyros; custo historico por unidade R$ 2,84.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_potinho_30",
@@ -1352,7 +1374,8 @@
       "supplierMode": "single",
       "code": "PKG_POTINHO_30",
       "description": "Mantido como alias temporario do pote 60ml; revisar se seguira em uso.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_potinho_60",
@@ -1367,7 +1390,8 @@
       "supplierMode": "single",
       "code": "PKG_POTINHO_60",
       "description": "Assumido pacote com 25 unidades; revisar quantidade real do fornecedor.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_sobremesa",
@@ -1382,7 +1406,8 @@
       "supplierMode": "single",
       "code": "PKG_SOBREMESA",
       "description": "Saquinho para churros.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_sacola_delivery",
@@ -1397,7 +1422,8 @@
       "supplierMode": "single",
       "code": "PKG_SACOLA_DELIVERY",
       "description": "Samppael, incluindo frete rateado.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_guardanapo",
@@ -1412,7 +1438,8 @@
       "supplierMode": "single",
       "code": "PKG_GUARDANAPO",
       "description": "Usado no almoco; lanches podem migrar depois se desejado.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_combo_familia",
@@ -1426,7 +1453,8 @@
       "supplier": "",
       "code": "PKG_COMBO_FAMILIA",
       "description": "Sem alteracao nesta rodada.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_talher_kit",
@@ -1441,7 +1469,8 @@
       "supplierMode": "single",
       "code": "PKG_TALHER_KIT",
       "description": "Para pratos de almoco do Gyros.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_potinho_feijao",
@@ -1456,7 +1485,8 @@
       "supplierMode": "single",
       "code": "PKG_POTINHO_FEIJAO",
       "description": "Para feijao do almoco.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_bandeja_m90",
@@ -1471,7 +1501,8 @@
       "supplierMode": "single",
       "code": "PKG_BANDEJA_M90",
       "description": "Porcao de 220ml para 200g de batata ou proteina gratinada.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     },
     {
       "id": "pkg_bandeja_m120",
@@ -1486,7 +1517,8 @@
       "supplierMode": "single",
       "code": "PKG_BANDEJA_M120",
       "description": "Porcao de 500ml para 400g de batata ou proteina gratinada.",
-      "erpUnit": "UN"
+      "erpUnit": "UN",
+      "costImpact": "markup"
     }
   ],
   "recipes": [
@@ -1506,7 +1538,8 @@
       ],
       "scope": "gyros",
       "code": "REC_PAO_PARMESAO",
-      "description": "Pão francês com parmesão pronto do fornecedor. A manteiga com alho entra na hora de finalizar o lanche."
+      "description": "Pão francês com parmesão pronto do fornecedor. A manteiga com alho entra na hora de finalizar o lanche.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_vinagrete",
@@ -1515,6 +1548,26 @@
       "yieldUnit": "ml",
       "storage": "Descanso refrigerado",
       "notes": "Tomate, cebola, limao, cheiro-verde, azeite, sal e pimenta",
+      "outputPortions": [
+        {
+          "label": "Pote vendido no catálogo",
+          "qty": 60,
+          "unit": "ml",
+          "role": "venda"
+        },
+        {
+          "label": "Pote operacional 70ml",
+          "qty": 70,
+          "unit": "ml",
+          "role": "operacao"
+        },
+        {
+          "label": "Aplicação no lanche",
+          "qty": 60,
+          "unit": "ml",
+          "role": "produto"
+        }
+      ],
       "components": [
         {
           "refType": "ingredient",
@@ -1549,35 +1602,43 @@
       ],
       "scope": "gyros",
       "code": "REC_VINAGRETE",
-      "description": "Tomate, cebola, limao, cheiro-verde, azeite, sal e pimenta"
+      "description": "Tomate, cebola, limao, cheiro-verde, azeite, sal e pimenta",
+      "erpUnit": "KG",
+      "densityGPerMl": 1
     },
     {
       "id": "rec_maionese",
-      "name": "Maionese Grill",
-      "yieldQty": 440,
+      "name": "Maionese da Casa (Junior Grill)",
+      "yieldQty": 1100,
       "yieldUnit": "g",
-      "storage": "Descanso refrigerado",
-      "notes": "Assumido: 400g base de maionese Quero + 24g de fumaca em po + 15g de mostarda amarela.",
+      "storage": "Refrigerado",
+      "notes": "Maionese da casa comprada pronta: Junior Grill 1,1kg. Usada nos lanches e no molho da casa.",
+      "outputPortions": [
+        {
+          "label": "Pote vendido no catálogo",
+          "qty": 60,
+          "unit": "g",
+          "role": "venda"
+        },
+        {
+          "label": "Aplicação no lanche",
+          "qty": 10,
+          "unit": "g",
+          "role": "produto"
+        }
+      ],
       "components": [
         {
           "refType": "ingredient",
-          "refId": "ing_maionese_ind",
-          "qty": 400
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_fumaca_po",
-          "qty": 24
-        },
-        {
-          "refType": "ingredient",
-          "refId": "ing_mostarda_amarela",
-          "qty": 15
+          "refId": "ing_maionese_junior_grill",
+          "qty": 1100
         }
       ],
       "scope": "gyros",
-      "code": "REC_MAIONESE",
-      "description": "Assumido: 400g base de maionese Quero + 24g de fumaca em po + 15g de mostarda amarela."
+      "code": "REC_MAIONESE_CASA_JUNIOR",
+      "description": "Maionese da casa comprada pronta Junior Grill.",
+      "erpUnit": "KG",
+      "densityGPerMl": 1
     },
     {
       "id": "rec_batata_p",
@@ -1590,7 +1651,7 @@
         {
           "refType": "ingredient",
           "refId": "ing_batata",
-          "qty": 150
+          "qty": 200
         },
         {
           "refType": "ingredient",
@@ -1600,7 +1661,8 @@
       ],
       "scope": "gyros",
       "code": "REC_BATATA_P",
-      "description": "Porcao M de 200g, sal padrao."
+      "description": "Porcao M de 200g, sal padrao.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_batata_m",
@@ -1623,7 +1685,8 @@
       ],
       "scope": "gyros",
       "code": "REC_BATATA_M",
-      "description": "Receita antiga mantida apenas para historico."
+      "description": "Receita antiga mantida apenas para historico.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_batata_g",
@@ -1646,7 +1709,8 @@
       ],
       "scope": "gyros",
       "code": "REC_BATATA_G",
-      "description": "Porcao G de 400g, sal padrao."
+      "description": "Porcao G de 400g, sal padrao.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_batata_grat_p",
@@ -1669,7 +1733,8 @@
       ],
       "scope": "gyros",
       "code": "REC_BATATA_GRAT_P",
-      "description": "Base da gratinada M com 100g de batata."
+      "description": "Base da gratinada M com 100g de batata.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_batata_grat_g",
@@ -1692,7 +1757,8 @@
       ],
       "scope": "gyros",
       "code": "REC_BATATA_GRAT_G",
-      "description": "Base da gratinada G com 220g de batata."
+      "description": "Base da gratinada G com 220g de batata.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_muc",
@@ -1710,7 +1776,8 @@
       ],
       "scope": "gyros",
       "code": "REC_GRAT_MUC",
-      "description": "Cobertura padrão para gratinar"
+      "description": "Cobertura padrão para gratinar",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_cat",
@@ -1728,7 +1795,8 @@
       ],
       "scope": "gyros",
       "code": "REC_GRAT_CAT",
-      "description": "Cobertura com catupiry"
+      "description": "Cobertura com catupiry",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_cheddar",
@@ -1746,7 +1814,8 @@
       ],
       "scope": "gyros",
       "code": "REC_GRAT_CHEDDAR",
-      "description": "Cobertura com cheddar"
+      "description": "Cobertura com cheddar",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_4q",
@@ -1764,7 +1833,8 @@
       ],
       "scope": "gyros",
       "code": "REC_GRAT_4Q",
-      "description": "Cobertura com mix 4 queijos"
+      "description": "Cobertura com mix 4 queijos",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_prato_alpha",
@@ -1802,7 +1872,8 @@
       ],
       "scope": "gyros",
       "code": "REC_PRATO_ALPHA",
-      "description": "Prato com fraldinha, feijao em pote e vinagrete/farofa em potes de 60ml."
+      "description": "Prato com fraldinha, feijao em pote e vinagrete/farofa em potes de 60ml.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_prato_beta",
@@ -1840,7 +1911,8 @@
       ],
       "scope": "gyros",
       "code": "REC_PRATO_BETA",
-      "description": "Prato com frango, feijao em pote e vinagrete/farofa em potes de 60ml."
+      "description": "Prato com frango, feijao em pote e vinagrete/farofa em potes de 60ml.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_prato_gamma",
@@ -1878,16 +1950,25 @@
       ],
       "scope": "gyros",
       "code": "REC_PRATO_GAMMA",
-      "description": "Prato com linguica, feijao em pote e vinagrete/farofa em potes de 60ml."
+      "description": "Prato com linguica, feijao em pote e vinagrete/farofa em potes de 60ml.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_manteiga_alho",
       "scope": "gyros",
       "name": "Manteiga com alho",
-      "yieldQty": 530,
+      "yieldQty": 550,
       "yieldUnit": "g",
-      "storage": "Geladeira / producao do lanche",
-      "notes": "Assumido: 500g de manteiga + 30g de alho triturado (3 colheres cheias).",
+      "storage": "Geladeira / produção do lanche",
+      "notes": "Receita operacional: 500g de manteiga com sal + 50g de alho. Usar cerca de 20g no pão para dourar as duas extremidades.",
+      "outputPortions": [
+        {
+          "label": "Aplicação no lanche",
+          "qty": 20,
+          "unit": "g",
+          "role": "produto"
+        }
+      ],
       "components": [
         {
           "refType": "ingredient",
@@ -1897,11 +1978,13 @@
         {
           "refType": "ingredient",
           "refId": "ing_alho",
-          "qty": 30
+          "qty": 50
         }
       ],
       "code": "REC_MANTEIGA_ALHO",
-      "description": "Assumido: 500g de manteiga + 30g de alho triturado (3 colheres cheias)."
+      "description": "Receita operacional: 500g de manteiga com sal + 50g de alho. Usada no pão do Gyros para dourar.",
+      "erpUnit": "KG",
+      "densityGPerMl": 1
     },
     {
       "id": "rec_barbecue_casa",
@@ -1929,7 +2012,8 @@
         }
       ],
       "code": "REC_BARBECUE_CASA",
-      "description": "Receita: 2kg de molho barbecue pronto + 1kg de ketchup + 150g de mel."
+      "description": "Receita: 2kg de molho barbecue pronto + 1kg de ketchup + 150g de mel.",
+      "erpUnit": "KG"
     },
     {
       "id": "rec_tempero_batata_plus",
@@ -1952,7 +2036,8 @@
         }
       ],
       "code": "REC_TEMPERO_BATATA_PLUS",
-      "description": "Assumido 50% lemon pepper e 50% paprica doce; usar apenas como adicional opcional."
+      "description": "Assumido 50% lemon pepper e 50% paprica doce; usar apenas como adicional opcional.",
+      "erpUnit": "KG"
     },
     {
       "id": "rec_grat_muc_p",
@@ -1970,7 +2055,8 @@
         }
       ],
       "code": "REC_GRAT_MUC_P",
-      "description": "Cobertura padrao para porcao M; revisar depois se necessario."
+      "description": "Cobertura padrao para porcao M; revisar depois se necessario.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_cat_p",
@@ -1988,7 +2074,8 @@
         }
       ],
       "code": "REC_GRAT_CAT_P",
-      "description": "Cobertura padrao para porcao M; revisar depois se necessario."
+      "description": "Cobertura padrao para porcao M; revisar depois se necessario.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_4q_p",
@@ -2006,7 +2093,8 @@
         }
       ],
       "code": "REC_GRAT_4Q_P",
-      "description": "Cobertura padrao para porcao M; revisar depois se necessario."
+      "description": "Cobertura padrao para porcao M; revisar depois se necessario.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_cheddar_p",
@@ -2024,7 +2112,8 @@
         }
       ],
       "code": "REC_GRAT_CHEDDAR_P",
-      "description": "Cobertura padrao para porcao M; revisar depois se necessario."
+      "description": "Cobertura padrao para porcao M; revisar depois se necessario.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_muc_g",
@@ -2042,7 +2131,8 @@
         }
       ],
       "code": "REC_GRAT_MUC_G",
-      "description": "Cobertura padrao para porcao G; revisar depois se necessario."
+      "description": "Cobertura padrao para porcao G; revisar depois se necessario.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_cat_g",
@@ -2060,7 +2150,8 @@
         }
       ],
       "code": "REC_GRAT_CAT_G",
-      "description": "Cobertura padrao para porcao G; revisar depois se necessario."
+      "description": "Cobertura padrao para porcao G; revisar depois se necessario.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_4q_g",
@@ -2078,7 +2169,8 @@
         }
       ],
       "code": "REC_GRAT_4Q_G",
-      "description": "Cobertura padrao para porcao G; revisar depois se necessario."
+      "description": "Cobertura padrao para porcao G; revisar depois se necessario.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_grat_cheddar_g",
@@ -2096,7 +2188,8 @@
         }
       ],
       "code": "REC_GRAT_CHEDDAR_G",
-      "description": "Cobertura padrao para porcao G; revisar depois se necessario."
+      "description": "Cobertura padrao para porcao G; revisar depois se necessario.",
+      "erpUnit": "UN"
     },
     {
       "id": "rec_maionese_chimichurri",
@@ -2124,7 +2217,8 @@
         }
       ],
       "code": "REC_MAIONESE_CHIMICHURRI",
-      "description": "Mesmo padrao da Grill: 400g de base + chimichurri + mostarda amarela."
+      "description": "Mesmo padrao da Grill: 400g de base + chimichurri + mostarda amarela.",
+      "erpUnit": "KG"
     },
     {
       "id": "rec_maionese_verde",
@@ -2172,7 +2266,8 @@
         }
       ],
       "code": "REC_MAIONESE_VERDE",
-      "description": "Base de maionese com mostarda, alho, limao, cheiro-verde, sal e pimenta-do-reino."
+      "description": "Base de maionese com mostarda, alho, limao, cheiro-verde, sal e pimenta-do-reino.",
+      "erpUnit": "KG"
     },
     {
       "id": "rec_berinjela_antepasto",
@@ -2250,7 +2345,38 @@
         }
       ],
       "code": "REC_BERINJELA_ANTEPASTO",
-      "description": "Receita baseada nas anotações: berinjela, pimentões, cebola roxa, tomate seco, shoyu, manjericão, louro, orégano, pimenta calabresa, azeite e vinagre de descanso."
+      "description": "Receita baseada nas anotações: berinjela, pimentões, cebola roxa, tomate seco, shoyu, manjericão, louro, orégano, pimenta calabresa, azeite e vinagre de descanso.",
+      "erpUnit": "KG"
+    },
+    {
+      "id": "rec_maionese_defumada",
+      "name": "Maionese Defumada",
+      "yieldQty": 440,
+      "yieldUnit": "g",
+      "storage": "Descanso refrigerado",
+      "notes": "Feita internamente: base de maionese Quero + fumaça em pó + mostarda amarela.",
+      "components": [
+        {
+          "refType": "ingredient",
+          "refId": "ing_maionese_ind",
+          "qty": 400
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_fumaca_po",
+          "qty": 24
+        },
+        {
+          "refType": "ingredient",
+          "refId": "ing_mostarda_amarela",
+          "qty": 15
+        }
+      ],
+      "scope": "gyros",
+      "code": "REC_MAIONESE_DEFUMADA",
+      "description": "Maionese defumada feita internamente com base Quero, fumaça em pó e mostarda.",
+      "erpUnit": "KG",
+      "densityGPerMl": 1
     }
   ],
   "products": [
@@ -2277,7 +2403,7 @@
         {
           "refType": "recipe",
           "refId": "rec_manteiga_alho",
-          "qty": 5
+          "qty": 20
         },
         {
           "refType": "ingredient",
@@ -2675,7 +2801,7 @@
         {
           "refType": "recipe",
           "refId": "rec_manteiga_alho",
-          "qty": 5
+          "qty": 20
         },
         {
           "refType": "ingredient",
@@ -3073,7 +3199,7 @@
         {
           "refType": "recipe",
           "refId": "rec_manteiga_alho",
-          "qty": 5
+          "qty": 20
         },
         {
           "refType": "ingredient",
@@ -3473,7 +3599,7 @@
         {
           "refType": "recipe",
           "refId": "rec_manteiga_alho",
-          "qty": 5
+          "qty": 20
         },
         {
           "refType": "ingredient",
@@ -4964,6 +5090,31 @@
           "minimum": 1,
           "maximum": 1,
           "active": true
+        },
+        {
+          "id": "final_molho_casa_defumada",
+          "name": "Maionese Defumada 60ml",
+          "group": "Finalize seu combo",
+          "chargeMode": "included",
+          "salePriceDelta": 0,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_defumada_extra",
+              "qty": 1
+            }
+          ],
+          "code": "GYR-CMB-FIN-MAIDEF",
+          "description": "Maionese Defumada 60ml",
+          "erpUnit": "UN",
+          "salePriceMode": "auto",
+          "groupType": "choice",
+          "priceCalculation": "free",
+          "required": true,
+          "minimum": 1,
+          "maximum": 1,
+          "active": true
         }
       ]
     },
@@ -5495,7 +5646,7 @@
       "salePrice": 5.62,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Batata frita média 150g com opção de tempero e molho à parte.",
+      "notes": "Batata frita média 200g com opção de tempero e molho à parte.",
       "components": [
         {
           "refType": "recipe",
@@ -5684,10 +5835,35 @@
           "minimum": 0,
           "maximum": 1,
           "active": true
+        },
+        {
+          "id": "adicione_1_molho_prd_molho_extra_defumada",
+          "name": "Maionese Defumada 60ml",
+          "group": "Adicione 1 molho",
+          "chargeMode": "extra",
+          "salePriceDelta": 3.5,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_defumada_extra",
+              "qty": 1
+            }
+          ],
+          "code": "GYR-MOL-MAIDEF",
+          "description": "Maionese Defumada 60ml",
+          "erpUnit": "UN",
+          "salePriceMode": "manual",
+          "groupType": "choice",
+          "priceCalculation": "sum",
+          "required": false,
+          "minimum": 0,
+          "maximum": 1,
+          "active": true
         }
       ],
       "code": "GYR-BAT-FRT-M150",
-      "description": "Batata frita média 150g com opção de tempero e molho à parte.",
+      "description": "Batata frita média 200g com opção de tempero e molho à parte.",
       "erpUnit": "UN",
       "productCondition": "new",
       "erpProductType": "custom",
@@ -5886,6 +6062,31 @@
           ],
           "code": "GYR-MOL-BBQ60",
           "description": "Barbecue 60ml",
+          "erpUnit": "UN",
+          "salePriceMode": "manual",
+          "groupType": "choice",
+          "priceCalculation": "sum",
+          "required": false,
+          "minimum": 0,
+          "maximum": 1,
+          "active": true
+        },
+        {
+          "id": "adicione_1_molho_prd_molho_extra_defumada",
+          "name": "Maionese Defumada 60ml",
+          "group": "Adicione 1 molho",
+          "chargeMode": "extra",
+          "salePriceDelta": 3.5,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_defumada_extra",
+              "qty": 1
+            }
+          ],
+          "code": "GYR-MOL-MAIDEF",
+          "description": "Maionese Defumada 60ml",
           "erpUnit": "UN",
           "salePriceMode": "manual",
           "groupType": "choice",
@@ -7103,6 +7304,31 @@
           "minimum": 0,
           "maximum": 2,
           "active": true
+        },
+        {
+          "id": "molhos_à_parte_prd_molho_extra_defumada",
+          "name": "Maionese Defumada 60ml",
+          "group": "Molhos à parte",
+          "chargeMode": "extra",
+          "salePriceDelta": 3.5,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_defumada_extra",
+              "qty": 1
+            }
+          ],
+          "code": "GYR-MOL-MAIDEF",
+          "description": "Maionese Defumada 60ml",
+          "erpUnit": "UN",
+          "salePriceMode": "manual",
+          "groupType": "addon",
+          "priceCalculation": "sum",
+          "required": false,
+          "minimum": 0,
+          "maximum": 2,
+          "active": true
         }
       ],
       "code": "GYR-ALM-ALPHA",
@@ -7302,6 +7528,31 @@
           ],
           "code": "GYR-MOL-VIN60",
           "description": "Vinagrete da Casa 60ml",
+          "erpUnit": "UN",
+          "salePriceMode": "manual",
+          "groupType": "addon",
+          "priceCalculation": "sum",
+          "required": false,
+          "minimum": 0,
+          "maximum": 2,
+          "active": true
+        },
+        {
+          "id": "molhos_à_parte_prd_molho_extra_defumada",
+          "name": "Maionese Defumada 60ml",
+          "group": "Molhos à parte",
+          "chargeMode": "extra",
+          "salePriceDelta": 3.5,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_defumada_extra",
+              "qty": 1
+            }
+          ],
+          "code": "GYR-MOL-MAIDEF",
+          "description": "Maionese Defumada 60ml",
           "erpUnit": "UN",
           "salePriceMode": "manual",
           "groupType": "addon",
@@ -7517,6 +7768,31 @@
           "minimum": 0,
           "maximum": 2,
           "active": true
+        },
+        {
+          "id": "molhos_à_parte_prd_molho_extra_defumada",
+          "name": "Maionese Defumada 60ml",
+          "group": "Molhos à parte",
+          "chargeMode": "extra",
+          "salePriceDelta": 3.5,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_defumada_extra",
+              "qty": 1
+            }
+          ],
+          "code": "GYR-MOL-MAIDEF",
+          "description": "Maionese Defumada 60ml",
+          "erpUnit": "UN",
+          "salePriceMode": "manual",
+          "groupType": "addon",
+          "priceCalculation": "sum",
+          "required": false,
+          "minimum": 0,
+          "maximum": 2,
+          "active": true
         }
       ],
       "code": "GYR-ALM-GAMMA",
@@ -7724,6 +8000,31 @@
           "minimum": 0,
           "maximum": 2,
           "active": true
+        },
+        {
+          "id": "molhos_à_parte_prd_molho_extra_defumada",
+          "name": "Maionese Defumada 60ml",
+          "group": "Molhos à parte",
+          "chargeMode": "extra",
+          "salePriceDelta": 3.5,
+          "notes": "",
+          "components": [
+            {
+              "refType": "product",
+              "refId": "prd_maionese_defumada_extra",
+              "qty": 1
+            }
+          ],
+          "code": "GYR-MOL-MAIDEF",
+          "description": "Maionese Defumada 60ml",
+          "erpUnit": "UN",
+          "salePriceMode": "manual",
+          "groupType": "addon",
+          "priceCalculation": "sum",
+          "required": false,
+          "minimum": 0,
+          "maximum": 2,
+          "active": true
         }
       ],
       "code": "GYR-ALM-VEG",
@@ -7745,7 +8046,7 @@
       "salePrice": 2.61,
       "active": true,
       "includeInCatalogCount": true,
-      "notes": "Molho padrao do lanche vendido a parte.",
+      "notes": "Molho da casa feito com Maionese Grill Junior pronta.",
       "components": [
         {
           "refType": "recipe",
@@ -7760,8 +8061,8 @@
       ],
       "pricingMode": "auto",
       "scope": "gyros",
-      "code": "GYR-MOL-MAIGRL-60",
-      "description": "Molho extra em potinho de 60ml.",
+      "code": "GYR-MOL-MAICSA-60",
+      "description": "Molho extra em potinho de 60ml com Maionese da Casa Junior Grill.",
       "erpUnit": "UN",
       "productCondition": "new",
       "erpProductType": "custom",
@@ -8477,7 +8778,7 @@
         {
           "refType": "recipe",
           "refId": "rec_manteiga_alho",
-          "qty": 5
+          "qty": 20
         },
         {
           "refType": "ingredient",
@@ -9763,6 +10064,41 @@
       "scope": "gyros",
       "code": "GYR-BEB-SUC-NAT",
       "description": "Produção própria",
+      "erpUnit": "UN",
+      "productCondition": "new",
+      "erpProductType": "custom",
+      "salesChannels": [
+        "default",
+        "delivery",
+        "ifood"
+      ]
+    },
+    {
+      "id": "prd_maionese_defumada_extra",
+      "scope": "gyros",
+      "name": "Maionese Defumada 60ml",
+      "categoryId": "cat_molhos",
+      "type": "extra",
+      "pricingMode": "auto",
+      "salePrice": 0,
+      "active": true,
+      "includeInCatalogCount": true,
+      "notes": "Potinho extra com maionese defumada feita internamente.",
+      "components": [
+        {
+          "refType": "recipe",
+          "refId": "rec_maionese_defumada",
+          "qty": 60
+        },
+        {
+          "refType": "packaging",
+          "refId": "pkg_potinho_60",
+          "qty": 1
+        }
+      ],
+      "addons": [],
+      "code": "GYR-MOL-MAIDEF-60",
+      "description": "Molho extra em potinho de 60ml com maionese defumada interna.",
       "erpUnit": "UN",
       "productCondition": "new",
       "erpProductType": "custom",
@@ -15876,7 +16212,7 @@
       "supplierId": "sup_pmg",
       "scope": "gyros",
       "resourceType": "ingredient",
-      "resourceId": "ing_maionese_ind",
+      "resourceId": "ing_maionese_junior_grill",
       "description": "Maionese Grill Junior 1,1kg",
       "qty": 15,
       "unit": "bag",
