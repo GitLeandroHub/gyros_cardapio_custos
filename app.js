@@ -8983,7 +8983,20 @@ qs('#btnInstall').onclick = async () => {
   showToast('Instalação iniciada', 'Se o navegador permitir, o app será instalado no dispositivo.', 'info');
 };
 if ('serviceWorker' in navigator && !isLocalDevHost()) {
-  window.addEventListener('load', () => navigator.serviceWorker.register('./sw.js').catch(console.error));
+  let refreshingForNewWorker = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (refreshingForNewWorker) return;
+    refreshingForNewWorker = true;
+    window.location.reload();
+  });
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('./sw.js');
+      await registration.update();
+    } catch (err) {
+      console.error(err);
+    }
+  });
 }
 
 async function initApp() {
